@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "className": "Crossfit",
+    "trainerName": "Neile Cortnay",
+    "day": "10-02-2023",
+    "time": "10:18",
+    "enrollments": 20
+  },
+  {
+    "id": 2,
+    "className": "Crossfit",
+    "trainerName": "Miof mela Van Hove",
+    "day": "20-05-2022",
+    "time": "12:43",
+    "enrollments": 11
+  },
+  {
+    "id": 3,
+    "className": "Spinning",
+    "trainerName": "Lyndy Normabell",
+    "day": "28-09-2022",
+    "time": "15:50",
+    "enrollments": 4
+  },
+  {
+    "id": 4,
+    "className": "Crossfit",
+    "trainerName": "Gabriell Livsey",
+    "day": "15-02-2023",
+    "time": "19:14",
+    "enrollments": 18
+  },
+  {
+    "id": 5,
+    "className": "Crossfit",
+    "trainerName": "Filberto Koppes",
+    "day": "30-05-2022",
+    "time": "15:59",
+    "enrollments": 14
+  },
+  {
+    "id": 6,
+    "className": "Crossfit",
+    "trainerName": "Wilfred Portch",
+    "day": "18-01-2023",
+    "time": "19:32",
+    "enrollments": 6
+  },
+  {
+    "id": 7,
+    "className": "Spinning",
+    "trainerName": "Terrye Sandys",
+    "day": "19-10-2022",
+    "time": "17:26",
+    "enrollments": 7
+  },
+  {
+    "id": 8,
+    "className": "Crossfit",
+    "trainerName": "Radcliffe Halford",
+    "day": "18-11-2022",
+    "time": "11:04",
+    "enrollments": 15
+  },
+  {
+    "id": 9,
+    "className": "Boxing",
+    "trainerName": "Tarrance Nelissen",
+    "day": "09-08-2022",
+    "time": "15:33",
+    "enrollments": 12
+  },
+  {
+    "id": 10,
+    "className": "Crossfit",
+    "trainerName": "Hogan Covert",
+    "day": "08-02-2023",
+    "time": "17:34",
+    "enrollments": 4
+  }
+]
