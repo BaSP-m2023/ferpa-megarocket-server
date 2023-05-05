@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "activityName": "lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat",
+    "activityType": "cardio",
+    "durationMinutes": 67,
+    "startTime": "07/03/2023",
+    "endTime": "12/24/2023",
+    "instructorName": "Una Harriday",
+    "instructorGender": "F",
+    "equipmentUsed": "dumbbells"
+  },
+  {
+    "id": 2,
+    "activityName": "nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut",
+    "activityType": "cardio",
+    "durationMinutes": 120,
+    "startTime": "06/18/2023",
+    "endTime": "10/14/2023",
+    "instructorName": "Halsy Ivatt",
+    "instructorGender": "F",
+    "equipmentUsed": "resistance bands"
+  },
+  {
+    "id": 3,
+    "activityName": "felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa",
+    "activityType": "strength",
+    "durationMinutes": 102,
+    "startTime": "02/03/2023",
+    "endTime": "12/29/2023",
+    "instructorName": "Clarke Spain",
+    "instructorGender": "M",
+    "equipmentUsed": "treadmill"
+  },
+  {
+    "id": 4,
+    "activityName": "non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis",
+    "activityType": "cardio",
+    "durationMinutes": 118,
+    "startTime": "02/29/2023",
+    "endTime": "05/07/2023",
+    "instructorName": "Verene Heineking",
+    "instructorGender": "M",
+    "equipmentUsed": "treadmill"
+  },
+  {
+    "id": 5,
+    "activityName": "nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes",
+    "activityType": "cardio",
+    "durationMinutes": 101,
+    "startTime": "02/28/2023",
+    "endTime": "12/04/2023",
+    "instructorName": "Raviv O'Crigan",
+    "instructorGender": "F",
+    "equipmentUsed": "dumbbells"
+  },
+  {
+    "id": 6,
+    "activityName": "cras mi pede malesuada in imperdiet et commodo vulputate justo in",
+    "activityType": "strength",
+    "durationMinutes": 21,
+    "startTime": "05/21/2023",
+    "endTime": "02/08/2023",
+    "instructorName": "Goldie Circuit",
+    "instructorGender": "F",
+    "equipmentUsed": "treadmill"
+  },
+  {
+    "id": 7,
+    "activityName": "tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien",
+    "activityType": "cardio",
+    "durationMinutes": 96,
+    "startTime": "12/28/2023",
+    "endTime": "10/20/2023",
+    "instructorName": "Pete Arrighi",
+    "instructorGender": "F",
+    "equipmentUsed": "resistance bands"
+  },
+  {
+    "id": 8,
+    "activityName": "ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam",
+    "activityType": "cardio",
+    "durationMinutes": 110,
+    "startTime": "04/23/2023",
+    "endTime": "08/21/2023",
+    "instructorName": "Marley Klimowicz",
+    "instructorGender": "F",
+    "equipmentUsed": "resistance bands"
+  },
+  {
+    "id": 9,
+    "activityName": "ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque",
+    "activityType": "yoga",
+    "durationMinutes": 56,
+    "startTime": "11/16/2023",
+    "endTime": "11/11/2023",
+    "instructorName": "Francis Trevers",
+    "instructorGender": "M",
+    "equipmentUsed": "treadmill"
+  },
+  {
+    "id": 10,
+    "activityName": "amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis",
+    "activityType": "strength",
+    "durationMinutes": 44,
+    "startTime": "07/19/2023",
+    "endTime": "05/06/2023",
+    "instructorName": "Ashlin Kembery",
+    "instructorGender": "M",
+    "equipmentUsed": "dumbbells"
+  }
+]
