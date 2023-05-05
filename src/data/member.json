@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "membership": "Classic",
     "firstName": "Jobie",
     "lastName": "Mc Caughen",
     "dob": "12/19/1988",
@@ -14,6 +15,7 @@
   },
   {
     "id": 2,
+    "membership": "Only classes",
     "firstName": "Lewes",
     "lastName": "Nuzzti",
     "dob": "11/16/2006",
@@ -27,6 +29,7 @@
   },
   {
     "id": 3,
+    "membership": "Classic",
     "firstName": "Nye",
     "lastName": "Glayzer",
     "dob": "05/29/1967",
@@ -40,6 +43,7 @@
   },
   {
     "id": 4,
+    "membership": "Black",
     "firstName": "Gayla",
     "lastName": "Geeson",
     "dob": "05/09/1981",
@@ -52,6 +56,7 @@
   },
   {
     "id": 5,
+    "membership": "Black",
     "firstName": "Viki",
     "lastName": "Tomaini",
     "dob": "08/09/1970",
