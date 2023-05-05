@@ -1,0 +1,112 @@
+[
+  {
+    "activity_id": 1,
+    "activity_name": "lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat",
+    "activity_type": "cardio",
+    "duration_minutes": 67,
+    "start_time": "07/03/2021",
+    "end_time": "12/24/2021",
+    "instructor_name": "Una Harriday",
+    "instructor_gender": "F",
+    "equipment_used": "dumbbells"
+  },
+  {
+    "activity_id": 2,
+    "activity_name": "nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut",
+    "activity_type": "cardio",
+    "duration_minutes": 120,
+    "start_time": "10/18/2021",
+    "end_time": "06/14/2021",
+    "instructor_name": "Halsy Ivatt",
+    "instructor_gender": "F",
+    "equipment_used": "resistance bands"
+  },
+  {
+    "activity_id": 3,
+    "activity_name": "felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa",
+    "activity_type": "strength",
+    "duration_minutes": 102,
+    "start_time": "02/03/2021",
+    "end_time": "12/29/2021",
+    "instructor_name": "Clarke Spain",
+    "instructor_gender": "M",
+    "equipment_used": "treadmill"
+  },
+  {
+    "activity_id": 4,
+    "activity_name": "non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae duis",
+    "activity_type": "cardio",
+    "duration_minutes": 118,
+    "start_time": "05/29/2021",
+    "end_time": "02/07/2021",
+    "instructor_name": "Verene Heineking",
+    "instructor_gender": "M",
+    "equipment_used": "treadmill"
+  },
+  {
+    "activity_id": 5,
+    "activity_name": "nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes",
+    "activity_type": "cardio",
+    "duration_minutes": 101,
+    "start_time": "12/28/2021",
+    "end_time": "02/04/2021",
+    "instructor_name": "Raviv O'Crigan",
+    "instructor_gender": "F",
+    "equipment_used": "dumbbells"
+  },
+  {
+    "activity_id": 6,
+    "activity_name": "cras mi pede malesuada in imperdiet et commodo vulputate justo in",
+    "activity_type": "strength",
+    "duration_minutes": 21,
+    "start_time": "05/21/2021",
+    "end_time": "02/08/2021",
+    "instructor_name": "Goldie Circuit",
+    "instructor_gender": "F",
+    "equipment_used": "treadmill"
+  },
+  {
+    "activity_id": 7,
+    "activity_name": "tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien",
+    "activity_type": "cardio",
+    "duration_minutes": 96,
+    "start_time": "12/28/2021",
+    "end_time": "10/20/2021",
+    "instructor_name": "Pete Arrighi",
+    "instructor_gender": "F",
+    "equipment_used": "resistance bands"
+  },
+  {
+    "activity_id": 8,
+    "activity_name": "ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam",
+    "activity_type": "cardio",
+    "duration_minutes": 110,
+    "start_time": "04/23/2021",
+    "end_time": "08/21/2021",
+    "instructor_name": "Marley Klimowicz",
+    "instructor_gender": "F",
+    "equipment_used": "resistance bands"
+  },
+  {
+    "activity_id": 9,
+    "activity_name": "ultrices erat tortor sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque",
+    "activity_type": "yoga",
+    "duration_minutes": 56,
+    "start_time": "11/16/2021",
+    "end_time": "11/11/2021",
+    "instructor_name": "Francis Trevers",
+    "instructor_gender": "M",
+    "equipment_used": "treadmill"
+  },
+  {
+    "activity_id": 10,
+    "activity_name": "amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis",
+    "activity_type": "strength",
+    "duration_minutes": 44,
+    "start_time": "07/19/2021",
+    "end_time": "05/06/2021",
+    "instructor_name": "Ashlin Kembery",
+    "instructor_gender": "M",
+    "equipment_used": "dumbbells"
+  }
+]
