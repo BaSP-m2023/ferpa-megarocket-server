@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "first_name": "Jobie",
-    "last_name": "Mc Caughen",
+    "firstName": "Jobie",
+    "lastName": "Mc Caughen",
     "dob": "12/19/1988",
     "phone": "535-297-8847",
     "address": "94 Redwing Lane",
@@ -10,12 +10,12 @@
     "zip": "1495-005",
     "email": "jmccaughen0@cnn.com",
     "password": "OoKlT6",
-    "dni": 8
+    "dni": "30002301"
   },
   {
     "id": 2,
-    "first_name": "Lewes",
-    "last_name": "Nuzzti",
+    "firstName": "Lewes",
+    "lastName": "Nuzzti",
     "dob": "11/16/2006",
     "phone": "347-614-1918",
     "address": "96 Jackson Road",
@@ -23,12 +23,12 @@
     "zip": "04008",
     "email": "lnuzzti1@ucsd.edu",
     "password": "98lWHy8",
-    "dni": 8
+    "dni": "35201362"
   },
   {
     "id": 3,
-    "first_name": "Nye",
-    "last_name": "Glayzer",
+    "firstName": "Nye",
+    "lastName": "Glayzer",
     "dob": "05/29/1967",
     "phone": "462-407-6465",
     "address": "27 Elgar Point",
@@ -36,24 +36,24 @@
     "zip": "10104 CEDEX",
     "email": "nglayzer2@icq.com",
     "password": "8q6CiAXP",
-    "dni": 8
+    "dni": "34320568"
   },
   {
     "id": 4,
-    "first_name": "Gayla",
-    "last_name": "Geeson",
+    "firstName": "Gayla",
+    "lastName": "Geeson",
     "dob": "05/09/1981",
     "phone": "765-807-4885",
     "address": "694 Prairie Rose Center",
     "city": "Gwandu",
     "email": "ggeeson3@upenn.edu",
     "password": "pgFYMpN7lbN",
-    "dni": 8
+    "dni": "24325621"
   },
   {
     "id": 5,
-    "first_name": "Viki",
-    "last_name": "Tomaini",
+    "firstName": "Viki",
+    "lastName": "Tomaini",
     "dob": "08/09/1970",
     "phone": "339-126-4859",
     "address": "53676 Badeau Park",
@@ -61,6 +61,6 @@
     "zip": "52220",
     "email": "vtomaini4@fastcompany.com",
     "password": "vFyozLeaWq7",
-    "dni": 8
+    "dni": "37002362"
   }
 ]
