@@ -1,6 +1,47 @@
-{
-    "name": "esteban",
-    "lastName": "frare",
-    "email": "esteban.frare@radiumrocket.com"
-
-}
+[
+  {
+    "id": 1,
+    "firstName": "Netta",
+    "lastName": "Ellington",
+    "email": "nellington0@cdbaby.com",
+    "phoneNumber": "3795360134",
+    "password": "tR3kM7sN",
+    "city": "Sydney"
+  },
+  {
+    "id": 2,
+    "firstName": "Pearline",
+    "lastName": "Hender",
+    "email": "phender1@admin.ch",
+    "phoneNumber": "2414978653",
+    "password": "jW8sL2zV",
+    "city": "Cusco"
+  },
+  {
+    "id": 3,
+    "firstName": "Abby",
+    "lastName": "Stilliard",
+    "email": "astilliard2@altervista.org",
+    "phoneNumber": "6968063625",
+    "password": "fD9hA6bE",
+    "city": "Reykjavik"
+  },
+  {
+    "id": 4,
+    "firstName": "Teirtza",
+    "lastName": "Durker",
+    "email": "tdurker3@ow.ly",
+    "phoneNumber": "7409112527",
+    "password": "cQ2xU5yK",
+    "city": "Vancouver"
+  },
+  {
+    "id": 5,
+    "firstName": "Lazar",
+    "lastName": "Leacy",
+    "email": "lleacy4@twitter.com",
+    "phoneNumber": "6224679779",
+    "password": "nG4mP1pT",
+    "city": "Paris"
+  }
+]
