@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "firstName": "Tine",
+    "lastName": "Cowderoy",
+    "email": "tcowderoy0@usnews.com",
+    "phoneNumber": "264-383-1552",
+    "subscriptionDate": "4/19/2023",
+    "subscriptionType": "lifetime",
+    "subscriptionPrice": 582.28,
+    "subscriptionDuration": 5,
+    "subscriptionStatus": "inactive"
+  },
+  {
+    "id": 2,
+    "firstName": "Simon",
+    "lastName": "MacMenamie",
+    "email": "smacmenamie1@slate.com",
+    "phoneNumber": "755-977-4052",
+    "subscriptionDate": "1/7/2023",
+    "subscriptionType": "monthly",
+    "subscriptionPrice": 333.85,
+    "subscriptionDuration": 9,
+    "subscriptionStatus": "pending"
+  },
+  {
+    "id": 3,
+    "firstName": "Alie",
+    "lastName": "Heersema",
+    "email": "aheersema2@wordpress.com",
+    "phoneNumber": "746-661-2801",
+    "subscriptionDate": "11/11/2022",
+    "subscriptionType": "lifetime",
+    "subscriptionPrice": 554.28,
+    "subscriptionDuration": 12,
+    "subscriptionStatus": "inactive"
+  },
+  {
+    "id": 4,
+    "firstName": "Armand",
+    "lastName": "Ivashnyov",
+    "email": "aivashnyov3@feedburner.com",
+    "phoneNumber": "605-967-4033",
+    "subscriptionDate": "6/4/2022",
+    "subscriptionType": "yearly",
+    "subscriptionPrice": 363.76,
+    "subscriptionDuration": 2,
+    "subscriptionStatus": "suspended"
+  },
+  {
+    "id": 5,
+    "firstName": "Mellicent",
+    "lastName": "Bisacre",
+    "email": "mbisacre4@uiuc.edu",
+    "phoneNumber": "467-708-7836",
+    "subscriptionDate": "10/6/2022",
+    "subscriptionType": "yearly",
+    "subscriptionPrice": 335.24,
+    "subscriptionDuration": 5,
+    "subscriptionStatus": ""
+  },
+  {
+    "id": 6,
+    "firstName": "Law",
+    "lastName": "Itschakov",
+    "email": "litschakov5@mozilla.com",
+    "phoneNumber": "653-566-3524",
+    "subscriptionDate": "3/9/2023",
+    "subscriptionType": "lifetime",
+    "subscriptionPrice": 269.86,
+    "subscriptionDuration": 11,
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 7,
+    "firstName": "Lynett",
+    "lastName": "Levesque",
+    "email": "llevesque6@51.la",
+    "phoneNumber": "723-190-8137",
+    "subscriptionDate": "12/19/2022",
+    "subscriptionType": "lifetime",
+    "subscriptionPrice": 452.18,
+    "subscriptionDuration": 11,
+    "subscriptionStatus": "suspended"
+  },
+  {
+    "id": 8,
+    "firstName": "Almira",
+    "lastName": "Lotterington",
+    "email": "alotterington7@simplemachines.org",
+    "phoneNumber": "101-121-4830",
+    "subscriptionDate": "4/15/2023",
+    "subscriptionType": "yearly",
+    "subscriptionPrice": 18.01,
+    "subscriptionDuration": 10,
+    "subscriptionStatus": "expired"
+  },
+  {
+    "id": 9,
+    "firstName": "Hanan",
+    "lastName": "Jordan",
+    "email": "hjordan8@chicagotribune.com",
+    "phoneNumber": "709-603-2052",
+    "subscriptionDate": "8/19/2022",
+    "subscriptionType": "monthly",
+    "subscriptionPrice": 681.29,
+    "subscriptionDuration": 2,
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 10,
+    "firstName": "Philly",
+    "lastName": "Freeborn",
+    "email": "pfreeborn9@de.vu",
+    "phoneNumber": "762-488-4022",
+    "subscriptionDate": "9/4/2022",
+    "subscriptionType": "lifetime",
+    "subscriptionPrice": 622.17,
+    "subscriptionDuration": 1,
+    "subscriptionStatus": "expired"
+  }
+]
