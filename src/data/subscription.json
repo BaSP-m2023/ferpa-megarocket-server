@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "subscriptionDate": "2/13/2023",
+    "subscriptionType": "classic",
+    "subscriptionPrice": "10",
+    "subscriptionDuration": "9",
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 2,
+    "subscriptionDate": "9/4/2022",
+    "subscriptionType": "black",
+    "subscriptionPrice": "20",
+    "subscriptionDuration": "5",
+    "subscriptionStatus": "inactive"
+  },
+  {
+    "id": 3,
+    "subscriptionDate": "2/27/2023",
+    "subscriptionType": "only classes",
+    "subscriptionPrice": "15",
+    "subscriptionDuration": "4",
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 4,
+    "subscriptionDate": "4/21/2023",
+    "subscriptionType": "only classes",
+    "subscriptionPrice": "15",
+    "subscriptionDuration": "2",
+    "subscriptionStatus": "inactive"
+  },
+  {
+    "id": 5,
+    "subscriptionDate": "4/16/2023",
+    "subscriptionType": "black",
+    "subscriptionPrice": "20",
+    "subscriptionDuration": "6",
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 6,
+    "subscriptionDate": "11/12/2022",
+    "subscriptionType": "classic",
+    "subscriptionPrice": "10",
+    "subscriptionDuration": "9",
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 7,
+    "subscriptionDate": "4/23/2023",
+    "subscriptionType": "black",
+    "subscriptionPrice": "20",
+    "subscriptionDuration": "11",
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 8,
+    "subscriptionDate": "7/15/2022",
+    "subscriptionType": "only classes",
+    "subscriptionPrice": "15",
+    "subscriptionDuration": "5",
+    "subscriptionStatus": "active"
+  },
+  {
+    "id": 9,
+    "subscriptionDate": "6/5/2022",
+    "subscriptionType": "black",
+    "subscriptionPrice": "20",
+    "subscriptionDuration": "11",
+    "subscriptionStatus": "inactive"
+  },
+  {
+    "id": 10,
+    "subscriptionDate": "2/10/2023",
+    "subscriptionType": "classic",
+    "subscriptionPrice": "10",
+    "subscriptionDuration": "3",
+    "subscriptionStatus": "active"
+  }
+]
