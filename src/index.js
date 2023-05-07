@@ -8,8 +8,12 @@ const admins = require('./data/admins.json');
 const app = express();
 const port = process.env.PORT || 4000;
 
+const classRouter = require('./resources/class');
+
 app.use(cors());
 app.use(express.json());
+
+app.use('/class', classRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
