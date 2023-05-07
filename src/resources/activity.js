@@ -1,5 +1,5 @@
 const express = require('express');
-
+const fs = require('fs');
 const activity = require('../data/activity.json');
 
 const router = express.Router();
@@ -16,6 +16,19 @@ router.get('/:id', (req, res) => {
   } else {
     res.send('Activity not found');
   }
+});
+
+router.post('/', (req, res) => {
+  const newActivity = req.body;
+  activity.push(newActivity);
+  fs.writeFile('src/data/activity.json', JSON.stringify(activity, null, 2), (err) => {
+    if (err) {
+      res.send('Error!');
+    } else {
+      res.send('Activity created!');
+    }
+  });
+  res.send(activity);
 });
 
 module.exports = router;
