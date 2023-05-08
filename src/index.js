@@ -11,6 +11,10 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
+const subscriptionRouter = require('./resources/subscription');
+
+app.use('/subscription', subscriptionRouter);
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
