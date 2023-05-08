@@ -67,5 +67,19 @@
     "email": "vtomaini4@fastcompany.com",
     "password": "vFyozLeaWq7",
     "dni": "37002362"
+  },
+  {
+    "id": 6,
+    "membership": "Only Classes",
+    "firstName": "Valeria",
+    "lastName": "Martinez",
+    "dob": "10/25/1995",
+    "phone": "452-252-9856",
+    "address": "25 High Line",
+    "city": "Porto",
+    "zip": "3522-558",
+    "email": "valmart0@cnn.com",
+    "password": "OaklL7",
+    "dni": "39335215"
   }
 ]
