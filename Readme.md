@@ -73,7 +73,7 @@ Summary:
 <img src="https://avatars.githubusercontent.com/u/99558033?v=4" height="50" width="50">| Luciano Stradiot | [@lucianostradiot](https://github.com/lucianostradiot)
 <img src="https://avatars.githubusercontent.com/u/127455772?v=4" height="50" width="50">| Victoria Negrotto | [@VictoriaNegrotto](https://github.com/VictoriaNegrotto)
 <img src="https://avatars.githubusercontent.com/u/53584419?v=4" height="50" width="50">| Eugenia Gassman | [@Eugeniagassman](https://github.com/Eugeniagassman)
-<img src="https://avatars.githubusercontent.com/u/88636656?v=4" height="50" width="50">| Cynthia Gonzalez Abero | [@Eugeniagassman](https://github.com/cyngonzalezabero)
+<img src="https://avatars.githubusercontent.com/u/88636656?v=4" height="50" width="50">| Cynthia Gonzalez Abero | [@cyngonzalezabero](https://github.com/cyngonzalezabero)
 <img src="https://avatars.githubusercontent.com/u/127451517?v=4" height="50" width="50">| Leonel Balonchard | [@leo-balonchard](https://github.com/leo-balonchard)
 <img src="https://avatars.githubusercontent.com/u/127523041?v=4" height="50" width="50">| Nicolas Kler | [@NicolasKler](https://github.com/NicolasKler)
 <img src="https://avatars.githubusercontent.com/u/127539369?v=4" height="50" width="50">| Matias Luis Peter | [@matiasluispeter](https://github.com/matiasluispeter)
