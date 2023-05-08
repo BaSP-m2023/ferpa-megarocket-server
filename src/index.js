@@ -10,8 +10,6 @@ const port = process.env.PORT || 4000;
 
 const trainerRouter = require('./resources/trainer');
 
-app.use('/trainers', trainerRouter);
-
 app.use(cors());
 app.use(express.json());
 
@@ -24,6 +22,8 @@ app.get('/admins', (req, res) => {
     data: admins,
   });
 });
+
+app.use('/trainers', trainerRouter);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
