@@ -12,9 +12,36 @@ router.get('/get', (req, res) => {
 
 /* Put method */
 
-/* router.put('/editById/:id', (req, res) => {
+router.put('/editById/:id', (req, res) => {
   const classId = req.params.id;
-}); */
+  const foundClass = classes.some((_class) => _class.id.toString() === classId);
+  const editClass = req.body;
+
+  if (foundClass) {
+    classes.forEach((_class) => {
+      if (_class.id.toString() === classId) {
+        const theClass = _class;
+        theClass.activityId = editClass.activityId ? editClass.activityId : theClass.activityId;
+        theClass.trainerId = editClass.trainerId ? editClass.trainerId : theClass.trainerId;
+        theClass.day = editClass.day ? editClass.day : theClass.day;
+        theClass.time = editClass.time ? editClass.time : theClass.time;
+        theClass.enrollments = editClass.enrollments ? editClass.enrollments : theClass.enrollments;
+
+        fs.writeFile('src/data/class.json', JSON.stringify(classes, null, 2), (err) => {
+          if (err) {
+            res.status(400).json({ msg: `ERROR updating class ${classId}` });
+          } else {
+            res.status(200).json({ msg: `Class ${classId} updated succesfully` });
+          }
+        });
+
+        res.status(200).json({ msg: `Class ${classId} updated succesfully`, theClass });
+      }
+    });
+  } else {
+    res.status(400).json({ msg: `ERROR updating a class ${classId}` });
+  }
+});
 
 /* Delete method */
 
