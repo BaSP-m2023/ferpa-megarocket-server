@@ -4,21 +4,17 @@ const members = require('../data/member.json');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send(members);
-});
-
 router.delete('/:id', (req, res) => {
   const memberId = req.params.id;
   const fileteredMembers = members.filter((member) => member.id.toString() !== memberId);
   if (fileteredMembers.length === members.length) {
-    res.send('Member not found');
+    res.status(400).json({ msg: 'Member not found' });
   } else {
     fs.writeFile('src/data/member.json', JSON.stringify(fileteredMembers, null, 2), (err) => {
       if (err) {
-        res.send('Error! Member can not be deleted');
+        res.status(400).json({ msg: 'Error! Member can not be deleted' });
       } else {
-        res.send('Member deleted');
+        res.status(200).json({ msg: 'Member deleted' });
       }
     });
   }
@@ -46,9 +42,9 @@ router.put('/:id', (req, res) => {
 
         fs.writeFile('src/data/member.json', JSON.stringify(members, null, 2), (err) => {
           if (err) {
-            res.send('Error! Cant update');
+            res.status(400).json({ msg: 'Error! Member cant update' });
           } else {
-            res.send('Member updated');
+            res.status(200).json({ msg: 'Member updated' });
           }
         });
       }
