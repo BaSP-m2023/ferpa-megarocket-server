@@ -14,7 +14,10 @@ router.get('/getById/:id', (req, res) => {
   const classId = parseInt(req.params.id, 10);
   const foundClass = classes.find((_class) => _class.id === classId);
   if (foundClass) {
-    res.send(foundClass);
+    res.status(200).json({
+      msg: 'Class founded!',
+      data: foundClass,
+    });
   } else {
     res.status(400).json({ msg: `No class with id ${classId} was found.` });
   }
