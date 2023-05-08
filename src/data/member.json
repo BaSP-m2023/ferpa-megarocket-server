@@ -1,8 +1,22 @@
 [
   {
+    "id": 3,
+    "membership": "Classic",
+    "firstName": "Nye",
+    "lastName": "Glayzer",
+    "dob": "05/29/1967",
+    "phone": "462-407-6465",
+    "address": "27 Elgar Point",
+    "city": "Romilly-sur-Seine",
+    "zip": "10104 CEDEX",
+    "email": "nglayzer2@icq.com",
+    "password": "8q6CiAXP",
+    "dni": "34320568"
+  },
+  {
     "id": 4,
     "membership": "Black",
-    "firstName": "Gayla",
+    "firstName": "Eugenia",
     "lastName": "Geeson",
     "dob": "05/09/1981",
     "phone": "765-807-4885",
