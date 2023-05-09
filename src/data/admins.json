@@ -43,5 +43,23 @@
     "phoneNumber": "6224679779",
     "password": "nG4mP1pT",
     "city": "Paris"
+  },
+  {
+    "id": 6,
+    "firstName": "Emanuel",
+    "lastName": "Ginobilli",
+    "email": "manu1999@baby.com",
+    "phoneNumber": "123456789",
+    "password": "manuNBA",
+    "city": "Rosario"
+  },
+  {
+    "id": 7,
+    "firstName": "Juan",
+    "lastName": "Perez",
+    "email": "juancho22@baby.com",
+    "phoneNumber": "987654321",
+    "password": "perez22",
+    "city": "Funes"
   }
 ]
