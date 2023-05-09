@@ -7,10 +7,11 @@ const router = express.Router();
 
 router.delete('/:id', (req, res) => {
   const activityId = req.params.id;
-  const filteredActivity = activities.filter((activity) => activity.id.toString()
-  === activityId);
-  if (filteredActivity) {
-    fs.writeFile('src/data/activity.json', JSON.stringify(filteredActivity, null, 2), (err) => {
+  const filteredActivities = activities.filter((activity) => activity.id.toString()
+  !== activityId);
+  const found = activities.find((activity) => activity.id.toString() === activityId);
+  if (found) {
+    fs.writeFile('src/data/activity.json', JSON.stringify(filteredActivities, null, 2), (err) => {
       if (err) {
         res.send('Error!');
       } else {
@@ -43,10 +44,9 @@ router.put('/:id', (req, res) => {
           if (err) {
             res.send('Error!');
           } else {
-            res.send('Activity deleted.');
+            res.status(200).json({ msg: 'Activity Updated!', data: activity });
           }
         });
-        res.json({ msg: 'Activity Updated', activity });
       }
     });
   } else {
