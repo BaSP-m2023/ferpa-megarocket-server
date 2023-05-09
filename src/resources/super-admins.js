@@ -15,13 +15,9 @@ router.get('/:id', (req, res) => {
   const sAdminId = req.params.id;
   const sAdminFound = sAdmin.find((sAdm) => sAdm.id.toString() === sAdminId);
   if (sAdminFound) {
-    res.status(200).json({
-      data: sAdminFound,
-    });
+    res.status(200).json({ msg: 'Super admin found', data: sAdminFound });
   } else {
-    res.status(400).json({
-      msg: 'Super admin not found',
-    });
+    res.status(400).json({ msg: 'Super admin not found', data: sAdminId });
   }
 });
 
@@ -30,13 +26,9 @@ router.post('/', (req, res) => {
   sAdmin.push(newSAdmin);
   fs.writeFile('src/data/super-admins.json', JSON.stringify(sAdmin, null, 2), (err) => {
     if (err) {
-      res.status(400).json({
-        msg: 'Error! Super admin cannot be created',
-      });
+      res.status(400).json({ msg: 'Error! Super admin cannot be created', data: newSAdmin });
     } else {
-      res.status(200).json({
-        msg: 'Super admin created',
-      });
+      res.status(200).json({ msg: 'Super admin created' });
     }
   });
 });
@@ -46,13 +38,9 @@ router.delete('/:id', (req, res) => {
   const filterdSAdmin = sAdmin.filter((sAdm) => sAdm.id.toString() !== sAdminId);
   fs.writeFile('src/data/super-admins.json', JSON.stringify(filterdSAdmin, null, 2), (err) => {
     if (err) {
-      res.status(400).json({
-        msg: 'Error! Super admin cannot be deleted',
-      });
+      res.status(400).json({ msg: 'Error! Super admin cannot be deleted: ', data: sAdminId });
     } else {
-      res.status(200).json({
-        msg: 'Super admin deleted',
-      });
+      res.status(200).json({ msg: 'Super admin deleted: ', data: sAdminId });
     }
   });
 });
