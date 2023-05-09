@@ -12,7 +12,6 @@ const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
-app.use('/activities', activityRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -29,6 +28,8 @@ app.get('/activities', (req, res) => {
     data: activities,
   });
 });
+
+app.use('/activities', activityRouter);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
