@@ -65,12 +65,11 @@ router.put('/:id', (req, res) => {
     sAdminFound.email = updSAdmin.email ? updSAdmin.email : sAdminFound.email;
     sAdminFound.password = updSAdmin.password ? updSAdmin.password : sAdminFound.password;
     const fSadmin = sAdmin.filter((sAdm) => sAdm.id.toString() !== sAdminId);
-    fSadmin.push(sAdminFound);
     fs.writeFile('src/data/super-admins.json', JSON.stringify(fSadmin, null, 2), (err) => {
       if (err) {
-        res.status(400).json({ msg: 'Error! Super admin cannot be created' });
+        res.status(400).json({ msg: 'Super admin not found' });
       } else {
-        res.status(200).json({ msg: 'Super admin deleted', data: fSadmin });
+        res.status(200).json({ msg: 'Super admin updated: ', data: sAdminFound });
       }
     });
   } else {
