@@ -40,3 +40,19 @@ router.post('/', (req, res) => {
     }
   });
 });
+
+router.delete('/:id', (req, res) => {
+  const sAdminId = req.params.id;
+  const filterdSAdmin = sAdmin.filter((sAdm) => sAdm.id.toString() !== sAdminId);
+  fs.writeFile('src/data/super-admins.json', JSON.stringify(filterdSAdmin, null, 2), (err) => {
+    if (err) {
+      res.status(400).json({
+        msg: 'Error! Super admin cannot be deleted',
+      });
+    } else {
+      res.status(200).json({
+        msg: 'Super admin deleted',
+      });
+    }
+  });
+});
