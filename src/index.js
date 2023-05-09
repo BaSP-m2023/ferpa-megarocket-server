@@ -21,6 +21,10 @@ app.get('/admins', (req, res) => {
   });
 });
 
+const sAdmins = require('./resources/super-admins');
+
+app.use('/super-admins', sAdmins);
+
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Example app listening on port ${port}`);
