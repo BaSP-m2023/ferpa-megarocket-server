@@ -55,11 +55,11 @@ Summary:
 
 ## Class distribution
 - Super-Admin: Nicolas Kler
-- Subscriptions: Fede (replaced by Rodrigo Fontan & Leonel Balonchard)
+- Subscriptions: Fede (replaced by Rodrigo Fontan & Leonardo Balonchard)
 - Classes: Rodrigo Fontan & Luciano Stradiot
 - Activity: Cynthia Gonzalez & Fernando Fernandez
 - Trainer: Matias Peter & Galo Durante
-- Admin: Leonel Balonchard & Ignacio Canton
+- Admin: Leonardo Balonchard & Ignacio Canton
 - Member: Victoria Negrotto & Eugenia Gassman
 
 <br>
@@ -74,7 +74,7 @@ Summary:
 <img src="https://avatars.githubusercontent.com/u/127455772?v=4" height="50" width="50">| Victoria Negrotto | [@VictoriaNegrotto](https://github.com/VictoriaNegrotto)
 <img src="https://avatars.githubusercontent.com/u/53584419?v=4" height="50" width="50">| Eugenia Gassman | [@Eugeniagassman](https://github.com/Eugeniagassman)
 <img src="https://avatars.githubusercontent.com/u/88636656?v=4" height="50" width="50">| Cynthia Gonzalez Abero | [@cyngonzalezabero](https://github.com/cyngonzalezabero)
-<img src="https://avatars.githubusercontent.com/u/127451517?v=4" height="50" width="50">| Leonel Balonchard | [@leo-balonchard](https://github.com/leo-balonchard)
+<img src="https://avatars.githubusercontent.com/u/127451517?v=4" height="50" width="50">| Leonardo Balonchard | [@leo-balonchard](https://github.com/leo-balonchard)
 <img src="https://avatars.githubusercontent.com/u/127523041?v=4" height="50" width="50">| Nicolas Kler | [@NicolasKler](https://github.com/NicolasKler)
 <img src="https://avatars.githubusercontent.com/u/127539369?v=4" height="50" width="50">| Matias Luis Peter | [@matiasluispeter](https://github.com/matiasluispeter)
 <img src="https://avatars.githubusercontent.com/u/104109587?v=4" height="50" width="50">| Ignacio Canton | [@IgnacioCanton](https://github.com/IgnacioCanton)
