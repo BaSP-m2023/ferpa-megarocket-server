@@ -13,7 +13,7 @@ const classRouter = require('./resources/class');
 app.use(cors());
 app.use(express.json());
 
-app.use('/class', classRouter);
+app.use('/classes', classRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
