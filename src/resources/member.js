@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
   }
 });
 
-router.post('/post', (req, res) => {
+router.post('/', (req, res) => {
   const newMember = req.body;
   if (!newMember.id) {
     res.status(400).json({ msg: 'Error! Invalid member ID' });

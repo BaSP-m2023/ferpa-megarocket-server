@@ -81,5 +81,18 @@
     "email": "valmart0@cnn.com",
     "password": "OaklL7",
     "dni": "39335215"
+  },
+  {
+    "id": 8,
+    "firstName": "Lewes",
+    "lastName": "Nuzzti",
+    "dob": "11/16/2006",
+    "phone": "347-614-1918",
+    "address": "96 Jackson Road",
+    "city": "Pochuta",
+    "zip": "04008",
+    "email": "lnuzzti1@ucsd.edu",
+    "password": "98lWHy8",
+    "dni": "35201362"
   }
 ]
