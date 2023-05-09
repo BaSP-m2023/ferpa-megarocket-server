@@ -56,3 +56,26 @@ router.delete('/:id', (req, res) => {
     }
   });
 });
+
+router.put('/:id', (req, res) => {
+  const sAdminId = parseInt(req.params.id, 10);
+  const sAdminFound = sAdmin.find((sAdm) => sAdm.id === sAdminId);
+  if (sAdminFound) {
+    const updSAdmin = req.body;
+    sAdminFound.email = updSAdmin.email ? updSAdmin.email : sAdminFound.email;
+    sAdminFound.password = updSAdmin.password ? updSAdmin.password : sAdminFound.password;
+    const fSadmin = sAdmin.filter((sAdm) => sAdm.id.toString() !== sAdminId);
+    fSadmin.push(sAdminFound);
+    fs.writeFile('src/data/super-admins.json', JSON.stringify(fSadmin, null, 2), (err) => {
+      if (err) {
+        res.status(400).json({ msg: 'Error! Super admin cannot be created' });
+      } else {
+        res.status(200).json({ msg: 'Super admin deleted', data: fSadmin });
+      }
+    });
+  } else {
+    res.status(400).json({ msg: 'Super admin not found' });
+  }
+});
+
+module.exports = router;
