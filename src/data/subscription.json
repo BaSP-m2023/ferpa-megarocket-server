@@ -90,13 +90,13 @@
     "subscriptionStatus": "active"
   },
   {
-    "id": 111,
-    "memberId": 525,
+    "id": 1,
+    "memberId": 1111,
     "classId": 3,
     "subscriptionDate": "2/13/2023",
-    "subscriptionType": 1,
-    "subscriptionPrice": 10,
-    "subscriptionDuration": 9,
+    "subscriptionType": 3,
+    "subscriptionPrice": 879,
+    "subscriptionDuration": 999999,
     "subscriptionStatus": "inactive"
   }
 ]

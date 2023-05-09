@@ -4,13 +4,13 @@ const subscriptions = require('../data/subscription.json');
 
 const router = express.Router();
 
-router.get('/get', (req, res) => {
+router.get('/', (req, res) => {
   res.status(200).json({
     data: subscriptions,
   });
 });
 
-router.get('/getById/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const subscriptionId = parseInt(req.params.id, 10);
   const foundSubscription = subscriptions.find((sub) => sub.id === subscriptionId);
   if (foundSubscription) {
@@ -23,7 +23,7 @@ router.get('/getById/:id', (req, res) => {
   }
 });
 
-router.post('/post', (req, res) => {
+router.post('/', (req, res) => {
   const newSubscription = req.body;
   const newSubscriptionId = parseInt(req.body.id, 10);
   const foundSubscription = subscriptions.find((subs) => subs.id === newSubscriptionId);
@@ -44,7 +44,7 @@ router.post('/post', (req, res) => {
   }
 });
 
-router.put('/editById/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const subscriptionId = req.params.id;
   const foundSubscription = subscriptions.some((sub) => sub.id.toString() === subscriptionId);
   const editSub = req.body;
@@ -82,7 +82,7 @@ router.put('/editById/:id', (req, res) => {
   }
 });
 
-router.delete('/deleteById/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const subscriptionId = req.params.id;
   const filteredSub = subscriptions.filter((sub) => sub.id.toString() !== subscriptionId);
   if (subscriptions.length === filteredSub.length) {
