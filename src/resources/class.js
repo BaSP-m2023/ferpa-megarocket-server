@@ -6,7 +6,7 @@ const classes = require('../data/class.json');
 
 const router = express.Router();
 
-router.put('/editById/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const classId = req.params.id;
   const foundClass = classes.some((_class) => _class.id.toString() === classId);
   const editClass = req.body;
@@ -28,9 +28,7 @@ router.put('/editById/:id', (req, res) => {
             res.status(200).json({ msg: `Class ${classId} updated succesfully` });
           }
         });
-        res.status(200).json({
-          msg: `Class ${classId} updated succesfully`,
-          data: theClass });
+        res.status(200).json({ msg: `Class ${classId} updated succesfully`, data: theClass });
       }
     });
   } else {
@@ -38,7 +36,7 @@ router.put('/editById/:id', (req, res) => {
   }
 });
 
-router.delete('/deleteById/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const classId = req.params.id;
   const filteredClass = classes.filter((_class) => _class.id.toString() !== classId);
   if (classes.length === filteredClass.length) {
