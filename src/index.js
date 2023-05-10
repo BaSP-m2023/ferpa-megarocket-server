@@ -5,13 +5,20 @@ import cors from 'cors';
 // use "require" to import JSON files
 const admins = require('./data/admins.json');
 
+const membersRouter = require('./resources/member');
+
 const app = express();
 const port = process.env.PORT || 4000;
+
+const classesRouter = require('./resources/class');
 
 const trainerRouter = require('./resources/trainer');
 
 app.use(cors());
 app.use(express.json());
+app.use('/members', membersRouter);
+
+app.use('/classes', classesRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
