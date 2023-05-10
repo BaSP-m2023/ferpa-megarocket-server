@@ -5,7 +5,7 @@ const admins = require('../data/admins.json');
 
 const router = express.Router();
 
-router.get('/get', (req, res) => {
+router.get('/', (req, res) => {
   if (admins.length === 0) {
     res.status(400).json({
       msg: 'There is no admin created',
@@ -17,7 +17,7 @@ router.get('/get', (req, res) => {
   }
 });
 
-router.get('/getById/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const adminId = req.params.id;
   const foundAdmin = admins.find((admins) => admins.id.toString() === adminId);
   if (foundAdmin) {
@@ -31,31 +31,35 @@ router.get('/getById/:id', (req, res) => {
   }
 });
 
-router.post('/post', (req, res) => {
+router.post('/', (req, res) => {
   const newAdmin = req.body;
 
-  const foundAdmin = admins.find((admins) => admins.id === newAdmin.id);
+  const foundAdmin = admins.find((admins) => admins.email === newAdmin.email);
   if (foundAdmin) {
     res.status(400).json({
-      msg: 'Admin already exist.',
+      msg: 'Email is already in use.',
+      data: newAdmin,
     });
-  } else if (newAdmin.id && newAdmin.firstName && newAdmin.lastName && newAdmin.email
+  } else if (newAdmin.firstName && newAdmin.lastName && newAdmin.email
     && newAdmin.phoneNumber && newAdmin.password && newAdmin.city) {
     admins.push(newAdmin);
     fs.writeFile('src/data/admins.json', JSON.stringify(admins), (err) => {
       if (err) {
         res.status(400).json({
           msg: 'Admin cannot be created',
+          data: newAdmin,
         });
       } else {
         res.status(200).json({
           msg: 'Admin created succesfully',
+          data: newAdmin,
         });
       }
     });
   } else {
     res.status(400).json({
       msg: 'Please review all the fields',
+      data: newAdmin,
     });
   }
 });
