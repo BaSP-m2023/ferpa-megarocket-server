@@ -9,11 +9,11 @@
   },
   {
     "id": 2,
-    "activityId": 10,
-    "trainerId": 10,
+    "activityId": 1,
+    "trainerId": 2,
     "day": "10-02-2023",
     "time": "10:30",
-    "enrollments": 10
+    "enrollments": 20
   },
   {
     "id": 3,
