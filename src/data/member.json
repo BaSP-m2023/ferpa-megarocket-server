@@ -94,5 +94,70 @@
     "email": "lnuzzti1@ucsd.edu",
     "password": "98lWHy8",
     "dni": "35201362"
+  },
+  {
+    "id": 7,
+    "firstName": "Lewes",
+    "lastName": "Nuzzti",
+    "dob": "11/16/2006",
+    "phone": "347-614-1918",
+    "address": "96 Jackson Road",
+    "city": "Pochuta",
+    "zip": "04008",
+    "email": "lnuzzti1@ucsd.edu",
+    "password": "98lWHy8",
+    "dni": "35201362"
+  },
+  {
+    "id": 9,
+    "firstName": "Lewes",
+    "lastName": "Nuzzti",
+    "dob": "11/16/2006",
+    "phone": "347-614-1918",
+    "address": "96 Jackson Road",
+    "city": "Pochuta",
+    "zip": "04008",
+    "email": "lnuzzti1@ucsd.edu",
+    "password": "98lWHy8",
+    "dni": "35201362"
+  },
+  {
+    "id": 10,
+    "firstName": "Lewes",
+    "lastName": "Nuzzti",
+    "dob": "11/16/2006",
+    "phone": "347-614-1918",
+    "address": "96 Jackson Road",
+    "city": "Pochuta",
+    "zip": "04008",
+    "email": "lnuzzti1@ucsd.edu",
+    "password": "98lWHy8",
+    "dni": "35201362"
+  },
+  {
+    "id": 11,
+    "firstName": "guy",
+    "lastName": "ver",
+    "dob": "11/16/2002",
+    "phone": "347-614-1938",
+    "address": "82 Jackson Road",
+    "city": "Poch",
+    "zip": "04228",
+    "email": "lnuzzti1@ucsd.org",
+    "password": "98lWHi8",
+    "dni": "36201362"
+  },
+  {
+    "id": 12,
+    "firstName": "Lewes",
+    "lastName": "Nuzzti",
+    "dob": "11/16/2006",
+    "phone": "347-614-1918",
+    "address": "96 Jackson Road",
+    "city": "Pochuta",
+    "zip": "04008",
+    "email": "lnuzzti1@ucsd.edu",
+    "password": "98lWHy8",
+    "dni": "35201362"
   }
 ]
