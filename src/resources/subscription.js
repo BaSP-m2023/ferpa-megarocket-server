@@ -24,15 +24,22 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const newSubscription = req.body;
-  const newSubscriptionId = parseInt(req.body.id, 10);
-  const foundSubscription = subscriptions.find((subs) => subs.id === newSubscriptionId);
-  if (!newSubscription.id || !newSubscription.memberId || !newSubscription.classId
-        || !newSubscription.subscriptionStatus) {
-    res.status(400).json({ msg: 'We need an id, member id, class id and status to create a new subscription.' });
-  } else if (foundSubscription) {
-    res.status(400).json({ msg: 'Subscription already exists!' });
+  const paramSubscription = req.body;
+  if (!paramSubscription.memberId || !paramSubscription.classId
+        || !paramSubscription.subscriptionStatus) {
+    res.status(400).json({ msg: 'We need a member id, class id and status to create a new subscription.' });
   } else {
+    const valueId = subscriptions[subscriptions.length - 1].id + 1;
+    const newSubscription = {
+      id: valueId,
+      memberId: paramSubscription.memberId,
+      classId: paramSubscription.classId,
+      subscriptionDate: paramSubscription.subscriptionDate,
+      subscriptionType: paramSubscription.subscriptionType,
+      subscriptionPrice: paramSubscription.subscriptionPrice,
+      subscriptionDuration: paramSubscription.subscriptionDuration,
+      subscriptionStatus: paramSubscription.subscriptionStatus,
+    };
     subscriptions.push(newSubscription);
     fs.writeFile('src/data/subscription.json', JSON.stringify(subscriptions, null, 2), (err) => {
       if (err) {
@@ -46,36 +53,31 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const subscriptionId = req.params.id;
-  const foundSubscription = subscriptions.some((sub) => sub.id.toString() === subscriptionId);
+  const foundSub = subscriptions.find((sub) => sub.id.toString() === subscriptionId);
   const editSub = req.body;
-  if (foundSubscription) {
-    subscriptions.forEach((sub) => {
-      if (sub.id.toString() === subscriptionId) {
-        const theSub = sub;
-        theSub.memberId = editSub.memberId ? editSub.memberId : theSub.memberId;
-        theSub.classId = editSub.classId ? editSub.classId : theSub.classId;
-        theSub.subscriptionDate = editSub.subscriptionDate ? editSub.subscriptionDate
-          : theSub.subscriptionDate;
-        theSub.subscriptionType = editSub.subscriptionType ? editSub.subscriptionType
-          : theSub.subscriptionType;
-        theSub.subscriptionPrice = editSub.subscriptionPrice ? editSub.subscriptionPrice
-          : theSub.subscriptionPrice;
-        theSub.subscriptionDuration = editSub.subscriptionDuration ? editSub.subscriptionDuration
-          : theSub.subscriptionDuration;
-        theSub.subscriptionStatus = editSub.subscriptionStatus ? editSub.subscriptionStatus
-          : theSub.subscriptionStatus;
-        fs.writeFile('src/data/subscription.json', JSON.stringify(subscriptions, null, 2), (err) => {
-          if (err) {
-            res.status(400).json({ msg: `ERROR updating subscription ${subscriptionId}` });
-          } else {
-            res.status(200).json({ msg: `Subscription ${subscriptionId} updated succesfully` });
-          }
-        });
-        res.status(200).json({
-          msg: `Subscription ${subscriptionId} updated succesfully`,
-          data: theSub,
-        });
+  if (foundSub) {
+    foundSub.memberId = editSub.memberId ? editSub.memberId : foundSub.memberId;
+    foundSub.classId = editSub.classId ? editSub.classId : foundSub.classId;
+    foundSub.subscriptionDate = editSub.subscriptionDate ? editSub.subscriptionDate
+      : foundSub.subscriptionDate;
+    foundSub.subscriptionType = editSub.subscriptionType ? editSub.subscriptionType
+      : foundSub.subscriptionType;
+    foundSub.subscriptionPrice = editSub.subscriptionPrice ? editSub.subscriptionPrice
+      : foundSub.subscriptionPrice;
+    foundSub.subscriptionDuration = editSub.subscriptionDuration ? editSub.subscriptionDuration
+      : foundSub.subscriptionDuration;
+    foundSub.subscriptionStatus = editSub.subscriptionStatus ? editSub.subscriptionStatus
+      : foundSub.subscriptionStatus;
+    fs.writeFile('src/data/subscription.json', JSON.stringify(subscriptions, null, 2), (err) => {
+      if (err) {
+        res.status(400).json({ msg: `ERROR updating subscription ${subscriptionId}` });
+      } else {
+        res.status(200).json({ msg: `Subscription ${subscriptionId} updated succesfully` });
       }
+    });
+    res.status(200).json({
+      msg: `Subscription ${subscriptionId} updated succesfully`,
+      data: foundSub,
     });
   } else {
     res.status(400).json({ msg: `ERROR updating a subscription ${subscriptionId}` });
