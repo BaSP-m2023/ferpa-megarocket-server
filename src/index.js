@@ -4,7 +4,6 @@ import cors from 'cors';
 
 // use "require" to import JSON files
 const admins = require('./data/admins.json');
-const activities = require('./data/activity.json');
 const activityRouter = require('./resources/activity');
 
 const app = express();
@@ -20,12 +19,6 @@ app.get('/', (req, res) => {
 app.get('/admins', (req, res) => {
   res.status(200).json({
     data: admins,
-  });
-});
-
-app.get('/activities', (req, res) => {
-  res.status(200).json({
-    data: activities,
   });
 });
 
