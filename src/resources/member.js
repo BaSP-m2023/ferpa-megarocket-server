@@ -23,30 +23,27 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   const memberId = req.params.id;
   const foundMember = members.find((member) => member.id.toString() === memberId);
+  const updMember = req.body;
   if (foundMember) {
-    const updMember = req.body;
-    members.forEach((member) => {
-      if (member.id.toString() === memberId) {
-        const member2 = member;
-        member2.membership = updMember.membership ? updMember.membership : member2.membership;
-        member2.firstName = updMember.firstName ? updMember.firstName : member2.firstName;
-        member2.lastName = updMember.lastName ? updMember.lastName : member2.lastName;
-        member2.dob = updMember.dob ? updMember.dob : member2.dob;
-        member2.phone = updMember.phone ? updMember.phone : member2.phone;
-        member2.address = updMember.address ? updMember.address : member2.address;
-        member2.city = updMember.city ? updMember.city : member2.city;
-        member2.zip = updMember.zip ? updMember.zip : member2.zip;
-        member2.email = updMember.email ? updMember.email : member2.email;
-        member2.password = updMember.password ? updMember.password : member2.password;
-        member2.dni = updMember.dni ? updMember.dni : member2.dni;
+    foundMember.membership = updMember.membership ? updMember.membership : foundMember.membership;
+    foundMember.firstName = updMember.firstName ? updMember.firstName : foundMember.firstName;
+    foundMember.lastName = updMember.lastName ? updMember.lastName : foundMember.lastName;
+    foundMember.dob = updMember.dob ? updMember.dob : foundMember.dob;
+    foundMember.phone = updMember.phone ? updMember.phone : foundMember.phone;
+    foundMember.address = updMember.address ? updMember.address : foundMember.address;
+    foundMember.city = updMember.city ? updMember.city : foundMember.city;
+    foundMember.zip = updMember.zip ? updMember.zip : foundMember.zip;
+    foundMember.email = updMember.email ? updMember.email : foundMember.email;
+    foundMember.password = updMember.password ? updMember.password : foundMember.password;
+    foundMember.dni = updMember.dni ? updMember.dni : foundMember.dni;
 
-        fs.writeFile('src/data/member.json', JSON.stringify(members, null, 2), (err) => {
-          if (err) {
-            res.status(400).json({ msg: 'Error! Member cant update' });
-          } else {
-            res.status(200).json({ msg: 'Member updated' });
-          }
-        });
+    const fmember = members.filter((member) => member.id.toString() !== memberId);
+    fmember.push(foundMember);
+    fs.writeFile('src/data/member.json', JSON.stringify(members, null, 2), (err) => {
+      if (err) {
+        res.status(400).json({ msg: 'Error! Member cant update' });
+      } else {
+        res.status(200).json({ msg: 'Member updated' });
       }
     });
   } else {
