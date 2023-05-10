@@ -3,7 +3,6 @@ const fs = require('fs');
 const sAdmin = require('../data/super-admins.json');
 
 const router = express.Router();
-module.exports = router;
 
 router.get('/', (req, res) => {
   res.status(200).json({

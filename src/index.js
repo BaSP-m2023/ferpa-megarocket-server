@@ -4,6 +4,7 @@ import cors from 'cors';
 
 // use "require" to import JSON files
 const admins = require('./data/admins.json');
+const sAdmins = require('./resources/super-admins');
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -20,8 +21,6 @@ app.get('/admins', (req, res) => {
     data: admins,
   });
 });
-
-const sAdmins = require('./resources/super-admins');
 
 app.use('/super-admins', sAdmins);
 
