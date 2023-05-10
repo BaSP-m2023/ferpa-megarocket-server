@@ -28,9 +28,9 @@ router.post('/', (req, res) => {
   if (!paramClass.trainerId || !paramClass.activityId || !paramClass.day) {
     res.status(400).json({ msg: 'Please provide trainer_id, activity_id and day to create a new class.' });
   } else {
-    const value = classes[classes.length - 1].id + 1;
+    const valueId = classes[classes.length - 1].id + 1;
     const newClass = {
-      id: value,
+      id: valueId,
       activityId: paramClass.activityId,
       trainerId: paramClass.trainerId,
       day: paramClass.day,
