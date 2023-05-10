@@ -1,37 +1,9 @@
 [
   {
-    "id": 1,
-    "membership": "Classic",
-    "firstName": "Jobie",
-    "lastName": "Mc Caughen",
-    "dob": "12/19/1988",
-    "phone": "535-297-8847",
-    "address": "94 Redwing Lane",
-    "city": "Algés",
-    "zip": "1495-005",
-    "email": "jmccaughen0@cnn.com",
-    "password": "OoKlT6",
-    "dni": "30002301"
-  },
-  {
-    "id": 2,
-    "membership": "Only classes",
-    "firstName": "Lewes",
-    "lastName": "Nuzzti",
-    "dob": "11/16/2006",
-    "phone": "347-614-1918",
-    "address": "96 Jackson Road",
-    "city": "Pochuta",
-    "zip": "04008",
-    "email": "lnuzzti1@ucsd.edu",
-    "password": "98lWHy8",
-    "dni": "35201362"
-  },
-  {
     "id": 3,
     "membership": "Classic",
-    "firstName": "Nye",
-    "lastName": "Glayzer",
+    "firstName": "Eugenia",
+    "lastName": "Gassman",
     "dob": "05/29/1967",
     "phone": "462-407-6465",
     "address": "27 Elgar Point",
@@ -44,7 +16,7 @@
   {
     "id": 4,
     "membership": "Black",
-    "firstName": "Gayla",
+    "firstName": "Eugenia",
     "lastName": "Geeson",
     "dob": "05/09/1981",
     "phone": "765-807-4885",
