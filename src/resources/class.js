@@ -18,7 +18,7 @@ router.put('/:id', (req, res) => {
     foundClass.time = editClass.time ? editClass.time : foundClass.time;
     foundClass.enrollments = editClass.enrollments ? editClass.enrollments : foundClass.enrollments;
 
-    const theClass = classes.filter((sAdm) => sAdm.id.toString() !== classId);
+    const theClass = classes.filter((_class) => _class.id.toString() !== classId);
     theClass.push(foundClass);
 
     fs.writeFile('src/data/class.json', JSON.stringify(classes, null, 2), (err) => {
