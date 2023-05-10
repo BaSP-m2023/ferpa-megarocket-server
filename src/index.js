@@ -23,7 +23,7 @@ app.get('/admins', (req, res) => {
   });
 });
 
-app.use('/trainer', trainerRouter);
+app.use('/trainers', trainerRouter);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

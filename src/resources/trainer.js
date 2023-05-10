@@ -25,10 +25,10 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const oldTrainer = req.body;
-  if (!oldTrainer.id || !oldTrainer.firstName || !oldTrainer.lastName
+  if (!oldTrainer.firstName || !oldTrainer.lastName
      || !oldTrainer.phone || !oldTrainer.activityId || !oldTrainer.salary
      || !oldTrainer.status) {
-    res.status(400).json({ msg: 'We need an id, trainer name, trainer surname, phone, activityId, salary and status' });
+    res.status(400).json({ msg: 'We need trainer name, trainer surname, phone, activityId, salary and status' });
   } else {
     const trainerIdentification = trainers[trainers.length - 1].id + 1;
     const newTrainer = {
