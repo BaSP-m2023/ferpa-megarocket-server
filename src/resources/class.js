@@ -24,20 +24,25 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const newClass = req.body;
-  const newClassId = parseInt(req.body.id, 10);
-  const foundClass = classes.some((_class) => _class.id === newClassId);
-  if (!newClass.id || !newClass.trainerId || !newClass.activityId || !newClass.day) {
-    res.status(400).json({ msg: 'We need an id, trainer id, acivity id and day to create a new class.' });
-  } else if (foundClass) {
-    res.status(400).json({ msg: 'Class already exists!' });
+  const paramClass = req.body;
+  if (!paramClass.trainerId || !paramClass.activityId || !paramClass.day) {
+    res.status(400).json({ msg: 'Please provide trainer_id, activity_id and day to create a new class.' });
   } else {
+    const value = classes[classes.length - 1].id + 1;
+    const newClass = {
+      id: value,
+      activityId: paramClass.activityId,
+      trainerId: paramClass.trainerId,
+      day: paramClass.day,
+      time: paramClass.time,
+      enrollments: paramClass.enrollments,
+    };
     classes.push(newClass);
     fs.writeFile('src/data/class.json', JSON.stringify(classes, null, 2), (err) => {
       if (err) {
-        res.status(400).json({ msg: 'Error! Class cant be created' });
+        res.status(500).json({ msg: 'Error creating the class.' });
       } else {
-        res.status(200).json({ msg: 'Class created!' });
+        res.status(200).json({ msg: 'Class successfully created.' });
       }
     });
   }
