@@ -10,9 +10,13 @@ const membersRouter = require('./resources/member');
 const app = express();
 const port = process.env.PORT || 4000;
 
+const classesRouter = require('./resources/class');
+
 app.use(cors());
 app.use(express.json());
 app.use('/members', membersRouter);
+
+app.use('/classes', classesRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
