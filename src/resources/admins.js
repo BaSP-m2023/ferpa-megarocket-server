@@ -4,18 +4,11 @@ const admins = require('../data/admins.json');
 
 const router = express.Router();
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const adminId = req.params.id;
-  const regex = /^[0-9]+$/;
-
-  if (!regex.test(adminId)) {
-    res.status(400).json({ msg: 'Admin ID must contain only numbers' });
-  }
-
-  const filteredAdmins = admins.filter((admin) => admin.id.toString() !== adminId);
-  const found = admins.find((admin) => admin.id.toString() === adminId);
-
-  if (found) {
+  const adminExists = admins.some((admin) => admin.id.toString() === adminId);
+  if (adminExists) {
+    const filteredAdmins = admins.filter((admin) => admin.id.toString() !== adminId);
     fs.writeFile('src/data/admins.json', JSON.stringify(filteredAdmins, null, 2), (err) => {
       if (err) {
         res.send('Error!');
@@ -33,22 +26,18 @@ router.put('/:id', (req, res) => {
   const adminFound = admins.find((admin) => admin.id === adminId);
   if (adminFound) {
     const newValues = req.body;
-    admins.forEach((admin) => {
-      if (admin.id === adminId) {
-        const oldValues = admin;
-        oldValues.firstName = newValues.firstName || oldValues.firstName;
-        oldValues.lastName = newValues.lastName || oldValues.lastName;
-        oldValues.email = newValues.email || oldValues.email;
-        oldValues.phoneNumber = newValues.phoneNumber || oldValues.phoneNumber;
-        oldValues.password = newValues.password || oldValues.password;
-        oldValues.city = newValues.city || oldValues.city;
-        fs.writeFile('src/data/admins.json', JSON.stringify(admins, null, 2), (err) => {
-          if (err) {
-            res.send('Error!');
-          } else {
-            res.status(200).json({ msg: 'Admin information updated!', data: admin });
-          }
-        });
+    const adminToUpdate = admins.find((admin) => admin.id === adminId);
+    adminToUpdate.firstName = newValues.firstName || adminToUpdate.firstName;
+    adminToUpdate.lastName = newValues.lastName || adminToUpdate.lastName;
+    adminToUpdate.email = newValues.email || adminToUpdate.email;
+    adminToUpdate.phoneNumber = newValues.phoneNumber || adminToUpdate.phoneNumber;
+    adminToUpdate.password = newValues.password || adminToUpdate.password;
+    adminToUpdate.city = newValues.city || adminToUpdate.city;
+    fs.writeFile('src/data/admins.json', JSON.stringify(admins, null, 2), (err) => {
+      if (err) {
+        res.send('Error!');
+      } else {
+        res.status(200).json({ msg: 'Admin information updated!', data: adminToUpdate });
       }
     });
   } else {
