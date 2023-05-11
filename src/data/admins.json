@@ -21,7 +21,7 @@
     "id": 3,
     "firstName": "Abby",
     "lastName": "Stilliard",
-    "email": "updated@gmail.com",
+    "email": "astilliard2@altervista.org",
     "phoneNumber": "6968063625",
     "password": "fD9hA6bE",
     "city": "Reykjavik"
@@ -42,51 +42,6 @@
     "email": "lleacy4@twitter.com",
     "phoneNumber": "6224679779",
     "password": "nG4mP1pT",
-    "city": "Paris"
-  },
-  {
-    "id": 6,
-    "firstName": "Emanuel",
-    "lastName": "Ginobilli",
-    "email": "manu1999@baby.com",
-    "phoneNumber": "123456789",
-    "password": "manuNBA",
     "city": "Rosario"
-  },
-  {
-    "id": 7,
-    "firstName": "Juan",
-    "lastName": "Perez",
-    "email": "juancho22@baby.com",
-    "phoneNumber": "987654321",
-    "password": "perez22",
-    "city": "Funes"
-  },
-  {
-    "id": 8,
-    "firstName": "matias",
-    "lastName": "Lopez",
-    "email": "matiasn123@baby.com",
-    "phoneNumber": "3413233256",
-    "password": "matilopez",
-    "city": "Miame"
-  },
-  {
-    "firstName": "pedro",
-    "lastName": "martinez",
-    "email": "pedro123@baby.com",
-    "phoneNumber": "3413523451",
-    "password": "werwerwer",
-    "city": "Madrid",
-    "id": 9
-  },
-  {
-    "firstName": "lucia",
-    "lastName": "perez",
-    "email": "luli@baby.com",
-    "phoneNumber": "3413234567",
-    "password": "lulululu",
-    "city": "Roma",
-    "id": 10
   }
 ]
