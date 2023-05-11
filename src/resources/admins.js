@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 const express = require('express');
 const fs = require('fs');
 const admins = require('../data/admins.json');
@@ -19,7 +18,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const adminId = req.params.id;
-  const foundAdmin = admins.find((admins) => admins.id.toString() === adminId);
+  const foundAdmin = admins.find((admin) => admin.id.toString() === adminId);
   if (foundAdmin) {
     res.status(200).json({
       data: foundAdmin,
@@ -34,7 +33,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   const newAdmin = req.body;
 
-  const foundAdmin = admins.find((admins) => admins.email === newAdmin.email);
+  const foundAdmin = admins.find((admin) => admin.email === newAdmin.email);
   if (foundAdmin) {
     res.status(400).json({
       msg: 'Email is already in use.',
@@ -42,8 +41,9 @@ router.post('/', (req, res) => {
     });
   } else if (newAdmin.firstName && newAdmin.lastName && newAdmin.email
     && newAdmin.phoneNumber && newAdmin.password && newAdmin.city) {
+    newAdmin.id = admins[admins.length - 1].id + 1;
     admins.push(newAdmin);
-    fs.writeFile('src/data/admins.json', JSON.stringify(admins), (err) => {
+    fs.writeFile('src/data/admins.json', JSON.stringify(admins, null, 2), (err) => {
       if (err) {
         res.status(400).json({
           msg: 'Admin cannot be created',
