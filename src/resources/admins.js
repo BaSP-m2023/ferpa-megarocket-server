@@ -11,9 +11,9 @@ router.delete('/:id', (req, res) => {
     const filteredAdmins = admins.filter((admin) => admin.id.toString() !== adminId);
     fs.writeFile('src/data/admins.json', JSON.stringify(filteredAdmins, null, 2), (err) => {
       if (err) {
-        res.send('Error!');
+        res.status(400).json({ msg: 'Error' });
       } else {
-        res.send('Admin deleted.');
+        res.status(200).json({ msg: 'The admin was deleted' });
       }
     });
   } else {
@@ -35,7 +35,7 @@ router.put('/:id', (req, res) => {
     adminToUpdate.city = newValues.city || adminToUpdate.city;
     fs.writeFile('src/data/admins.json', JSON.stringify(admins, null, 2), (err) => {
       if (err) {
-        res.send('Error!');
+        res.status(400).json({ msg: 'Error' });
       } else {
         res.status(200).json({ msg: 'Admin information updated!', data: adminToUpdate });
       }
