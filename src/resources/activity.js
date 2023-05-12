@@ -31,8 +31,7 @@ router.get('/types/:activityType', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  if (
-    req.body) {
+  if (req.body) {
     activities.push(req.body);
     fs.writeFile('src/data/activity.json', JSON.stringify(activities, null, 2), (err) => {
       if (err) {
@@ -90,4 +89,3 @@ router.put('/:id', (req, res) => {
 });
 
 module.exports = router;
-
