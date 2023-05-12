@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 const admins = require('./data/admins.json');
+const activityRouter = require('./resources/activity');
 
 const trainerRouter = require('./resources/trainer');
 const adminsRouter = require('./resources/admins');
@@ -32,6 +33,8 @@ app.get('/admins', (req, res) => {
     data: admins,
   });
 });
+
+app.use('/activities', activityRouter);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
