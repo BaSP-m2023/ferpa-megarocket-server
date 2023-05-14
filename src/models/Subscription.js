@@ -8,7 +8,7 @@ const subSchema = new Schema(
       type: Number,
       require: true,
     },
-    member: {
+    memberId: {
       type: Number,
       require: true,
     },

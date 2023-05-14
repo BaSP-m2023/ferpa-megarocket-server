@@ -5,7 +5,7 @@ const dateRegex = /^\d{2}-\d{2}-\d{4}$/;
 const validateSubCreation = (req, res, next) => {
   const subValidation = Joi.object({
     classId: Joi.number().required(),
-    member: Joi.number().required(),
+    memberId: Joi.number().required(),
     date: Joi.string().regex(dateRegex).required(),
   });
 
@@ -22,7 +22,7 @@ const validateSubCreation = (req, res, next) => {
 const validateSubUpdate = (req, res, next) => {
   const subValidation = Joi.object({
     classId: Joi.number(),
-    member: Joi.number(),
+    memberId: Joi.number(),
     date: Joi.string().regex(dateRegex),
   });
 
