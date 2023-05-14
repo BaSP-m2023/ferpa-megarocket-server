@@ -6,10 +6,8 @@ const validation = require('../validations/admins');
 const router = express.Router();
 
 router
-  .get('/', adminsController.getAllAdmins)
-  .get('/:id', adminsController.getAdminsById)
-  .post('/', validation.validationCreation, adminsController.createAdmins)
-  .delete('/:id', adminsController.deleteAdmins)
-  .put('/:id', validation.validationUpdate, adminsController.updateAdmins);
+  .get('/', adminsController.getAllAdmin)
+  .get('/:id', adminsController.getAdminById)
+  .put('/:id', validation.validateUpdate, adminsController.updateAdmin);
 
 module.exports = router;
