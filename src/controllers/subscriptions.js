@@ -2,7 +2,7 @@ const Subscription = require('../models/Subscription');
 
 const getAllSub = (req, res) => {
   Subscription.find()
-    .then((subscriptions) => res.status.json({
+    .then((subscriptions) => res.status(200).json({
       message: 'Complete subscription list',
       data: subscriptions,
       error: false,
@@ -29,10 +29,10 @@ const getSubById = (req, res) => {
 };
 
 const createSub = (req, res) => {
-  const { _class, member, date } = req.body;
+  const { classId, member, date } = req.body;
 
   Subscription.create({
-    _class,
+    classId,
     member,
     date,
   })

@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const subSchema = new Schema(
   {
-    class: {
+    classId: {
       type: Number,
       require: true,
     },
@@ -13,7 +13,7 @@ const subSchema = new Schema(
       require: true,
     },
     date: {
-      type: Date,
+      type: String,
       require: true,
     },
   },
