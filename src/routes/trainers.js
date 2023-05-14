@@ -7,7 +7,7 @@ const router = express.Router();
 
 router
   .get('/', trainerController.getAllTrainers)
-  .get('/:id', trainerController.getTrainerById)
+  /* .get('/:id', trainerController.getTrainerById) */
   .post('/', validation.validateCreation, trainerController.createTrainer);
 
 module.exports = router;
