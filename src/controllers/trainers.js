@@ -10,7 +10,10 @@ const deleteTrainer = (req, res) => {
           error: true,
         });
       }
-      return res.status(204);
+      return res.status(200).json({
+        message: `Trainer with id: ${id} was succesfully deleted`,
+        error: false,
+      });
     })
     .catch((error) => res.status(400).json({
       message: 'An error ocurred!',
@@ -22,7 +25,7 @@ const updateTrainer = (req, res) => {
   const { id } = req.params;
   const {
     firstName, lastName, dni, phone, email, city, password, salary, isActive,
-  } = req.params;
+  } = req.body;
 
   Trainer.findByIdAndUpdate(
     id,
@@ -46,7 +49,11 @@ const updateTrainer = (req, res) => {
           error: true,
         });
       }
-      return res.status(200).json(result);
+      return res.status(200).json({
+        message: `Trainer with id: ${id} was succesfully updated`,
+        data: result,
+        error: false,
+      });
     })
     .catch((error) => res.status(400).json({
       message: 'An error ocurred!',
