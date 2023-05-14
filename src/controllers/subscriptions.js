@@ -43,8 +43,34 @@ const createSub = (req, res) => {
     }));
 };
 
+const updateSub = (req, res) => {
+  const { id } = req.params;
+  const { classId, member, date } = req.body;
+
+  Subscription.findByIdAndUpdate(
+    id,
+    {
+      classId,
+      member,
+      date,
+    },
+    { new: true },
+  )
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          message: `Pokemon with id: ${id} was not found`,
+          error: true,
+        });
+      }
+      return res.status(200).json(result);
+    })
+    .catch((error) => res.status(400).json(error));
+};
+
 module.exports = {
   getAllSub,
   getSubById,
   createSub,
+  updateSub,
 };
