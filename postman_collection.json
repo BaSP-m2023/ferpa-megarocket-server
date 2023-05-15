@@ -289,7 +289,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \r\n\"firstName\": \"galo\",\r\n\"lastName\": \"durante\",\r\n\"dni\": 30000000,\r\n\"phone\": 1234356312,\r\n\"email\": \"sdfsd@gaskjdm.aa\",\r\n\"city\": \"asd\",\r\n\"password\": \"jahsdj423343442k123\",\r\n\"salary\": 234233,\r\n\"isActive\": false\r\n}",
+							"raw": "{ \r\n    \"firstName\": \"Lucho\",\r\n    \"lastName\": \"durante\",\r\n    \"dni\": \"12341234\",\r\n    \"phone\": \"1234212312\",\r\n    \"email\": \"lucho@gmail.com\",\r\n    \"city\": \"asdfgdfd\",\r\n    \"password\": \"passwfgdo2asd\",\r\n    \"salary\": 21345323,\r\n    \"isActive\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -310,7 +310,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6460316ea4b0ab5a45bf8970"
+									"value": "64624da76f4839729659551f"
 								}
 							]
 						}
@@ -345,7 +345,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6460316ea4b0ab5a45bf8970"
+									"value": "646032cba4b0ab5a45bf8974"
 								}
 							]
 						}
