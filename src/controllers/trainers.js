@@ -11,7 +11,7 @@ const deleteTrainer = (req, res) => {
         });
       }
       return res.status(200).json({
-        message: `Trainer with id: ${id} was succesfully deleted`,
+        message: `Trainer with id: ${id} was succesfully deleted.`,
         error: false,
       });
     })
