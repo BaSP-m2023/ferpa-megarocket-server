@@ -35,7 +35,7 @@ const getAdminById = (req, res) => {
       }
     })
     .catch((error) => {
-      res.json({
+      res.status(400).json({
         message: 'An error ocurred',
         error,
       });
@@ -67,10 +67,17 @@ const updateAdmin = (req, res) => {
           error: true,
         });
       }
-      return res.status(200).json(result);
+      return res.status(200).json({
+        message: `Admin with id: ${id} was updated.`,
+        data: result,
+        error: false,
+      });
     })
     .catch((error) => {
-      res.status(400).json(error);
+      res.status(400).json({
+        message: 'An error ocurred',
+        error,
+      });
     });
 };
 
