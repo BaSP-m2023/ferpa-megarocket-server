@@ -8,6 +8,6 @@ const router = express.Router();
 router
   .get('/', trainerController.getAllTrainers)
   .get('/:id', trainerController.getTrainerById)
-  .post('/', validation.validateCreation, trainerController.createTrainer);
+  .post('/', validation.validateTrainerCreation, trainerController.createTrainer);
 
 module.exports = router;
