@@ -1,94 +1,83 @@
-const express = require('express');
-const fs = require('fs');
-const classes = require('../data/class.json');
+const Class = require('../models/Class');
 
-const router = express.Router();
+const createClass = (req, res) => {
+  const {
+    id, day, hour, trainer, activity, slots,
+  } = req.body;
 
-router.get('/', (req, res) => {
-  res.status(200).json({
-    data: classes,
-  });
-});
+  Class.create({
+    id,
+    day,
+    hour,
+    trainer,
+    activity,
+    slots,
+  })
 
-router.get('/:id', (req, res) => {
-  const classId = parseInt(req.params.id, 10);
-  const foundClass = classes.find((_class) => _class.id === classId);
-  if (foundClass) {
-    res.status(200).json({
-      msg: 'Class founded!',
-      data: foundClass,
-    });
-  } else {
-    res.status(400).json({ msg: `No class with id ${classId} was found.` });
-  }
-});
+    .then((result) => res.status(201).json(result))
+    .catch((error) => res.status(400).json({
+      messege: "Error, don't created",
+      error,
+    }));
+};
 
-router.post('/', (req, res) => {
-  const paramClass = req.body;
-  if (!paramClass.trainerId || !paramClass.activityId || !paramClass.day) {
-    res.status(400).json({ msg: 'Please provide trainer_id, activity_id and day to create a new class.' });
-  } else {
-    const valueId = classes[classes.length - 1].id + 1;
-    const newClass = {
-      id: valueId,
-      activityId: paramClass.activityId,
-      trainerId: paramClass.trainerId,
-      day: paramClass.day,
-      time: paramClass.time,
-      enrollments: paramClass.enrollments,
-    };
-    classes.push(newClass);
-    fs.writeFile('src/data/class.json', JSON.stringify(classes, null, 2), (err) => {
-      if (err) {
-        res.status(500).json({ msg: 'Error creating the class.' });
-      } else {
-        res.status(200).json({ msg: 'Class successfully created.' });
+const updateClass = (req, res) => {
+  const { id } = req.params;
+  const {
+    day,
+    hour,
+    trainer,
+    activity,
+    slots,
+  } = req.body;
+
+  Class.findByIdAndUpdate(
+    id,
+    {
+      id,
+      day,
+      hour,
+      trainer,
+      activity,
+      slots,
+    },
+    { new: true },
+  )
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          message: `Class with id: ${id} was not found`,
+        });
       }
+      return res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(400).json(error);
     });
-  }
-});
+};
 
-router.put('/:id', (req, res) => {
-  const classId = req.params.id;
-  const foundClass = classes.find((_class) => _class.id.toString() === classId);
-  const editClass = req.body;
+const deleteClass = (req, res) => {
+  const { id } = req.params;
 
-  if (foundClass) {
-    foundClass.activityId = editClass.activityId ? editClass.activityId : foundClass.activityId;
-    foundClass.trainerId = editClass.trainerId ? editClass.trainerId : foundClass.trainerId;
-    foundClass.day = editClass.day ? editClass.day : foundClass.day;
-    foundClass.time = editClass.time ? editClass.time : foundClass.time;
-    foundClass.enrollments = editClass.enrollments ? editClass.enrollments : foundClass.enrollments;
-
-    const theClass = classes.filter((_class) => _class.id.toString() !== classId);
-    theClass.push(foundClass);
-
-    fs.writeFile('src/data/class.json', JSON.stringify(classes, null, 2), (err) => {
-      if (err) {
-        res.status(400).json({ msg: `ERROR updating class ${classId}` });
-      } else {
-        res.status(200).json({ msg: `Class ${classId} updated succesfully`, data: foundClass });
+  Class.findByIdAndDelete(id)
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          message: `Class with id: ${id} was not found`,
+        });
       }
-    });
-  } else {
-    res.status(400).json({ msg: `ERROR updating a class ${classId}` });
-  }
-});
+      return res.status(200).json({
+        message: `Class with id: ${id} was deteled`,
+      });
+    })
+    .catch((error) => res.status(400).json({
+      message: 'An error ocurred!',
+      error,
+    }));
+};
 
-router.delete('/:id', (req, res) => {
-  const classId = req.params.id;
-  const filteredClass = classes.filter((_class) => _class.id.toString() !== classId);
-  if (classes.length === filteredClass.length) {
-    res.status(400).json({ msg: `ERROR class with the id ${classId} not exist` });
-  } else {
-    fs.writeFile('src/data/class.json', JSON.stringify(filteredClass, null, 2), (err) => {
-      if (err) {
-        res.status(400).json({ msg: `ERROR deleting class ${classId}` });
-      } else {
-        res.status(200).json({ msg: `Class ${classId} deleted succesfully` });
-      }
-    });
-  }
-});
-
-module.exports = router;
+module.exports = {
+  createClass,
+  updateClass,
+  deleteClass,
+};
