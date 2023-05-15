@@ -1,21 +1,15 @@
 const Joi = require('joi');
 
-const validateCreation = (req, res, next) => {
+const validateMemberCreation = (req, res, next) => {
   const memberValidation = Joi.object({
-    firstName: Joi.string().min(2).max(30).pattern(/^[A-Za-z]+$/)
-      .required(),
-    lastName: Joi.string().min(2).max(30).pattern(/^[A-Za-z]+$/)
-      .required(),
-    dni: Joi.number().min(1000).max(1000000000000).integer()
-      .required(),
-    phone: Joi.number().min(1000).max(1000000000000).integer()
-      .required(),
+    firstName: Joi.string().min(2).max(30).required(),
+    lastName: Joi.string().min(2).max(30).required(),
+    dni: Joi.string().min(8).max(12).required(),
+    phone: Joi.string().min(6).max(20).required(),
     email: Joi.string().max(50).email().required(),
-    city: Joi.string().min(3).max(30).pattern(/^[a-zA-Z0-9][a-zA-Z0-9\s]*[a-zA-Z0-9]$/)
-      .required(),
+    city: Joi.string().min(2).max(30).required(),
     birthDay: Joi.date().max('now').required(),
-    postalCode: Joi.number().min(1000).max(99999).integer()
-      .required(),
+    postalCode: Joi.string().min(4).max(6).required(),
     isActive: Joi.boolean().required(),
     membership: Joi.string().valid('Classic', 'Only Classes', 'Black').required(),
   });
@@ -34,5 +28,5 @@ const validateCreation = (req, res, next) => {
 };
 
 module.exports = {
-  validateCreation,
+  validateMemberCreation,
 };

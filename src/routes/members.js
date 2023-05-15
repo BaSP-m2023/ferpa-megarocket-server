@@ -6,7 +6,7 @@ const router = express.Router();
 
 router
   .get('/', membersController.getAllMembers)
-  .post('/', validations.validateCreation, membersController.createMember)
-  .put('/:id', validations.validateCreation, membersController.updateMember);
+  .post('/', validations.validateMemberCreation, membersController.createMember)
+  .put('/:id', validations.validateMemberCreation, membersController.updateMember);
 
 module.exports = router;
