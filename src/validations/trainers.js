@@ -1,19 +1,17 @@
 const Joi = require('joi');
 
-const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
 const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
 const validateTrainerCreation = (req, res, next) => {
   const trainerValidation = Joi.object({
     firstName: Joi.string().min(3).max(30).required(),
     lastName: Joi.string().min(3).max(30).required(),
-    dni: Joi.number().min(5000000).max(99999999).required(),
-    phone: Joi.number().min(10000000).max(999999999999).required(),
-    email: Joi.string().regex(emailRegex).required(),
+    dni: Joi.string().min(8).max(10).required(),
+    phone: Joi.string().min(8).max(12).required(),
+    email: Joi.string().email().required(),
     city: Joi.string().min(3).max(30).required(),
     password: Joi.string().regex(passRegex).required(),
     salary: Joi.number().required(),
-    isActive: Joi.boolean().required(),
   });
   const validation = trainerValidation.validate(req.body);
   if (!validation.error) return next();

@@ -21,7 +21,7 @@ const getTrainerById = (req, res) => {
       if (!trainer) {
         res.status(404).json({
           message: `Trainers with the id ${id} was not found`,
-          error: false,
+          error: true,
         });
       } else {
         res.status(200).json({
@@ -39,7 +39,7 @@ const getTrainerById = (req, res) => {
 
 const createTrainer = (req, res) => {
   const {
-    firstName, lastName, dni, phone, email, city, password, salary, isActive,
+    firstName, lastName, dni, phone, email, city, password, salary,
   } = req.body;
 
   Trainer.create({
@@ -51,7 +51,6 @@ const createTrainer = (req, res) => {
     city,
     password,
     salary,
-    isActive,
   })
     .then((trainer) => res.status(201).json({
       message: 'Trainer was succesfully created',
