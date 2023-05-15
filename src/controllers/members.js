@@ -33,6 +33,7 @@ const deleteMember = (req, res) => {
       }
       return res.status(200).json({
         message: `Member with id: ${id} was deteled`,
+        error: false,
       });
     })
     .catch((error) => res.status(400).json({

@@ -1,15 +1,15 @@
 const Joi = require('joi');
 
-const validateUpdate = (req, res, next) => {
+const validateMemberUpdate = (req, res, next) => {
   const memberValidation = Joi.object({
-    firstName: Joi.string().min(2).max(30).pattern(/^[A-Za-z]+$/),
-    lastName: Joi.string().min(2).max(30).pattern(/^[A-Za-z]+$/),
-    dni: Joi.number().min(1000).max(1000000000000).integer(),
-    phone: Joi.number().min(1000).max(1000000000000).integer(),
+    firstName: Joi.string().min(2).max(30),
+    lastName: Joi.string().min(2).max(30),
+    dni: Joi.string().min(8).max(12).integer(),
+    phone: Joi.string().min(6).max(20).integer(),
     email: Joi.string().max(50).email(),
-    city: Joi.string().min(3).max(30).pattern(/^[a-zA-Z0-9][a-zA-Z0-9\s]*[a-zA-Z0-9]$/),
+    city: Joi.string().min(3).max(30),
     birthDay: Joi.date().max('now'),
-    postalCode: Joi.number().min(1000).max(99999).integer(),
+    postalCode: Joi.string().min(4).max(6).required(),
     isActive: Joi.boolean(),
     membership: Joi.string().valid('Classic', 'Only Classes', 'Black'),
   });
@@ -27,5 +27,5 @@ const validateUpdate = (req, res, next) => {
 };
 
 module.exports = {
-  validateUpdate,
+  validateMemberUpdate,
 };
