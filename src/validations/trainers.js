@@ -3,7 +3,7 @@ const Joi = require('joi');
 const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
 const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-const validateCreation = (req, res, next) => {
+const validateTrainerCreation = (req, res, next) => {
   const trainerValidation = Joi.object({
     firstName: Joi.string().min(3).max(30).required(),
     lastName: Joi.string().min(3).max(30).required(),
@@ -25,5 +25,5 @@ const validateCreation = (req, res, next) => {
 };
 
 module.exports = {
-  validateCreation,
+  validateTrainerCreation,
 };
