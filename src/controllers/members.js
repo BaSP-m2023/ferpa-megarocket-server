@@ -13,6 +13,32 @@ const getAllMembers = (req, res) => {
     }));
 };
 
+const createMember = (req, res) => {
+  const {
+    id, firstName, lastName, dni, phone, email, city, birthDay, postalCode, isActive, membership,
+  } = req.body;
+
+  Member.create({
+    id,
+    firstName,
+    lastName,
+    dni,
+    phone,
+    email,
+    city,
+    birthDay,
+    postalCode,
+    isActive,
+    membership,
+  })
+    .then((result) => res.status(201).json(result))
+    .catch((error) => res.status(400).json({
+      message: 'An error ocurred!',
+      error,
+    }));
+};
+
 module.exports = {
   getAllMembers,
+  createMember,
 };
