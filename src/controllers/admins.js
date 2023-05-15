@@ -60,7 +60,7 @@ const updateAdmin = (req, res) => {
           error: true,
         });
       }
-      return res.status(201).json(result);
+      return res.status(200).json(result);
     })
     .catch((error) => {
       res.status(400).json(error);

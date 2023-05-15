@@ -7,8 +7,8 @@ const validateUpdate = (req, res, next) => {
   const adminValidation = Joi.object({
     firstName: Joi.string().min(3).max(15),
     lastNAme: Joi.string().min(3).max(15),
-    dni: Joi.number().min(1000000).max(7000000),
-    phone: Joi.number().min(1000000000).max(999999999),
+    dni: Joi.number().min(5000000).max(99999999),
+    phone: Joi.number().min(10000000).max(999999999999),
     email: Joi.string().regex(emailRegex),
     city: Joi.string(),
     password: Joi.string().regex(passwordRegex),
