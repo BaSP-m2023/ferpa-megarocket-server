@@ -3,14 +3,20 @@ const Member = require('../models/Member');
 const getMemberById = (req, res) => {
   const { id } = req.params;
   Member.findById(id)
-
-    .then((member) => res.status(200).json({
-      message: `Member found! It was ${id}`,
-      data: member,
-      error: false,
-    }))
-    .catch((error) => res.json({
-      message: 'An error ocurred',
+    .then((member) => {
+      if (!member) {
+        return res.status(404).json({
+          message: `Member with id: ${id} was not found`,
+          error: true,
+        });
+      }
+      return res.status(200).json({
+        message: `Member found! It was ${id}`,
+        data: member,
+      });
+    })
+    .catch((error) => res.status(400).json({
+      message: 'An error ocurred!',
       error,
     }));
 };
