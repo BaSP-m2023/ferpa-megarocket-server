@@ -10,7 +10,7 @@ const getAllAdmin = (req, res) => {
       });
     })
     .catch((error) => {
-      res.status(500).json({
+      res.status(400).json({
         message: 'An error ocurred',
         error,
       });
@@ -21,11 +21,18 @@ const getAdminById = (req, res) => {
   const { id } = req.params;
   Admin.findById(id, 'firstName')
     .then((admins) => {
-      res.status(200).json({
-        message: `Admin found. Is ${admins.firstName}`,
-        data: admins,
-        error: false,
-      });
+      if (!admins) {
+        res.status(404).json({
+          message: `Admin with id: ${id} was not found`,
+          error: true,
+        });
+      } else {
+        res.status(200).json({
+          message: `Admin found. Is ${admins.firstName}`,
+          data: admins,
+          error: false,
+        });
+      }
     })
     .catch((error) => {
       res.json({
