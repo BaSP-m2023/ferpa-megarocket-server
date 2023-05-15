@@ -16,25 +16,33 @@ const getAllTrainers = (req, res) => {
 const getTrainerById = (req, res) => {
   const { id } = req.params;
 
-  Trainer.findById(id)
-    .then((trainer) => {
-      if (!trainer) {
-        res.status(404).json({
-          message: `Trainers with the id ${id} was not found.`,
-          error: true,
-        });
-      } else {
-        res.status(200).json({
-          message: `Trainers with the id ${id} was succesfully found.`,
-          data: trainer,
-          error: false,
-        });
-      }
-    })
-    .catch((error) => res.json({
-      message: 'An error ocurred.',
-      error,
-    }));
+  if (id.length !== 24) {
+    res.status(400).json({
+      message: 'Invalid id, try again',
+      data: undefined,
+      error: true,
+    });
+  } else {
+    Trainer.findById(id)
+      .then((trainer) => {
+        if (!trainer) {
+          res.status(404).json({
+            message: `Trainers with the id ${id} was not found.`,
+            error: true,
+          });
+        } else {
+          res.status(200).json({
+            message: `Trainers with the id ${id} was succesfully found.`,
+            data: trainer,
+            error: false,
+          });
+        }
+      })
+      .catch((error) => res.json({
+        message: 'An error ocurred.',
+        error,
+      }));
+  }
 };
 
 const createTrainer = (req, res) => {
