@@ -2,7 +2,6 @@ const Joi = require('joi');
 
 const validateCreation = (res, req, next) => {
   const classValidation = Joi.object({
-    id: Joi.number().required(),
     day: Joi.string().valid('Monday', 'Wednesday', 'Friday').required(),
     hour: Joi.number().min(0).max(23).required(),
     trainerId: Joi.string().min(4).max(15).required(),

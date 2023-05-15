@@ -15,8 +15,9 @@ const getAllClasses = (req, res) => {
 
 const getClassById = (req, res) => {
   const { id } = req.params;
+  const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
-  Class.findById(id)
+  Class.findById(id, regexObjectId)
     .then((classes) => res.status(200).json({
       messege: `Class found! It was ${classes.activityId}`,
       data: classes,
@@ -31,11 +32,10 @@ const getClassById = (req, res) => {
 
 const createClass = (req, res) => {
   const {
-    id, day, hour, trainerId, activityId, slots,
+    day, hour, trainerId, activityId, slots,
   } = req.body;
 
   Class.create({
-    id,
     day,
     hour,
     trainerId,

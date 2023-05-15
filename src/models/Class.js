@@ -3,9 +3,6 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ClassSchema = new Schema({
-  id: {
-    type: Number,
-  },
   day: {
     type: String,
     enum: ['Monday', 'Wenesday', 'Friday'],
