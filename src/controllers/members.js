@@ -38,7 +38,42 @@ const createMember = (req, res) => {
     }));
 };
 
+const updateMember = (req, res) => {
+  const { id } = req.params;
+  const {
+    firstName, lastName, dni, phone, email, city, birthDay, postalCode, isActive, membership,
+  } = req.body;
+
+  Member.findByIdAndUpdate(
+    id,
+    {
+      firstName,
+      lastName,
+      dni,
+      phone,
+      email,
+      city,
+      birthDay,
+      postalCode,
+      isActive,
+      membership,
+    },
+    { new: true },
+  )
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          message: `Member with id: ${id} was not found`,
+          error: true,
+        });
+      }
+      return res.status(200).json(result);
+    })
+    .catch((error) => res.status(400).json(error));
+};
+
 module.exports = {
   getAllMembers,
   createMember,
+  updateMember,
 };
