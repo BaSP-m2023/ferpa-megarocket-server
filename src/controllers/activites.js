@@ -1,91 +1,112 @@
-const express = require('express');
-const fs = require('fs');
+const Activity = require('../models/Activity');
 
-const activities = require('../data/activity.json');
+const getActivities = (req, res) => {
+  Activity.find()
+    .then((activities) => res.status(200).json({
+      message: 'Complete list of activities',
+      data: activities,
+      error: false,
+    }))
+    .catch((error) => res.status(500).json({
+      message: 'There is some mistake',
+      error,
+    }));
+};
 
-const router = express.Router();
+const getActivitiesById = (req, res) => {
+  const { id } = req.params;
 
-router.get('/', (req, res) => {
-  res.status(200).json({ data: activities });
-});
-
-router.get('/:id', (req, res) => {
-  const activityId = req.params.id;
-  const foundActivity = activities.find((activity) => activity.id.toString() === activityId);
-  if (foundActivity) {
-    res.status(200).json({ data: foundActivity });
-  } else {
-    res.status(400).json({ msg: 'Error, activity not found' });
-  }
-});
-
-router.get('/types/:activityType', (req, res) => {
-  const activitiesType = req.params.activityType;
-  const filteredActivities = activities.filter((activity) => activity.activityType.toString()
-  === activitiesType);
-  if (filteredActivities) {
-    res.status(200).json({ data: filteredActivities });
-  } else {
-    res.status(400).json({ msg: 'Error, activities not found' });
-  }
-});
-
-router.post('/', (req, res) => {
-  if (req.body) {
-    activities.push(req.body);
-    fs.writeFile('src/data/activity.json', JSON.stringify(activities, null, 2), (err) => {
-      if (err) {
-        res.status(400).json({ msg: 'Error!' });
+  Activity.findById(id)
+    .then((act) => {
+      if (act) {
+        res.status(200).json({
+          message: 'The activity was found.',
+          data: act,
+          error: false,
+        });
       } else {
-        res.status(200).json({ msg: 'Activity Created!', newActivity: req.body });
+        res.status(200).json({
+          message: 'The activity was not found',
+          error: false,
+        });
       }
-    });
-  } else {
-    res.status(400).json({ msg: 'Error, The activity must have: id, activityName, activityType, durationMinutes, startTime, endTime, instructorName, instructorGender and equipmentUsed' });
-  }
-});
+    })
+    .catch((error) => res.json({
+      message: 'There is something wrong.',
+      error,
+    }));
+};
 
-router.delete('/:id', (req, res) => {
-  const activityId = req.params.id;
-  const filteredActivities = activities.filter((activity) => activity.id.toString()
-  !== activityId);
-  if (activities.find((activity) => activity.id.toString() === activityId)) {
-    fs.writeFile('src/data/activity.json', JSON.stringify(filteredActivities, null, 2), (err) => {
-      if (err) {
-        res.status(400).send('Error!');
-      } else {
-        res.status(200).send('Activity deleted!');
+const createActivity = (req, res) => {
+  const { name, description, isActive } = req.body;
+
+  Activity.create({
+    name,
+    description,
+    isActive,
+  })
+    .then((response) => res.status(201).json({
+      message: 'Activity created succesfully.',
+      data: response,
+      error: false,
+    }))
+    .catch((error) => res.status(400).json({
+      message: 'There is something wrong',
+      error,
+    }));
+};
+const updateActivity = (req, res) => {
+  const { id } = req.params;
+  const { nameActivity, descriptionActivity, isActiveActivity } = req.body;
+
+  Activity.findByIdAndUpdate(
+    id,
+    {
+      nameActivity,
+      descriptionActivity,
+      isActiveActivity,
+    },
+    { new: true },
+  )
+    .then((response) => {
+      if (!response) {
+        return res.status(404).json({
+          message: 'The activity was not found',
+          error: true,
+        });
       }
-    });
-  } else {
-    res.status(400).json({ msg: `Member with id: ${activityId} was not found` });
-  }
-});
+      return res.status(200).json({
+        message: 'The activity was succesfully updated',
+        data: response,
+        error: false,
+      });
+    })
+    .catch((error) => res.status(400).json(error));
+};
+const deleteActivity = (req, res) => {
+  const { id } = req.params;
 
-router.put('/:id', (req, res) => {
-  const activityId = parseInt(req.params.id, 10);
-  const found = activities.find((activity) => activity.id === activityId);
-  if (found) {
-    const updActivity = req.body;
-    const oldActivity = found;
-    oldActivity.activityName = updActivity.activityName || oldActivity.activityName;
-    oldActivity.activityType = updActivity.activityType || oldActivity.activityType;
-    oldActivity.durationMinutes = updActivity.durationMinutes || oldActivity.durationMinutes;
-    oldActivity.startTime = updActivity.startTime || oldActivity.startTime;
-    oldActivity.endTime = updActivity.endTime || oldActivity.endTime;
-    oldActivity.instructorName = updActivity.instructorName || oldActivity.instructorName;
-    oldActivity.instructorGender = updActivity.instructorGender || oldActivity.instructorGender;
-    oldActivity.equipmentUsed = updActivity.equipmentUsed || oldActivity.equipmentUsed;
-    fs.writeFile('src/data/activity.json', JSON.stringify(activities, null, 2), (err) => {
-      if (err) {
-        res.send('Error!');
-      } else {
-        res.status(200).json({ msg: 'Activity Updated!', data: found });
+  Activity.findByIdAndDelete(id)
+    .then((response) => {
+      if (!response) {
+        return res.status(404).json({
+          message: 'The activity was not found',
+        });
       }
-    });
-  } else {
-    res.status(400).json({ msg: `Activity with id: ${activityId} was not found` });
-  }
-});
+      return res.status(200).json({
+        message: 'The activity was succesfully deleted',
+      });
+    })
+    .catch((error) => res.status(400).json({
+      message: 'There is something wrong.',
+      error,
+    }));
+};
 
-module.exports = router;
+module.exports = {
+  getActivities,
+  getActivitiesById,
+  createActivity,
+  updateActivity,
+  deleteActivity,
+};
