@@ -6,6 +6,6 @@ const router = express.Router();
 
 router
   .post('/', validations.validateCreation, adminsController.createAdmin)
-  .delete('/', adminsController.deleteAdmin);
+  .delete('/:id', adminsController.deleteAdmin);
 
 module.exports = router;
