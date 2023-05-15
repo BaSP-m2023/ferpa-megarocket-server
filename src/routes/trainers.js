@@ -7,6 +7,6 @@ const router = express.Router();
 
 router
   .delete('/:id', trainerController.deleteTrainer)
-  .put('/:id', validation.validateUpdate, trainerController.updateTrainer);
+  .put('/:id', validation.validateTrainerUpdate, trainerController.updateTrainer);
 
 module.exports = router;
