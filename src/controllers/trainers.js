@@ -7,6 +7,8 @@ const deleteTrainer = (req, res) => {
   if (!id.match(regexObjectId)) {
     res.status(400).json({
       message: 'Id invalid, try again!',
+      data: undefined,
+      error: true,
     });
   } else {
     Trainer.findByIdAndDelete(id)
@@ -14,6 +16,7 @@ const deleteTrainer = (req, res) => {
         if (!result) {
           return res.status(404).json({
             message: `Trainer with id ${id} was not found`,
+            data: undefined,
             error: true,
           });
         }
@@ -34,6 +37,8 @@ const updateTrainer = (req, res) => {
   if (!id.match(regexObjectId)) {
     res.status(400).json({
       message: 'Id invalid, try again!',
+      data: undefined,
+      error: true,
     });
   } else {
     const {
@@ -59,6 +64,7 @@ const updateTrainer = (req, res) => {
         if (!result) {
           return res.status(404).json({
             message: `Trainer with id ${id} was not found`,
+            data: undefined,
             error: true,
           });
         }
