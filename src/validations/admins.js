@@ -1,17 +1,16 @@
 const Joi = require('joi');
 
-const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
-const validateCreation = (req, res, next) => {
+const validateAdminCreation = (req, res, next) => {
   const adminValidation = Joi.object({
-    firstName: Joi.string().min(3).max(15),
-    lastName: Joi.string().min(3).max(15),
-    dni: Joi.number().min(10000000).max(999999999999),
-    phone: Joi.number().min(5000000).max(99999999),
-    email: Joi.string().regex(emailRegex),
-    city: Joi.string(),
-    password: Joi.string().regex(passwordRegex),
+    firstName: Joi.string().min(3).max(15).required(),
+    lastName: Joi.string().min(3).max(15).required(),
+    dni: Joi.string().min(8).max(10).required(),
+    phone: Joi.string().min(8).max(12).required(),
+    email: Joi.string().email().required(),
+    city: Joi.string().required(),
+    password: Joi.string().regex(passwordRegex).required(),
   });
 
   const validation = adminValidation.validate(req.body);
@@ -25,5 +24,5 @@ const validateCreation = (req, res, next) => {
 };
 
 module.exports = {
-  validateCreation,
+  validateAdminCreation,
 };

@@ -1,5 +1,7 @@
 const Admin = require('../models/Admin');
 
+const regexObjectId = /^[0-9a-fA-F]{24}$/;
+
 const createAdmin = (req, res) => {
   const {
     firstName, lastName, dni, phone, email, city, password,
@@ -14,14 +16,15 @@ const createAdmin = (req, res) => {
     city,
     password,
   })
-    .then((result) => {
+    .then((admin) => {
       res.status(201).json({
-        data: result,
+        message: 'Admin created.',
+        data: admin,
         error: false,
       });
     })
     .catch((error) => {
-      res.status(400).json({
+      res.status(500).json({
         message: 'Error',
         error,
       });
@@ -30,24 +33,32 @@ const createAdmin = (req, res) => {
 
 const deleteAdmin = (req, res) => {
   const { id } = req.params;
-
+  if (!id.match(regexObjectId)) {
+    res.status(400).json({
+      message: 'Please put a valid ID',
+      data: undefined,
+      error: true,
+    });
+  }
   Admin.findByIdAndDelete(id)
-    .then((result) => {
-      if (!result) {
+    .then((admin) => {
+      if (!admin) {
         res.status(404).json({
           message: `Admin with id: ${id} was not found.`,
+          data: undefined,
           error: true,
         });
       }
       res.status(200).json({
         message: `Admin with id: ${id} was removed.`,
-        data: result,
+        data: admin,
         error: false,
       });
     })
     .catch((error) => {
-      res.status(400).json({
+      res.status(500).json({
         message: 'An error ocurred',
+        data: undefined,
         error,
       });
     });
