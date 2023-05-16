@@ -1,11 +1,11 @@
 {
 	"info": {
-		"_postman_id": "8aa01e3b-0b39-41bd-bfff-51e90ea4f822",
+		"_postman_id": "ceaf3aee-8fcd-41d5-a445-3fc25924f288",
 		"name": "postman_collection",
 		"description": "This documentation outlines the HTTP methods available for interacting with the Mega Rocket Gym's API. The API follows the RESTful architecture and allows for Create, Read, Update, and Delete (CRUD) operations on gym admins, super admins, members, activities, trainers, classes and subscription. The following HTTP methods are supported:\n\n- GET\n- POST\n- PUT\n- DELETE",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "27279831",
-		"_collection_link": "https://speeding-satellite-411890.postman.co/workspace/54c1d606-d043-492e-89c9-adb92b2e5a30/collection/27279831-8aa01e3b-0b39-41bd-bfff-51e90ea4f822?action=share&creator=27279831&source=collection_link"
+		"_collection_link": "https://speeding-satellite-411890.postman.co/workspace/54c1d606-d043-492e-89c9-adb92b2e5a30/collection/27279831-ceaf3aee-8fcd-41d5-a445-3fc25924f288?action=share&creator=27279831&source=collection_link"
 	},
 	"item": [
 		{
@@ -320,7 +320,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "localhost:4000/api/trainers/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"trainers",
+								""
+							]
 						}
 					},
 					"response": []
@@ -331,7 +340,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "localhost:4000/api/trainers/646032cba4b0ab5a45bf8974",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"trainers",
+								"646032cba4b0ab5a45bf8974"
+							]
 						}
 					},
 					"response": []
@@ -341,8 +359,26 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"ladfgskd\",\r\n    \"lastName\": \"pefgdpdfgdito\",\r\n    \"dni\": \"12341234\",\r\n    \"phone\": \"1234212312\",\r\n    \"email\": \"lucho@gmail.com\",\r\n    \"city\": \"asdfgdfd\",\r\n    \"password\": \"passwfgdo2asd\",\r\n    \"salary\": 21345323\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": ""
+							"raw": "localhost:4000/api/trainers/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"trainers",
+								""
+							]
 						}
 					},
 					"response": []
@@ -352,8 +388,32 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"firstName\": \"Rodri\",\r\n    \"lastName\": \"durante\",\r\n    \"dni\": \"12341234\",\r\n    \"phone\": \"1234212312\",\r\n    \"email\": \"lucho@gmail.com\",\r\n    \"city\": \"asdfgdfd\",\r\n    \"password\": \"passwfgdo2asd\",\r\n    \"salary\": 21345323,\r\n    \"isActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": ""
+							"raw": "localhost:4000/api/trainers/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"trainers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64624da76f4839729659551f"
+								}
+							]
 						}
 					},
 					"response": []
@@ -363,8 +423,32 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": ""
+							"raw": "localhost:4000/api/trainers/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"trainers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64624da76f4839729659551a"
+								}
+							]
 						}
 					},
 					"response": []
