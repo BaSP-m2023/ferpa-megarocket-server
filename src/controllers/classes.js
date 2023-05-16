@@ -1,58 +1,52 @@
 const Class = require('../models/Class');
 
-const createClass = (req, res) => {
-  const {
-    id, day, hour, trainer, activity, slots,
-  } = req.body;
-
-  Class.create({
-    id,
-    day,
-    hour,
-    trainer,
-    activity,
-    slots,
-  })
-
-    .then((result) => res.status(201).json(result))
-    .catch((error) => res.status(400).json({
-      messege: "Error, don't created",
-      error,
-    }));
-};
-
 const updateClass = (req, res) => {
   const { id } = req.params;
+  if (id.length !== 24) {
+    res.status(404).json({
+      message: 'ID invalid, please correct',
+      data: undefined,
+      error: true,
+    });
+  }
   const {
     day,
     hour,
-    trainer,
-    activity,
+    trainerId,
+    activityId,
     slots,
   } = req.body;
-
   Class.findByIdAndUpdate(
     id,
     {
-      id,
       day,
       hour,
-      trainer,
-      activity,
+      trainerId,
+      activityId,
       slots,
     },
     { new: true },
   )
     .then((result) => {
       if (!result) {
-        return res.status(404).json({
+        res.status(404).json({
           message: `Class with id: ${id} was not found`,
+          data: undefined,
+          error: true,
+        });
+      } else {
+        res.status(200).json({
+          message: `Class with id: ${id} was found!`,
+          data: result,
+          error: false,
         });
       }
-      return res.status(200).json(result);
     })
     .catch((error) => {
-      res.status(400).json(error);
+      res.status(500).json({
+        message: 'An error ocurred!',
+        error,
+      });
     });
 };
 
@@ -64,20 +58,23 @@ const deleteClass = (req, res) => {
       if (!result) {
         return res.status(404).json({
           message: `Class with id: ${id} was not found`,
+          data: undefined,
+          error: true,
         });
       }
       return res.status(200).json({
-        message: `Class with id: ${id} was deteled`,
+        message: `Class with id: ${id} was deleted`,
+        data: result,
+        error: false,
       });
     })
-    .catch((error) => res.status(400).json({
+    .catch((error) => res.status(500).json({
       message: 'An error ocurred!',
       error,
     }));
 };
 
 module.exports = {
-  createClass,
   updateClass,
   deleteClass,
 };

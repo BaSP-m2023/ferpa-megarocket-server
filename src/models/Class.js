@@ -3,19 +3,27 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const classSchema = new Schema({
-  id: Number,
   day: {
     type: String,
     enum: ['Monday', 'Wednesday', 'Friday'],
+    require: true,
   },
-  hour: Number,
-  trainer: {
+  hour: {
+    type: Number,
+    require: true,
+  },
+  trainerId: {
     type: String,
+    require: true,
   },
-  activity: {
+  activityId: {
     type: String,
+    require: true,
   },
-  slots: Number,
+  slots: {
+    type: Number,
+    require: true,
+  },
 });
 
 module.exports = mongoose.model('Class', classSchema);
