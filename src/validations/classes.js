@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
-const validateCreation = (res, req, next) => {
-  const classValidation = Joi.object({
+const validateClassCreation = (res, req, next) => {
+  const validateCreation = Joi.object({
     day: Joi.string().valid('Monday', 'Wednesday', 'Friday').required(),
     hour: Joi.number().min(0).max(23).required(),
     trainerId: Joi.string().min(4).max(15).required(),
@@ -9,7 +9,7 @@ const validateCreation = (res, req, next) => {
     slots: Joi.number().required(),
   });
 
-  const validation = classValidation.validate(req.body);
+  const validation = validateCreation.validate(req.body);
 
   if (!validation.error) return next();
   return res.status(400).json({
@@ -20,5 +20,5 @@ const validateCreation = (res, req, next) => {
 };
 
 module.exports = {
-  validateCreation,
+  validateClassCreation,
 };

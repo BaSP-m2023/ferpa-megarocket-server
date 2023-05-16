@@ -7,6 +7,6 @@ const router = express.Router();
 router
   .get('/', classesController.getAllClasses)
   .get('/:id', classesController.getClassById)
-  .post('/', validations.validateCreation, classesController.createClass);
+  .post('/', validations.validateClassCreation, classesController.createClass);
 
 module.exports = router;

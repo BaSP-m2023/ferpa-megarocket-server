@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const ClassSchema = new Schema({
   day: {
     type: String,
-    enum: ['Monday', 'Wenesday', 'Friday'],
+    enum: ['Monday', 'Wednesday', 'Friday'],
   },
   hour: {
     type: Number,
