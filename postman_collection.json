@@ -336,7 +336,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/trainers/",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "trainers",
+                ""
+              ]
             }
           },
           "response": []
@@ -347,7 +356,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/trainers/646032cba4b0ab5a45bf8974",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "trainers",
+                "646032cba4b0ab5a45bf8974"
+              ]
             }
           },
           "response": []
@@ -357,8 +375,26 @@
           "request": {
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"ladfgskd\",\r\n    \"lastName\": \"pefgdpdfgdito\",\r\n    \"dni\": \"12341234\",\r\n    \"phone\": \"1234212312\",\r\n    \"email\": \"lucho@gmail.com\",\r\n    \"city\": \"asdfgdfd\",\r\n    \"password\": \"passwfgdo2asd\",\r\n    \"salary\": 21345323\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/trainers/",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "trainers",
+                ""
+              ]
             }
           },
           "response": []
@@ -368,8 +404,32 @@
           "request": {
             "method": "PUT",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \r\n    \"firstName\": \"Rodri\",\r\n    \"lastName\": \"durante\",\r\n    \"dni\": \"12341234\",\r\n    \"phone\": \"1234212312\",\r\n    \"email\": \"lucho@gmail.com\",\r\n    \"city\": \"asdfgdfd\",\r\n    \"password\": \"passwfgdo2asd\",\r\n    \"salary\": 21345323,\r\n    \"isActive\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/trainers/:id",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "trainers",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "64624da76f4839729659551f"
+                }
+              ]
             }
           },
           "response": []
@@ -379,8 +439,32 @@
           "request": {
             "method": "DELETE",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/trainers/:id",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "trainers",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "64624da76f4839729659551a"
+                }
+              ]
             }
           },
           "response": []
