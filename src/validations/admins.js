@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
-const validateUpdate = (req, res, next) => {
+const validateAdminUpdate = (req, res, next) => {
   const adminValidation = Joi.object({
     firstName: Joi.string().min(3).max(15),
     lastName: Joi.string().min(3).max(15),
@@ -22,5 +22,5 @@ const validateUpdate = (req, res, next) => {
 };
 
 module.exports = {
-  validateUpdate,
+  validateAdminUpdate,
 };

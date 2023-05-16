@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const classes = require('../data/class.json');
+const classes = require('../models/Class');
 
 const router = express.Router();
 

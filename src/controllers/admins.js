@@ -12,7 +12,7 @@ const getAllAdmin = (req, res) => {
       });
     })
     .catch((error) => {
-      res.status(400).json({
+      res.status(500).json({
         message: 'An error ocurred',
         data: undefined,
         error,
@@ -46,7 +46,7 @@ const getAdminById = (req, res) => {
         }
       })
       .catch((error) => {
-        res.status(400).json({
+        res.status(500).json({
           message: 'An error ocurred',
           data: undefined,
           error,
@@ -95,7 +95,7 @@ const updateAdmin = (req, res) => {
         });
       })
       .catch((error) => {
-        res.status(400).json({
+        res.status(500).json({
           message: 'An error ocurred',
           data: undefined,
           error,

@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const trainers = require('../data/trainer.json');
+const trainers = require('../models/Trainer');
 
 const router = express.Router();
 

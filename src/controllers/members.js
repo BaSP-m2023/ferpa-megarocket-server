@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const members = require('../data/member.json');
+const members = require('../models/Member');
 
 const router = express.Router();
 

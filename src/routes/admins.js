@@ -8,6 +8,6 @@ const router = express.Router();
 router
   .get('/', adminsController.getAllAdmin)
   .get('/:id', adminsController.getAdminById)
-  .put('/:id', validation.validateUpdate, adminsController.updateAdmin);
+  .put('/:id', validation.validateAdminUpdate, adminsController.updateAdmin);
 
 module.exports = router;

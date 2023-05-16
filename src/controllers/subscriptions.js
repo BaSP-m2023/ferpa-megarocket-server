@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const subscriptions = require('../data/subscription.json');
+const subscriptions = require('../models/Subscription');
 
 const router = express.Router();
 
