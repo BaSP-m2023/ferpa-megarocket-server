@@ -370,7 +370,7 @@
 			"name": "Subscription",
 			"item": [
 				{
-					"name": "Get all subscriptions",
+					"name": "Get all subscriptions of the week",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -410,7 +410,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6460f81a74da94e2d6edd39b"
+									"value": "6462e923a9f7a54444dc9896"
 								}
 							]
 						}
@@ -424,7 +424,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"classId\": 6,\n    \"memberId\": 53,\n    \"date\": \"06-04-2009\"\n}",
+							"raw": "{\n    \"classId\": \"jrwn8ngjtngjg\",\n    \"memberId\": \"daklmsd3456\",\n    \"date\": \"2023-05-17\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -454,7 +454,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"date\": \"10-31-2018\"\n}",
+							"raw": "{\n    \"classId\": \"oijfdsf88477\",\n    \"memberId\": \"ooirr889594itijg\",\n    \"date\": \"2020-05-18\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -476,7 +476,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6460f81a74da94e2d6edd39b"
+									"value": "6462e923a9f7a54444dc9896"
 								}
 							]
 						}
@@ -503,7 +503,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6460f81a74da94e2d6edd39b"
+									"value": "6462e923a9f7a54444dc9896"
 								}
 							]
 						}

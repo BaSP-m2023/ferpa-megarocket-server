@@ -4,20 +4,26 @@ const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
 const getAllSub = (req, res) => {
   const currentDate = new Date();
-  // eslint-disable-next-line max-len
-  const currentWeekStart = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - currentDate.getDay());
-  // eslint-disable-next-line max-len
-  const currentWeekEnd = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - currentDate.getDay() + 6);
+  const currentWeekStart = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate() - currentDate.getDay(),
+  );
+  const currentWeekEnd = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate() - currentDate.getDay() + 6,
+  );
   Subscription.where('date').gte(currentWeekStart).lte(currentWeekEnd)
     .then((subscriptions) => res.status(200).json({
       message: 'Complete subscriptions list',
       data: subscriptions,
       error: false,
     }))
-    .catch((error) => res.status(500).json({
+    .catch(() => res.status(500).json({
       message: 'An error ocurred',
       data: undefined,
-      error,
+      error: true,
     }));
 };
 
@@ -45,36 +51,36 @@ const getSubById = (req, res) => {
         error: false,
       });
     })
-    .catch((error) => res.status(500).json({
+    .catch(() => res.status(500).json({
       message: 'An error ocurred',
       data: undefined,
-      error,
+      error: true,
     }));
 };
 
 const createSub = (req, res) => {
-  const { classId, memberId } = req.body;
+  const { classId, memberId, date } = req.body;
 
   Subscription.create({
     classId,
     memberId,
-    date: new Date().toLocaleDateString('en-US'),
+    date,
   })
     .then((result) => res.status(201).json({
       message: 'Subscription created succesfully',
       data: result,
       error: false,
     }))
-    .catch((error) => res.status(400).json({
+    .catch(() => res.status(400).json({
       message: 'An error ocurred',
       data: undefined,
-      error,
+      error: true,
     }));
 };
 
 const updateSub = (req, res) => {
   const { id } = req.params;
-  const { classId, memberId } = req.body;
+  const { classId, memberId, date } = req.body;
 
   if (!id.match(regexObjectId)) {
     res.status(404).json({
@@ -89,7 +95,7 @@ const updateSub = (req, res) => {
     {
       classId,
       memberId,
-      date: new Date().toLocaleDateString('en-US'),
+      date,
     },
     { new: true },
   )
@@ -113,6 +119,14 @@ const updateSub = (req, res) => {
 const deleteSub = (req, res) => {
   const { id } = req.params;
 
+  if (!id.match(regexObjectId)) {
+    res.status(404).json({
+      message: 'Please put a valid ID!',
+      data: undefined,
+      error: true,
+    });
+  }
+
   Subscription.findByIdAndDelete(id)
     .then((result) => {
       if (!result) {
@@ -128,10 +142,10 @@ const deleteSub = (req, res) => {
         error: false,
       });
     })
-    .catch((error) => res.status(500).json({
+    .catch(() => res.status(500).json({
       message: 'An error ocurred!',
       data: undefined,
-      error,
+      error: true,
     }));
 };
 
