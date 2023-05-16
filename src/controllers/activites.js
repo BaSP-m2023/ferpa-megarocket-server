@@ -26,9 +26,9 @@ const getActivitiesById = (req, res) => {
             error: false,
           });
         } else {
-          res.status(200).json({
+          res.status(400).json({
             message: 'The activity was not found',
-            error: false,
+            error: true,
           });
         }
       })
@@ -84,10 +84,10 @@ const updateActivity = (req, res) => {
             error: true,
           });
         }
-        return res.status(200).json({
+        return res.status(400).json({
           message: 'The activity was succesfully updated',
           data: response,
-          error: false,
+          error: true,
         });
       })
       .catch((error) => res.status(400).json(error));
