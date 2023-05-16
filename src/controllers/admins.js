@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const admins = require('../data/admins.json');
+const admins = require('../models/Admin');
 
 const router = express.Router();
 

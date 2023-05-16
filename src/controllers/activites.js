@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 
-const activities = require('../data/activity.json');
+const activities = require('../models/Activity');
 
 const router = express.Router();
 

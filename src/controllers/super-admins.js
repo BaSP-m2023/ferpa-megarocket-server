@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-const sAdmin = require('../data/super-admins.json');
+const sAdmin = require('../models/SuperAdmin');
 
 const router = express.Router();
 
