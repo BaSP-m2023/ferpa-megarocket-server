@@ -57,14 +57,14 @@ const createActivity = (req, res) => {
 };
 const updateActivity = (req, res) => {
   const { id } = req.params;
-  const { nameActivity, descriptionActivity, isActiveActivity } = req.body;
+  const { name, description, isActive } = req.body;
 
   Activity.findByIdAndUpdate(
     id,
     {
-      nameActivity,
-      descriptionActivity,
-      isActiveActivity,
+      name,
+      description,
+      isActive,
     },
     { new: true },
   )
