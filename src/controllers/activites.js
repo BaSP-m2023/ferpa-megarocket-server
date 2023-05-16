@@ -16,25 +16,33 @@ const getActivities = (req, res) => {
 const getActivitiesById = (req, res) => {
   const { id } = req.params;
 
-  Activity.findById(id)
-    .then((act) => {
-      if (act) {
-        res.status(200).json({
-          message: 'The activity was found.',
-          data: act,
-          error: false,
-        });
-      } else {
-        res.status(200).json({
-          message: 'The activity was not found',
-          error: false,
-        });
-      }
-    })
-    .catch((error) => res.json({
-      message: 'There is something wrong.',
-      error,
-    }));
+  if (id.length === 24) {
+    Activity.findById(id)
+      .then((act) => {
+        if (act) {
+          res.status(200).json({
+            message: 'The activity was found.',
+            data: act,
+            error: false,
+          });
+        } else {
+          res.status(200).json({
+            message: 'The activity was not found',
+            error: false,
+          });
+        }
+      })
+      .catch((error) => res.json({
+        message: 'There is something wrong.',
+        error,
+      }));
+  } else {
+    res.status(400).json({
+      message: 'Incorrect ID format',
+      data: undefined,
+      error: true,
+    });
+  }
 };
 
 const createActivity = (req, res) => {
@@ -59,48 +67,64 @@ const updateActivity = (req, res) => {
   const { id } = req.params;
   const { name, description, isActive } = req.body;
 
-  Activity.findByIdAndUpdate(
-    id,
-    {
-      name,
-      description,
-      isActive,
-    },
-    { new: true },
-  )
-    .then((response) => {
-      if (!response) {
-        return res.status(404).json({
-          message: 'The activity was not found',
-          error: true,
+  if (id.length === 24) {
+    Activity.findByIdAndUpdate(
+      id,
+      {
+        name,
+        description,
+        isActive,
+      },
+      { new: true },
+    )
+      .then((response) => {
+        if (!response) {
+          return res.status(404).json({
+            message: 'The activity was not found',
+            error: true,
+          });
+        }
+        return res.status(200).json({
+          message: 'The activity was succesfully updated',
+          data: response,
+          error: false,
         });
-      }
-      return res.status(200).json({
-        message: 'The activity was succesfully updated',
-        data: response,
-        error: false,
-      });
-    })
-    .catch((error) => res.status(400).json(error));
+      })
+      .catch((error) => res.status(400).json(error));
+  } else {
+    res.status(400).json({
+      message: 'Incorrect ID format',
+      data: undefined,
+      error: true,
+    });
+  }
 };
 const deleteActivity = (req, res) => {
   const { id } = req.params;
 
-  Activity.findByIdAndDelete(id)
-    .then((response) => {
-      if (!response) {
-        return res.status(404).json({
-          message: 'The activity was not found',
+  if (id.length === 24) {
+    Activity.findByIdAndDelete(id)
+      .then((response) => {
+        if (!response) {
+          return res.status(404).json({
+            message: 'The activity was not found',
+          });
+        }
+        return res.status(200).json({
+          message: 'The activity was succesfully deleted',
         });
-      }
-      return res.status(200).json({
-        message: 'The activity was succesfully deleted',
-      });
-    })
-    .catch((error) => res.status(400).json({
-      message: 'There is something wrong.',
-      error,
-    }));
+      })
+      .catch((error) => res.status(400).json({
+        message: 'There is something wrong.',
+        error,
+      }));
+  } else {
+    res.status(400).json({
+      message: 'Incorrect ID format',
+      data: undefined,
+      error: true,
+    });
+  }
 };
 
 module.exports = {
