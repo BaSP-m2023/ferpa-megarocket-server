@@ -5,15 +5,15 @@ const { Schema } = mongoose;
 const subSchema = new Schema(
   {
     classId: {
-      type: Number,
+      type: String,
       require: true,
     },
     memberId: {
-      type: Number,
+      type: String,
       require: true,
     },
     date: {
-      type: String,
+      type: Date,
       require: true,
     },
   },
