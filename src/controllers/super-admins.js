@@ -27,7 +27,7 @@ const getsuperAdminById = (req, res) => {
         return res.status(404).json({
           message: `Super admin with id: ${id} was not found`,
           error: true,
-          data: 'undefinded in case the id is not found',
+          data: undefined,
         });
       }
       return res.status(200).json({
@@ -55,7 +55,7 @@ const createSuperAdmin = (req, res) => {
       data: result,
       error: false,
     }))
-    .catch((error) => res.status(400).json({
+    .catch((error) => res.status(500).json({
       message: 'An error was detected',
       error,
     }));
@@ -92,7 +92,7 @@ const updateSuperAdmin = (req, res) => {
         error: false,
       });
     })
-    .catch((error) => res.status(400).json(error));
+    .catch((error) => res.status(500).json(error));
 };
 
 const deleteSuperAdmin = (req, res) => {
@@ -109,6 +109,8 @@ const deleteSuperAdmin = (req, res) => {
       if (!result) {
         return res.status(404).json({
           message: `Super admin with id: ${id} was not found`,
+          data: undefined,
+          error: true,
         });
       }
       return res.status(200).json({

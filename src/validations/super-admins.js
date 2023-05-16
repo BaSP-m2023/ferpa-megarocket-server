@@ -19,8 +19,7 @@ const validateSuperCreation = (req, res, next) => {
 
 const validateSuperUpdate = (req, res, next) => {
   const superValidation = Joi.object({
-    id: Joi.number(),
-    email: Joi.string(),
+    email: Joi.string().email(),
     password: Joi.string().regex(passRegex),
   });
 
