@@ -9,7 +9,7 @@ const validateAdminCreation = (req, res, next) => {
     dni: Joi.string().min(8).max(10).required(),
     phone: Joi.string().min(8).max(12).required(),
     email: Joi.string().email().required(),
-    city: Joi.string().required(),
+    city: Joi.string().min(3).required(),
     password: Joi.string().regex(passwordRegex).required(),
   });
 
