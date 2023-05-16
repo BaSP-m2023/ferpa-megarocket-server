@@ -14,13 +14,20 @@ const getAllsuperAdmins = (req, res) => {
 };
 const getsuperAdminById = (req, res) => {
   const { id } = req.params;
-
+  if (id.length !== 24) {
+    res.status(400).json({
+      message: 'Invalid id, try again',
+      data: undefined,
+      error: true,
+    });
+  }
   SuperAdmin.findById(id)
     .then((result) => {
       if (!result) {
         return res.status(404).json({
           message: `Super admin with id: ${id} was not found`,
           error: true,
+          data: 'undefinded in case the id is not found',
         });
       }
       return res.status(200).json({
@@ -57,7 +64,13 @@ const createSuperAdmin = (req, res) => {
 const updateSuperAdmin = (req, res) => {
   const { id } = req.params;
   const { email, password } = req.body;
-
+  if (id.length !== 24) {
+    res.status(400).json({
+      message: 'Invalid id, try again',
+      data: undefined,
+      error: true,
+    });
+  }
   SuperAdmin.findByIdAndUpdate(
     id,
     {
@@ -84,7 +97,13 @@ const updateSuperAdmin = (req, res) => {
 
 const deleteSuperAdmin = (req, res) => {
   const { id } = req.params;
-
+  if (id.length !== 24) {
+    res.status(400).json({
+      message: 'Invalid id, try again',
+      data: undefined,
+      error: true,
+    });
+  }
   SuperAdmin.findByIdAndDelete(id)
     .then((result) => {
       if (!result) {
@@ -96,7 +115,7 @@ const deleteSuperAdmin = (req, res) => {
         message: `Super admin with id: ${id} was succesfully deleted`,
       });
     })
-    .catch((error) => res.status(400).json({
+    .catch((error) => res.status(500).json({
       message: 'An error ocurred!',
       error,
     }));

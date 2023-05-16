@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "9840ece8-c9cd-4121-b123-298cc206d4d6",
+		"_postman_id": "1fcfa5e1-ce54-4779-8603-41fae45c1511",
 		"name": "postman_collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27164737"
+		"_exporter_id": "27279808",
+		"_collection_link": "https://lunar-firefly-274213.postman.co/workspace/cfa96bec-e972-4974-80d0-9c6b3ab3240e/collection/27279808-1fcfa5e1-ce54-4779-8603-41fae45c1511?action=share&creator=27279808&source=collection_link"
 	},
 	"item": [
 		{
@@ -13,7 +14,10 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -21,7 +25,10 @@
 					"name": "Get by id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -29,7 +36,10 @@
 					"name": "Create",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -37,7 +47,10 @@
 					"name": "Update",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -45,7 +58,10 @@
 					"name": "Delete",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
@@ -58,7 +74,19 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/super-admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"super-admins",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -66,7 +94,25 @@
 					"name": "Get by id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/super-admins/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"super-admins",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "646242990c4bc30470a00075"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -74,7 +120,27 @@
 					"name": "Create",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"Mariann44@gmail.com\",\r\n    \"password\": \"$$Marian222\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/super-admins",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"super-admins"
+							]
+						}
 					},
 					"response": []
 				},
@@ -82,7 +148,34 @@
 					"name": "Update",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"google@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/super-admins/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"super-admins",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "646242820c4bc30470a00073"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -90,7 +183,25 @@
 					"name": "Delete",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/super-admins/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"super-admins",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "646242990c4bc30470a00075"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -103,7 +214,10 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -111,7 +225,10 @@
 					"name": "Get by id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -119,7 +236,10 @@
 					"name": "Create",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -127,7 +247,10 @@
 					"name": "Update",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -135,7 +258,10 @@
 					"name": "Delete",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
@@ -148,7 +274,10 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -156,7 +285,10 @@
 					"name": "Get by id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -164,7 +296,10 @@
 					"name": "Create",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -172,7 +307,10 @@
 					"name": "Update",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -180,7 +318,10 @@
 					"name": "Delete",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
@@ -193,7 +334,10 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -201,7 +345,10 @@
 					"name": "Get by id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -209,7 +356,10 @@
 					"name": "Create",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -217,7 +367,10 @@
 					"name": "Update",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -225,7 +378,10 @@
 					"name": "Delete",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
@@ -238,7 +394,10 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -246,7 +405,10 @@
 					"name": "Get by id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -254,7 +416,10 @@
 					"name": "Create",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -262,7 +427,10 @@
 					"name": "Update",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -270,7 +438,10 @@
 					"name": "Delete",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
@@ -283,7 +454,10 @@
 					"name": "Get all",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -291,7 +465,10 @@
 					"name": "Get by id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -299,7 +476,10 @@
 					"name": "Create",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -307,7 +487,10 @@
 					"name": "Update",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -315,7 +498,10 @@
 					"name": "Delete",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
