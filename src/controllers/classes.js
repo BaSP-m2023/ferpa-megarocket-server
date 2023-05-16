@@ -24,18 +24,26 @@ const getClassById = (req, res) => {
       error: true,
     });
   }
-
   Class.findById(id)
-    .then((classes) => res.status(200).json({
-      messege: `Class found! It was ${classes.activityId}`,
-      data: classes,
-      error: false,
-    }))
-    .catch((error) => res.json({
-      message: "Error, Class don't found",
-      data: undefined,
-      error,
-    }));
+    .then((classes) => {
+      if (!classes) {
+        res.status(400).json({
+          message: `Class with the ${id} don't found`,
+          data: undefined,
+          error: true,
+        });
+      }
+      return res.status(200).json({
+        message: `Class found! It was ${id}`,
+        data: classes,
+        error: false,
+      })
+        .catch((error) => res.json({
+          message: 'Error',
+          data: undefined,
+          error,
+        }));
+    });
 };
 
 const createClass = (req, res) => {
@@ -55,7 +63,7 @@ const createClass = (req, res) => {
       data: classes,
       error: false,
     }))
-    .catch((error) => res.status(400).json({
+    .catch((error) => res.status(500).json({
       message: "Error, don't created",
       data: undefined,
       error,

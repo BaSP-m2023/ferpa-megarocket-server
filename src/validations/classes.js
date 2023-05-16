@@ -13,7 +13,7 @@ const validateCreation = (res, req, next) => {
 
   if (!validation.error) return next();
   return res.status(400).json({
-    messege: `Error: ${validation.error.details[0].msg}`,
+    message: `Error: ${validation.error.details[0].message}`,
     data: undefined,
     error: true,
   });
