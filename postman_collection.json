@@ -1,9 +1,10 @@
 {
   "info": {
-    "_postman_id": "5d04a19c-751e-4746-9fe0-d3fa9caf487c",
+    "_postman_id": "1fcfa5e1-ce54-4779-8603-41fae45c1511",
     "name": "postman_collection",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "27281741"
+    "_exporter_id": "27279808",
+    "_collection_link": "https://lunar-firefly-274213.postman.co/workspace/cfa96bec-e972-4974-80d0-9c6b3ab3240e/collection/27279808-1fcfa5e1-ce54-4779-8603-41fae45c1511?action=share&creator=27279808&source=collection_link"
   },
   "item": [
     {
@@ -75,7 +76,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/super-admins/",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "super-admins",
+                ""
+              ]
             }
           },
           "response": []
@@ -86,7 +96,22 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/super-admins/:id",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "super-admins",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "646242990c4bc30470a00075"
+                }
+              ]
             }
           },
           "response": []
@@ -96,8 +121,25 @@
           "request": {
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"Mariann44@gmail.com\",\r\n    \"password\": \"$$Marian222\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/super-admins",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "super-admins"
+              ]
             }
           },
           "response": []
@@ -107,8 +149,32 @@
           "request": {
             "method": "PUT",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"google@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/super-admins/:id",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "super-admins",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "646242820c4bc30470a00073"
+                }
+              ]
             }
           },
           "response": []
@@ -119,73 +185,169 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/super-admins/:id",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "super-admins",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "646242990c4bc30470a00075"
+                }
+              ]
             }
           },
           "response": []
         }
       ]
     },
-    {
-      "name": "Member",
-      "item": [
-        {
-          "name": "Get all",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        }
-      ]
-    },
+		{
+			"name": "Member",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/members/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/members/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"members",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "646126cb4cae5785da04379c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Ernestito\",\r\n    \"lastName\": \"Pereira\",\r\n    \"dni\": \"362355668\",\r\n    \"phone\": \"3425565\",\r\n    \"email\": \"bsdadsasaa@il.com\",\r\n    \"city\": \"Concordia\",\r\n    \"birthDay\": \"05-03-1990\",\r\n    \"postalCode\": \"2334\",\r\n    \"isActive\": true,\r\n    \"membership\": \"Classic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/members/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"members",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"secambio\",\r\n    \"lastName\": \"gutierrez\",\r\n    \"dni\": \"36555668\",\r\n    \"phone\": \"346565565\",\r\n    \"email\": \"balsojdadsasaa@il.com\",\r\n    \"city\": \"rasdasdasasdasdo\",\r\n    \"birthDay\": \"05/05/2022\",\r\n    \"postalCode\": \"200244\",\r\n    \"isActive\": true,\r\n    \"membership\": \"Black\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/members/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"members",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64642e191b6ccff25c6ec7d0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/members/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"members",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "646126cb4cae5785da04379c"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
     {
       "name": "Activity",
       "item": [
@@ -496,56 +658,142 @@
       "name": "Subscription",
       "item": [
         {
-          "name": "Get all",
+          "name": "Get all subscriptions of the week",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ""
+              ]
             }
           },
           "response": []
         },
         {
-          "name": "Get by id",
+          "name": "Get subscription by id",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6462e923a9f7a54444dc9896"
+                }
+              ]
             }
           },
           "response": []
         },
         {
-          "name": "Create",
+          "name": "Create new subscription",
           "request": {
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"classId\": \"jrwn8ngjtngjg\",\n    \"memberId\": \"daklmsd3456\",\n    \"date\": \"2023-05-17\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ""
+              ]
             }
           },
           "response": []
         },
         {
-          "name": "Update",
+          "name": "Update subscription by id",
           "request": {
             "method": "PUT",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"classId\": \"oijfdsf88477\",\n    \"memberId\": \"ooirr889594itijg\",\n    \"date\": \"2020-05-18\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6462e923a9f7a54444dc9896"
+                }
+              ]
             }
           },
           "response": []
         },
         {
-          "name": "Delete",
+          "name": "Delete subscription by id",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6462e923a9f7a54444dc9896"
+                }
+              ]
             }
           },
           "response": []
