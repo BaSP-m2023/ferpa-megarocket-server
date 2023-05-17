@@ -2,6 +2,97 @@ const Member = require('../models/Member');
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
+const getAllMembers = (req, res) => {
+  Member.find()
+    .then((members) => res.status(200).json({
+      message: 'Complete members list',
+      data: members,
+      error: false,
+    }))
+    .catch((error) => res.status(404).json({
+      message: 'An error ocurred',
+      error,
+    }));
+};
+
+const createMember = (req, res) => {
+  const {
+    firstName, lastName, dni, phone, email, city, birthDay, postalCode, isActive, membership,
+  } = req.body;
+
+  Member.create({
+    firstName,
+    lastName,
+    dni,
+    phone,
+    email,
+    city,
+    birthDay,
+    postalCode,
+    isActive,
+    membership,
+  })
+    .then((result) => res.status(201).json({
+      message: 'Member was succesfully created.',
+      data: result,
+      error: false,
+    }))
+    .catch((error) => res.status(400).json({
+      message: 'An error ocurred!',
+      error,
+    }));
+};
+
+const updateMember = (req, res) => {
+  const { id } = req.params;
+  if (!id.match(regexObjectId)) {
+    res.status(400).json({
+      message: 'Id invalid, try again!',
+      data: undefined,
+      error: true,
+    });
+  } {
+    const {
+      firstName, lastName, dni, phone, email, city, birthDay, postalCode, isActive, membership,
+    } = req.body;
+
+    Member.findByIdAndUpdate(
+      id,
+      {
+        firstName,
+        lastName,
+        dni,
+        phone,
+        email,
+        city,
+        birthDay,
+        postalCode,
+        isActive,
+        membership,
+      },
+      { new: true },
+    )
+      .then((result) => {
+        if (!result) {
+          return res.status(404).json({
+            message: `Member with id: ${id} was not found`,
+            data: undefined,
+            error: true,
+          });
+        }
+        return res.status(200).json({
+          message: `Member with id: ${id} was succesfully updated`,
+          data: result,
+          error: false,
+        });
+      })
+      .catch((error) => res.status(500).json({
+        message: 'An error ocurred!',
+        error,
+      }));
+  }
+};
+
 const getMemberById = (req, res) => {
   const { id } = req.params;
   if (!id.match(regexObjectId)) {
@@ -71,6 +162,9 @@ const deleteMember = (req, res) => {
 };
 
 module.exports = {
+  getAllMembers,
+  createMember,
+  updateMember,
   getMemberById,
   deleteMember,
 };
