@@ -561,7 +561,16 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/classes/",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "classes",
+                ""
+              ]
             }
           },
           "response": []
@@ -572,7 +581,22 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/classes/:id",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "classes",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6462d8c5afd4e4d023690d66"
+                }
+              ]
             }
           },
           "response": []
@@ -582,8 +606,26 @@
           "request": {
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"day\": \"Wednesday\",\r\n\"hour\": 15,\r\n\"trainerId\": \"5394\",\r\n\"activityId\": \"1\",\r\n\"slots\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/classes/",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "classes",
+                ""
+              ]
             }
           },
           "response": []
