@@ -15,7 +15,7 @@ const getAllsuperAdmins = (req, res) => {
 const getsuperAdminById = (req, res) => {
   const { id } = req.params;
   if (id.length !== 24) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'Invalid id, try again',
       data: undefined,
       error: true,
@@ -40,6 +40,7 @@ const getsuperAdminById = (req, res) => {
       message: 'An error was found',
       error,
     }));
+  return false;
 };
 
 const createSuperAdmin = (req, res) => {
@@ -65,7 +66,7 @@ const updateSuperAdmin = (req, res) => {
   const { id } = req.params;
   const { email, password } = req.body;
   if (id.length !== 24) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'Invalid id, try again',
       data: undefined,
       error: true,
@@ -93,12 +94,13 @@ const updateSuperAdmin = (req, res) => {
       });
     })
     .catch((error) => res.status(500).json(error));
+  return false;
 };
 
 const deleteSuperAdmin = (req, res) => {
   const { id } = req.params;
   if (id.length !== 24) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'Invalid id, try again',
       data: undefined,
       error: true,
@@ -121,6 +123,7 @@ const deleteSuperAdmin = (req, res) => {
       message: 'An error ocurred!',
       error,
     }));
+  return false;
 };
 
 module.exports = {
