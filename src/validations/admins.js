@@ -6,8 +6,8 @@ const validateAdminUpdate = (req, res, next) => {
   const adminValidation = Joi.object({
     firstName: Joi.string().min(3).max(15),
     lastName: Joi.string().min(3).max(15),
-    dni: Joi.string().min(8).max(10),
-    phone: Joi.string().min(8).max(12),
+    dni: Joi.string().length(9),
+    phone: Joi.string().length(10),
     email: Joi.string().email(),
     city: Joi.string(),
     password: Joi.string().regex(passwordRegex),
