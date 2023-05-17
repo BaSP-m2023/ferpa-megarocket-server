@@ -454,56 +454,142 @@
       "name": "Subscription",
       "item": [
         {
-          "name": "Get all",
+          "name": "Get all subscriptions of the week",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ""
+              ]
             }
           },
           "response": []
         },
         {
-          "name": "Get by id",
+          "name": "Get subscription by id",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6462e923a9f7a54444dc9896"
+                }
+              ]
             }
           },
           "response": []
         },
         {
-          "name": "Create",
+          "name": "Create new subscription",
           "request": {
             "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"classId\": \"jrwn8ngjtngjg\",\n    \"memberId\": \"daklmsd3456\",\n    \"date\": \"2023-05-17\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ""
+              ]
             }
           },
           "response": []
         },
         {
-          "name": "Update",
+          "name": "Update subscription by id",
           "request": {
             "method": "PUT",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"classId\": \"oijfdsf88477\",\n    \"memberId\": \"ooirr889594itijg\",\n    \"date\": \"2020-05-18\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6462e923a9f7a54444dc9896"
+                }
+              ]
             }
           },
           "response": []
         },
         {
-          "name": "Delete",
+          "name": "Delete subscription by id",
           "request": {
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "http://localhost:4000/api/subscriptions/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "subscriptions",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6462e923a9f7a54444dc9896"
+                }
+              ]
             }
           },
           "response": []
