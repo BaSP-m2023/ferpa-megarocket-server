@@ -1,131 +1,131 @@
 {
-  "info": {
-    "_postman_id": "5d04a19c-751e-4746-9fe0-d3fa9caf487c",
-    "name": "postman_collection",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "27281741"
-  },
-  "item": [
-    {
-      "name": "Admin",
-      "item": [
-        {
-          "name": "Get all",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "SuperAdmin",
-      "item": [
-        {
-          "name": "Get all",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        }
-      ]
-    },
+	"info": {
+		"_postman_id": "3ed36cba-2b33-403a-a0ef-06b36dfaf581",
+		"name": "postman_collection Copy 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27164737"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SuperAdmin",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "Member",
 			"item": [
@@ -168,7 +168,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "646126cb4cae5785da04379c"
 								}
 							]
 						}
@@ -180,6 +180,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Ernestito\",\r\n    \"lastName\": \"Pereira\",\r\n    \"dni\": \"362355668\",\r\n    \"phone\": \"3425565\",\r\n    \"email\": \"bsdadsasaa@il.com\",\r\n    \"city\": \"Concordia\",\r\n    \"birthDay\": \"05-03-1990\",\r\n    \"postalCode\": \"2334\",\r\n    \"isActive\": true,\r\n    \"membership\": \"Classic\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:4000/api/members/",
 							"host": [
@@ -200,6 +209,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"secambio\",\r\n    \"lastName\": \"gutierrez\",\r\n    \"dni\": \"36555668\",\r\n    \"phone\": \"346565565\",\r\n    \"email\": \"balsojdadsasaa@il.com\",\r\n    \"city\": \"rasdasdasasdasdo\",\r\n    \"birthDay\": \"05/05/2022\",\r\n    \"postalCode\": \"200244\",\r\n    \"isActive\": true,\r\n    \"membership\": \"Black\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "localhost:4000/api/members/:id",
 							"host": [
@@ -214,7 +232,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "64642e191b6ccff25c6ec7d0"
 								}
 							]
 						}
@@ -240,7 +258,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "646126cb4cae5785da04379c"
 								}
 							]
 						}
@@ -249,329 +267,245 @@
 				}
 			]
 		},
-    {
-      "name": "Activity",
-      "item": [
-        {
-          "name": "Get all",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Trainer",
-      "item": [
-        {
-          "name": "Get all",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:4000/api/trainers/",
-              "host": [
-                "localhost"
-              ],
-              "port": "4000",
-              "path": [
-                "api",
-                "trainers",
-                ""
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "localhost:4000/api/trainers/646032cba4b0ab5a45bf8974",
-              "host": [
-                "localhost"
-              ],
-              "port": "4000",
-              "path": [
-                "api",
-                "trainers",
-                "646032cba4b0ab5a45bf8974"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"firstName\": \"ladfgskd\",\r\n    \"lastName\": \"pefgdpdfgdito\",\r\n    \"dni\": \"12341234\",\r\n    \"phone\": \"1234212312\",\r\n    \"email\": \"lucho@gmail.com\",\r\n    \"city\": \"asdfgdfd\",\r\n    \"password\": \"passwfgdo2asd\",\r\n    \"salary\": 21345323\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:4000/api/trainers/",
-              "host": [
-                "localhost"
-              ],
-              "port": "4000",
-              "path": [
-                "api",
-                "trainers",
-                ""
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{ \r\n    \"firstName\": \"Rodri\",\r\n    \"lastName\": \"durante\",\r\n    \"dni\": \"12341234\",\r\n    \"phone\": \"1234212312\",\r\n    \"email\": \"lucho@gmail.com\",\r\n    \"city\": \"asdfgdfd\",\r\n    \"password\": \"passwfgdo2asd\",\r\n    \"salary\": 21345323,\r\n    \"isActive\": false\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:4000/api/trainers/:id",
-              "host": [
-                "localhost"
-              ],
-              "port": "4000",
-              "path": [
-                "api",
-                "trainers",
-                ":id"
-              ],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": "64624da76f4839729659551f"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "localhost:4000/api/trainers/:id",
-              "host": [
-                "localhost"
-              ],
-              "port": "4000",
-              "path": [
-                "api",
-                "trainers",
-                ":id"
-              ],
-              "variable": [
-                {
-                  "key": "id",
-                  "value": "64624da76f4839729659551a"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Class",
-      "item": [
-        {
-          "name": "Get all",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Subscription",
-      "item": [
-        {
-          "name": "Get all",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ]
+		{
+			"name": "Activity",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trainer",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscription",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
 }

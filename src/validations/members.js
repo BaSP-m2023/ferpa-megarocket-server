@@ -4,12 +4,12 @@ const validateMemberUpdate = (req, res, next) => {
   const memberValidation = Joi.object({
     firstName: Joi.string().min(2).max(30),
     lastName: Joi.string().min(2).max(30),
-    dni: Joi.string().min(8).max(12).integer(),
-    phone: Joi.string().min(6).max(20).integer(),
+    dni: Joi.string().min(8).max(12),
+    phone: Joi.string().min(6).max(20),
     email: Joi.string().max(50).email(),
-    city: Joi.string().min(3).max(30),
+    city: Joi.string().min(2).max(30),
     birthDay: Joi.date().max('now'),
-    postalCode: Joi.string().min(4).max(6).required(),
+    postalCode: Joi.string().min(4).max(6),
     isActive: Joi.boolean(),
     membership: Joi.string().valid('Classic', 'Only Classes', 'Black'),
   });

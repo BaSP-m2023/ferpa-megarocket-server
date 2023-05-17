@@ -12,11 +12,11 @@ const memberSchema = new Schema({
     require: true,
   },
   dni: {
-    type: Number,
+    type: String,
     require: true,
   },
   phone: {
-    type: Number,
+    type: String,
     require: true,
   },
   email: {
