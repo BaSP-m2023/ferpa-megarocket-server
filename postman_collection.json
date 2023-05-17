@@ -716,8 +716,26 @@
           "request": {
             "method": "PUT",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"day\": \"Monday\",\r\n    \"hour\": \"9\",\r\n    \"trainerId\": \"54321\",\r\n    \"activityId\": \"3\",\r\n    \"slots\": \"3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/classes/64626922973e5b0ca8bc5b15",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "classes",
+                "64626922973e5b0ca8bc5b15"
+              ]
             }
           },
           "response": []
@@ -728,7 +746,16 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "localhost:4000/api/classes/64626a97973e5b0ca8bc5b1d",
+              "host": [
+                "localhost"
+              ],
+              "port": "4000",
+              "path": [
+                "api",
+                "classes",
+                "64626a97973e5b0ca8bc5b1d"
+              ]
             }
           },
           "response": []

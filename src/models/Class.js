@@ -12,7 +12,6 @@ const ClassSchema = new Schema({
     type: Number,
     timestamps: true,
     require: true,
-
   },
   trainerId: {
     type: String,
