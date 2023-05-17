@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const classSchema = new Schema({
+const ClassSchema = new Schema({
   day: {
     type: String,
     enum: ['Monday', 'Wednesday', 'Friday'],
@@ -10,6 +10,7 @@ const classSchema = new Schema({
   },
   hour: {
     type: Number,
+    timestamps: true,
     require: true,
   },
   trainerId: {
@@ -26,4 +27,4 @@ const classSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Class', classSchema);
+module.exports = mongoose.model('Class', ClassSchema);
