@@ -2,12 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 
+const admins = require('./admins');
+const trainers = require('./trainers');
+const members = require('./members');
+const subscriptions = require('./subscriptions');
 const classes = require('./classes');
 const superAdmins = require('./super-admins');
-const members = require('./members');
-const trainers = require('./trainers');
-const subscriptions = require('./subscriptions');
 
+router.use('/admins', admins);
 router.use('/classes', classes);
 router.use('/members', members);
 router.use('/trainers', trainers);
