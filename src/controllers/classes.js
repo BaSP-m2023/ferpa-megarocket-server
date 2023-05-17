@@ -18,7 +18,7 @@ const getAllClasses = (req, res) => {
 const getClassById = (req, res) => {
   const { id } = req.params;
   if (!id.match(regexObjectId)) {
-    res.status(404).json({
+    return res.status(404).json({
       message: 'ID invalid, please correct',
       data: undefined,
       error: true,
@@ -27,7 +27,7 @@ const getClassById = (req, res) => {
   Class.findById(id)
     .then((classes) => {
       if (!classes) {
-        res.status(404).json({
+        return res.status(404).json({
           message: `Class with the ${id} don't found`,
           data: undefined,
           error: true,
@@ -44,6 +44,7 @@ const getClassById = (req, res) => {
           error,
         }));
     });
+  return false;
 };
 
 const createClass = (req, res) => {
