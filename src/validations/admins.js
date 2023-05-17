@@ -1,23 +1,13 @@
 const Joi = require('joi');
 
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-const numberDNILength = (number, helpers) => {
-  if (number.toString().length === 9) {
-    return number;
-  } return helpers.message('Dni must be 9 numbers');
-};
-const numberPhoneLength = (number, helpers) => {
-  if (number.toString().length === 10) {
-    return number;
-  } return helpers.message('Phone must be 10 numbers');
-};
 
 const validateAdminUpdate = (req, res, next) => {
   const adminValidation = Joi.object({
     firstName: Joi.string().min(3).max(15),
     lastName: Joi.string().min(3).max(15),
-    dni: Joi.number().custom((number, helpers) => (numberDNILength(number, helpers))),
-    phone: Joi.number().custom((number, helpers) => (numberPhoneLength(number, helpers))),
+    dni: Joi.string().min(8).max(10),
+    phone: Joi.string().min(8).max(12),
     email: Joi.string().email(),
     city: Joi.string(),
     password: Joi.string().regex(passwordRegex),
