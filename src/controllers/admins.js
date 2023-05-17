@@ -34,7 +34,7 @@ const createAdmin = (req, res) => {
 const deleteAdmin = (req, res) => {
   const { id } = req.params;
   if (!id.match(regexObjectId)) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'Please put a valid ID',
       data: undefined,
       error: true,
@@ -43,13 +43,13 @@ const deleteAdmin = (req, res) => {
   Admin.findByIdAndDelete(id)
     .then((admin) => {
       if (!admin) {
-        res.status(404).json({
+        return res.status(404).json({
           message: `Admin with id: ${id} was not found.`,
           data: undefined,
           error: true,
         });
       }
-      res.status(200).json({
+      return res.status(200).json({
         message: `Admin with id: ${id} was removed.`,
         data: admin,
         error: false,
@@ -62,6 +62,7 @@ const deleteAdmin = (req, res) => {
         error,
       });
     });
+  return false;
 };
 
 module.exports = {
