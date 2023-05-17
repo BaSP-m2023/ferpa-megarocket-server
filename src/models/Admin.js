@@ -20,6 +20,7 @@ const adminSchema = new Schema({
   },
   email: {
     type: String,
+    lowercase: true,
     require: true,
   },
   city: {

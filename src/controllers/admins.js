@@ -102,8 +102,73 @@ const updateAdmin = (req, res) => {
   return false;
 };
 
+const createAdmin = (req, res) => {
+  const {
+    firstName, lastName, dni, phone, email, city, password,
+  } = req.body;
+
+  Admin.create({
+    firstName,
+    lastName,
+    dni,
+    phone,
+    email,
+    city,
+    password,
+  })
+    .then((admin) => {
+      res.status(201).json({
+        message: 'Admin created.',
+        data: admin,
+        error: false,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: 'Error',
+        error,
+      });
+    });
+};
+
+const deleteAdmin = (req, res) => {
+  const { id } = req.params;
+  if (!id.match(regexObjectId)) {
+    return res.status(400).json({
+      message: 'Please put a valid ID',
+      data: undefined,
+      error: true,
+    });
+  }
+  Admin.findByIdAndDelete(id)
+    .then((admin) => {
+      if (!admin) {
+        return res.status(404).json({
+          message: `Admin with id: ${id} was not found.`,
+          data: undefined,
+          error: true,
+        });
+      }
+      return res.status(200).json({
+        message: `Admin with id: ${id} was removed.`,
+        data: admin,
+        error: false,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: 'An error ocurred',
+        data: undefined,
+        error,
+      });
+    });
+  return false;
+};
+
 module.exports = {
   getAllAdmin,
   getAdminById,
   updateAdmin,
+  createAdmin,
+  deleteAdmin,
 };

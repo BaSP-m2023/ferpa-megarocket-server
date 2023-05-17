@@ -8,65 +8,128 @@
   },
   "item": [
     {
-      "name": "Admin",
-      "item": [
-        {
-          "name": "Get all",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get by id",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": ""
-            }
-          },
-          "response": []
-        }
-      ]
-    },
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admins",
+								""
+							]
+						},
+						"description": "StartFragment\n\nTo retrieve a list of all gym members, you can make a GET request to the following endpoint:\n\nEndFragment\n\n`localhost:4000/api/admins/`"
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/admins/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admins",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64625f981f89468f1e43bb8a"
+								}
+							]
+						},
+						"description": "To retrieve a specific gym admin by their ID, you can make a GET request to the following endpoint:\n\n`localhost:4000/api/admins/:id`\n\nReplace `:id` with the ID of the admin you want to retrieve."
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admins",
+								""
+							]
+						},
+						"description": "To add a new gym admin, make a POST request to the following endpoint:\n\n`localhost:4000/api/admins/`\n\nInclude a JSON object in the request body with the details of the admin, here is an example:\n\nStartFragment\n\n``` json\n   {\n        \"firstName\": \"Admin\",\n        \"lastName\": \"Admin\",\n        \"dni\": \"12344472\",\n        \"phone\": \"12345637\",\n        \"email\": \"admin@hotmail.com\",\n        \"city\": \"Montevideo\",\n        \"password\": \"canelones123!\"\n    }\n\n```\n\nEndFragment\n\nThe API will create a new admin with the specified details and return the details of the newly created admin in the response."
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/admins/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admins",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64625f981f89468f1e43bb8a"
+								}
+							]
+						},
+						"description": "To update an existing gym admin, make a PUT request to the following endpoint:\n\nlocalhost:4000/api/admins/:id\n\nReplace `:id` with the ID of the admin you want to update. Include a JSON object in the request body with the updated details of the admin. Here is an example:\n\n``` json\n{\n        \"city\": \"Rosario\",\n        \"password\": \"muzzarella123!\"\n    }\n\n```\n\nThe API will update the admin with the specified ID with the new details and return the updated details in the response."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/admins/2323",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admins",
+								"2323"
+							]
+						},
+						"description": "To delete an existing gym admin, make a DELETE request to the following endpoint:\n\n`localhost:4000/api/admins/:id`\n\nReplace `:id` with the ID of the admin you want to delete. This action cannot be undone, so make sure you want to delete the admin before making the request."
+					},
+					"response": []
+				}
+			],
+			"description": "The folder of Admin contains the API endpoints and associated documentation for interacting with the gym's admins."
+		},
     {
       "name": "SuperAdmin",
       "item": [
