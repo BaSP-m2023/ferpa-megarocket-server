@@ -3,10 +3,6 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const memberSchema = new Schema({
-  id: {
-    type: Number,
-    require: true,
-  },
   firstName: {
     type: String,
     require: true,
@@ -16,11 +12,11 @@ const memberSchema = new Schema({
     require: true,
   },
   dni: {
-    type: Number,
+    type: String,
     require: true,
   },
   phone: {
-    type: Number,
+    type: String,
     require: true,
   },
   email: {
@@ -41,7 +37,7 @@ const memberSchema = new Schema({
   },
   isActive: {
     type: Boolean,
-    require: true,
+    default: true,
   },
   membership: {
     type: String,
