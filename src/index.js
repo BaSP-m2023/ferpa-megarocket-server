@@ -1,24 +1,23 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
+/* eslint-disable no-console */
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import app from './app';
 
-const router = require('./routes');
+dotenv.config();
 
-const app = express();
-const port = process.env.PORT || 4000;
+mongoose.connect(process.env.MONGO_DB_CONNECT_URL)
+  .then(() => console.log('MongoDB connected'))
+  .catch((e) => console.log(e));
 
-app.use(cors());
-app.use(express.json());
-
-const DB_URL = 'mongodb+srv://ferpa-team:sJMD9bZjg8Bq4ntf@megarocket-databases.inpprte.mongodb.net/ferpa-database';
-
-mongoose
-  .connect(DB_URL, { maxPoolSize: process.env.MONGO_POOLSIZE || 1 })
-  .then(() => console.log('Mongo db connected'))
-  .catch((error) => console.log('Error: ', error));
-
-app.use('/api', router);
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.get('/', (req, res) => {
+  res.send('Hello World!');
 });
+
+try {
+  app.listen(process.env.PORT, (error) => {
+    if (error) throw error;
+    console.log(`Server listening on port: ${process.env.PORT}`);
+  });
+} catch (error) {
+  console.log('There was an error starting the server: ', error);
+}
