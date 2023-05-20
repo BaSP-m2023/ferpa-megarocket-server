@@ -5,7 +5,7 @@ import app from './app';
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_DB_CONNECT_URL)
+mongoose.connect(process.env.MONGO_DB_CONNECT_URL, { maxPoolSize: process.env.MONGO_POOLSIZE || 1 })
   .then(() => console.log('MongoDB connected'))
   .catch((e) => console.log(e));
 
