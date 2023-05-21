@@ -2,7 +2,7 @@ const Subscription = require('../models/Subscription');
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
-const getAllSubWeek = (req, res) => {
+const getAllSubThisWeek = (req, res) => {
   const currentDate = new Date();
   const currentWeekStart = new Date(
     currentDate.getFullYear(),
@@ -16,7 +16,7 @@ const getAllSubWeek = (req, res) => {
   );
   Subscription.where('date').gte(currentWeekStart).lte(currentWeekEnd).populate('_class member')
     .then((subscriptions) => res.status(200).json({
-      message: 'Complete subscriptions list',
+      message: 'This week subscriptions',
       data: subscriptions,
       error: false,
     }))
@@ -36,7 +36,7 @@ const getSubById = (req, res) => {
       error: true,
     });
   }
-  Subscription.findById(id)
+  Subscription.findById(id).populate('_class member')
     .then((result) => {
       if (!result) {
         res.status(404).json({
@@ -168,7 +168,7 @@ const deleteSub = (req, res) => {
 };
 
 module.exports = {
-  getAllSubWeek,
+  getAllSubThisWeek,
   getSubById,
   createSub,
   updateSub,
