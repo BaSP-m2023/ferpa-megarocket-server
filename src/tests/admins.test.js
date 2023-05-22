@@ -58,3 +58,13 @@ describe('PUT/api/admins/:id', () => {
     expect(res.body.error).toBeTruthy();
   });
 });
+
+describe('GET/api/admins/:id', () => {
+  test('should show the updated admin', async () => {
+    const res = await request(app).get('/api/admins/646550c10425c5c72ff19102').send();
+    // eslint-disable-next-line no-underscore-dangle
+    expect(res.body.data._id).toEqual('646550c10425c5c72ff19102');
+    expect(res.body.data.firstName).toEqual('Juan');
+    expect(res.status).toBe(200);
+  });
+});
