@@ -3,16 +3,6 @@ import app from '../app';
 import adminsSeed from '../seeds/admins';
 import Admins from '../models/Admin';
 
-// const updAdmin = {
-//   firstName: 'Euge',
-//   lastName: 'Admin',
-//   dni: '11111111',
-//   phone: '22222222',
-//   email: 'admin@admin.com',
-//   city: 'Rosario',
-//   password: 'canelones1234!',
-// };
-
 beforeAll(async () => {
   await Admins.collection.insertMany(adminsSeed);
 });
@@ -23,7 +13,7 @@ describe('GET/api/admins', () => {
     expect(res.status).toBe(200);
     expect(res.error).toBeFalsy();
   });
-  test('should throw a wrong path error and status 404', async () => {
+  test('should throw error for a wrong path and status 404', async () => {
     const res = await request(app).get('/api/admin').send();
     expect(res.status).toBe(404);
     expect(res.error).toBeTruthy();
@@ -32,6 +22,7 @@ describe('GET/api/admins', () => {
     const res = await request(app).get('/api/admins/64654f260425c5c72ff190fe').send();
     // eslint-disable-next-line no-underscore-dangle
     expect(res.body.data._id).toEqual('64654f260425c5c72ff190fe');
+    expect(res.body.data.firstName).toEqual('Euge');
     expect(res.status).toBe(200);
     expect(res.error).toBeFalsy();
   });
@@ -47,10 +38,23 @@ describe('GET/api/admins', () => {
   });
 });
 
-// describe('PUT/api/admins/:id', () => {
-//   test('should update an admin by id', async () => {
-//     const res = await request(app).put('/api/admins/646550c10425c5c72ff19102').send(updAdmin);
-//     expect(res.status).toBe(200);
-//     expect(res.body.error).toBeFalsy();
-//   });
-// });
+describe('PUT/api/admins/:id', () => {
+  test('should update an admin by id', async () => {
+    const updAdmin = { firstName: 'Juan', lastName: 'Admin', dni: '123456789' };
+    const res = await request(app).put('/api/admins/646550c10425c5c72ff19102').send(updAdmin);
+    expect(res.status).toBe(200);
+    expect(res.body.error).toBeFalsy();
+  });
+  test('should not update an admin for invalid by id', async () => {
+    const updAdmin = { firstName: 'Juan', lastName: 'Admin', dni: '123456789' };
+    const res = await request(app).put('/api/admins/646550c10425c5c7').send(updAdmin);
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBeTruthy();
+  });
+  test('should not update an admin for non-existent id', async () => {
+    const updAdmin = { firstName: 'Juan', lastName: 'Admin', dni: '123456789' };
+    const res = await request(app).put('/api/admins/646550c10425c5c72ff19103').send(updAdmin);
+    expect(res.status).toBe(404);
+    expect(res.body.error).toBeTruthy();
+  });
+});

@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 export default [
   {
     _id: new mongoose.Types.ObjectId('64654f260425c5c72ff190fe'),
-    firstName: 'mmmm',
-    lastName: 'Admin',
+    firstName: 'Euge',
+    lastName: 'Admins',
     dni: '123456789',
     phone: '1234567897',
     email: 'admin@gmail.com',
@@ -13,7 +13,7 @@ export default [
   },
   {
     _id: new mongoose.Types.ObjectId('646550c10425c5c72ff19102'),
-    firstName: 'mmmm',
+    firstName: 'Eugenia',
     lastName: 'Admin',
     dni: '123456789',
     phone: '1234567897',
