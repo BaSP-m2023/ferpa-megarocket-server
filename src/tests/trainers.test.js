@@ -22,7 +22,15 @@ beforeAll(async () => {
 });
 
 describe('PUT /api/trainers', () => {
-  test('check if the database is increased by 1', async () => {
+  test('check if the data change correctly', async () => {
+    let response = await request(app).get(`/api/trainers/${mockTrainerId}`).send();
+    const seedGet = response.body.data;
+    response = await request(app).put(`/api/trainers/${mockTrainerId}`).send(mockTrainer);
+    expect(response.status).toBe(200);
+    response = await request(app).get(`/api/trainers/${mockTrainerId}`).send();
+    expect(seedGet !== response.body.data).toBeTruthy();
+  });
+  test('should return status 200', async () => {
     const response = await request(app).put(`/api/trainers/${mockTrainerId}`).send(mockTrainer);
     expect(response.status).toBe(200);
     expect(response.error).toBeFalsy();
@@ -50,6 +58,11 @@ describe('DELETE /api/trainers', () => {
   });
   test('should return status 404', async () => {
     const response = await request(app).delete(`/api/trainer/${mockTrainerId}`).send(mockTrainer);
+    expect(response.status).toBe(404);
+    expect(response.error).toBeTruthy();
+  });
+  test('should not delete a trainer that was previously deleted', async () => {
+    const response = await request(app).delete(`/api/trainers/${mockTrainerId}`);
     expect(response.status).toBe(404);
     expect(response.error).toBeTruthy();
   });
