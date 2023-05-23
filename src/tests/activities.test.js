@@ -19,10 +19,6 @@ beforeAll(async () => {
   await Activity.collection.insertMany(activitiesSeed);
 });
 
-test('should pass a basic test', () => {
-  expect(1 + 1).toBe(2);
-});
-
 describe('GET /api/activities', () => {
   test('Should return status 200', async () => {
     const response = await request(app).get('/api/activities').send();
