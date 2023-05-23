@@ -55,3 +55,25 @@ describe('POST /api/Members', () => {
     expect(response.body.data.length).toBe(4);
   });
 });
+
+describe('GET /api/members/', () => {
+  test('should show members and return status 200', async () => {
+    const response = await request(app).get('/api/members').send();
+    expect(response.status).toBe(200);
+    expect(response.error).toBeFalsy();
+  });
+  test('should return status 404', async () => {
+    const response = await request(app).get('/api/Member/invalid').send();
+    expect(response.status).toBe(404);
+    expect(response.error).toBeTruthy();
+  });
+  test('should return members with a valid JSON response', async () => {
+    const response = await request(app).get('/api/members').send();
+    expect(response.header['content-type']).toMatch(/application\/json/);
+  });
+  test('members length should be 4', async () => {
+    const response = await request(app).get('/api/members').send();
+    expect(response.status).toBe(200);
+    expect(response.body.data.length).toBe(4);
+  });
+});
