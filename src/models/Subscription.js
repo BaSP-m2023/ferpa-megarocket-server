@@ -4,12 +4,12 @@ const { Schema } = mongoose;
 
 const subSchema = new Schema(
   {
-    _class: {
+    classId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Class',
       require: true,
     },
-    member: {
+    memberId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Member',
       require: true,

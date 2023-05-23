@@ -5,8 +5,8 @@ const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
 const validateSubCreation = (req, res, next) => {
   const subValidation = Joi.object({
-    _class: Joi.string().regex(regexObjectId).required(),
-    member: Joi.string().regex(regexObjectId).required(),
+    classId: Joi.string().regex(regexObjectId).required(),
+    memberId: Joi.string().regex(regexObjectId).required(),
     date: Joi.string().regex(dateRegex).required(),
   });
 
@@ -22,8 +22,8 @@ const validateSubCreation = (req, res, next) => {
 
 const validateSubUpdate = (req, res, next) => {
   const subValidation = Joi.object({
-    _class: Joi.string().regex(regexObjectId),
-    member: Joi.string().regex(regexObjectId),
+    classId: Joi.string().regex(regexObjectId),
+    memberId: Joi.string().regex(regexObjectId),
     date: Joi.string().regex(dateRegex),
   });
 

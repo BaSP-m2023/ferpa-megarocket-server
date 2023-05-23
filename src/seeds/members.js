@@ -1,0 +1,43 @@
+import mongoose from 'mongoose';
+
+export default [
+  {
+    _id: new mongoose.Types.ObjectId('6462439ab74486265babed70'),
+    firstName: 'Ernestito',
+    lastName: 'Pereira',
+    dni: '362355123456',
+    phone: '3425565',
+    email: 'mailmail@il.com',
+    city: 'Concordia',
+    birthDay: '1997-05-03T03:00:00.000Z',
+    postalCode: '2334',
+    isActive: 'false',
+    membership: 'Classic',
+  },
+  {
+    _id: new mongoose.Types.ObjectId('646243a5b74486265babed72'),
+    firstName: 'Juan',
+    lastName: 'Martinez',
+    dni: '362355133456',
+    phone: '3425565',
+    email: 'mail@il.com',
+    city: 'Concordia',
+    birthDay: '1995-05-03T03:00:00.000Z',
+    postalCode: '2334',
+    isActive: 'true',
+    membership: 'Classic',
+  },
+  {
+    _id: new mongoose.Types.ObjectId('64624537b74486265babed78'),
+    firstName: 'Marcos',
+    lastName: 'Rodriguez',
+    dni: '362355113456',
+    phone: '3425515',
+    email: 'mail23@til.com',
+    city: 'Rosario',
+    birthDay: '1999-05-03T03:00:00.000Z',
+    postalCode: '1334',
+    isActive: 'true',
+    membership: 'Black',
+  },
+];

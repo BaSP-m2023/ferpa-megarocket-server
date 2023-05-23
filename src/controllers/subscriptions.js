@@ -2,7 +2,21 @@ const Subscription = require('../models/Subscription');
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
-const getAllSubThisWeek = (req, res) => {
+const getAllSub = (req, res) => {
+  Subscription.find().populate('classId memberId')
+    .then((subscriptions) => res.status(200).json({
+      message: 'Complete subscriptions list',
+      data: subscriptions,
+      error: false,
+    }))
+    .catch(() => res.status(500).json({
+      message: 'An error ocurred',
+      data: undefined,
+      error: true,
+    }));
+};
+
+const getAllSubThisWeek = async (req, res) => {
   const currentDate = new Date();
   const currentWeekStart = new Date(
     currentDate.getFullYear(),
@@ -14,7 +28,7 @@ const getAllSubThisWeek = (req, res) => {
     currentDate.getMonth(),
     currentDate.getDate() - currentDate.getDay() + 6,
   );
-  Subscription.where('date').gte(currentWeekStart).lte(currentWeekEnd).populate('_class member')
+  Subscription.where('date').gte(currentWeekStart).lte(currentWeekEnd).populate('classId memberId')
     .then((subscriptions) => res.status(200).json({
       message: 'This week subscriptions',
       data: subscriptions,
@@ -36,7 +50,7 @@ const getSubById = (req, res) => {
       error: true,
     });
   }
-  Subscription.findById(id).populate('_class member')
+  Subscription.findById(id).populate('classId memberId')
     .then((result) => {
       if (!result) {
         res.status(404).json({
@@ -59,11 +73,11 @@ const getSubById = (req, res) => {
 };
 
 const createSub = (req, res) => {
-  const { _class, member, date } = req.body;
+  const { classId, memberId, date } = req.body;
 
   Subscription.findOne({
-    _class,
-    member,
+    classId,
+    memberId,
     date,
   })
     .then((result) => {
@@ -74,8 +88,8 @@ const createSub = (req, res) => {
         });
       } else {
         Subscription.create({
-          _class,
-          member,
+          classId,
+          memberId,
           date,
         })
           .then((newSub) => res.status(201).json({
@@ -94,7 +108,7 @@ const createSub = (req, res) => {
 
 const updateSub = (req, res) => {
   const { id } = req.params;
-  const { _class, member, date } = req.body;
+  const { classId, memberId, date } = req.body;
 
   if (!id.match(regexObjectId)) {
     res.status(404).json({
@@ -107,8 +121,8 @@ const updateSub = (req, res) => {
   Subscription.findByIdAndUpdate(
     id,
     {
-      _class,
-      member,
+      classId,
+      memberId,
       date,
     },
     { new: true },
@@ -168,6 +182,7 @@ const deleteSub = (req, res) => {
 };
 
 module.exports = {
+  getAllSub,
   getAllSubThisWeek,
   getSubById,
   createSub,
