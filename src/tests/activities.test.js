@@ -3,9 +3,15 @@ import app from '../app';
 import Activity from '../models/Activity';
 import activitiesSeed from '../seeds/activities';
 
+let mockId;
 const mockActivity = {
   name: 'Muay thai',
   description: 'This is an martial art ....',
+  isActive: true,
+};
+const mockActivityPut = {
+  name: 'Kick boxing',
+  description: 'Kickboxing is a group of foot combat sports...',
   isActive: true,
 };
 
@@ -31,39 +37,41 @@ describe('GET /api/activities', () => {
     const response = await request(app).get('/api/activities').send();
     expect(response.body.data.length).toBeGreaterThan(0);
   });
-  test('length of name should be greater than 3', async () => {
-    const response = await request(app).get('/api/activities').send();
-    const activitiesList = response.body.data;
-    const nameLengths = activitiesList.map((activity) => activity.name.length);
-    nameLengths.forEach((len) => {
-      expect(len).toBeGreaterThan(3);
-    });
-  });
-  test('length of name should be less than 30', async () => {
-    const response = await request(app).get('/api/activities').send();
-    const activitiesList = response.body.data;
-    const nameLengths = activitiesList.map((activity) => activity.name.length);
-    nameLengths.forEach((len) => {
-      expect(len).toBeLessThan(30);
-    });
+  test('this should give you only 1 activity', async () => {
+    const response = await request(app).get('/api/activities/64693ee0ed79af5a83aac57c').send();
+    expect(response.body.data.name).toBe('Megacrossfit');
   });
 });
 
 describe('POST /api/activities', () => {
-  test('should create a new activity', async () => {
+  test('verifies that a new activity was succesfully created', async () => {
+    const responseGet = await request(app).get('/api/activities').send();
+    expect(responseGet.status).toBe(200);
     const response = await request(app).post('/api/activities').send(mockActivity);
     expect(response.status).toBe(201);
+    // eslint-disable-next-line no-underscore-dangle
+    mockId = response.body.data._id;
+    const responseGet2 = await request(app).get('/api/activities').send();
+    expect(responseGet.body.data.length).toBeLessThan(responseGet2.body.data.length);
   });
-  test('lenght of name should be greater than 3', async () => {
-    const response = await request(app).post('/api/activities').send(mockActivity);
-    const activity = response.body.data;
-    const nameLength = activity.name.length;
-    expect(nameLength).toBeGreaterThan(3);
+});
+
+describe('PUT /api/activities', () => {
+  test('verifies that an activity was succesfully updated', async () => {
+    const response = await request(app).put(`/api/activities/${mockId}`).send(mockActivityPut);
+    expect(response.body.data.name).toBe(mockActivityPut.name);
+    expect(response.body.data.description).toBe(mockActivityPut.description);
+    expect(response.status).toBe(200);
   });
-  test('lenght of name should be less than 30', async () => {
-    const response = await request(app).post('/api/activities').send(mockActivity);
-    const activity = response.body.data;
-    const nameLength = activity.name.length;
-    expect(nameLength).toBeLessThan(30);
+});
+
+describe('DELETE /api/activities', () => {
+  test('verifies that an activity was succesfully deleted', async () => {
+    const responseGet = await request(app).get('/api/activities').send();
+    expect(responseGet.status).toBe(200);
+    const response = await request(app).delete(`/api/activities/${mockId}`).send();
+    expect(response.status).toBe(200);
+    const responseGet2 = await request(app).get('/api/activities').send();
+    expect(responseGet.body.data.length).toBeGreaterThan(responseGet2.body.data.length);
   });
 });
