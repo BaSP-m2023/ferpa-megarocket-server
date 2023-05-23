@@ -5,11 +5,13 @@ const { Schema } = mongoose;
 const subSchema = new Schema(
   {
     classId: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Class',
       require: true,
     },
     memberId: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Member',
       require: true,
     },
     date: {
