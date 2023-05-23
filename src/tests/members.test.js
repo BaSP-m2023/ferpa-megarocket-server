@@ -36,19 +36,19 @@ describe('POST /api/Members', () => {
     expect(response.body.data.length).toBe(3);
   });
   test('should return status 404', async () => {
-    const response = await request(app).post('/api/Member/invalid').send();
+    const response = await request(app).post('/api/member/invalid').send();
     expect(response.status).toBe(404);
     expect(response.error).toBeTruthy();
   });
   test('should create an employee with status 201', async () => {
-    const response = await request(app).post('/api/Members').send(mockMember);
+    const response = await request(app).post('/api/members').send(mockMember);
     expect(response.status).toBe(201);
     expect(response.error).toBeFalsy();
     // eslint-disable-next-line no-underscore-dangle
     mockMemberId = response.body.data._id;
   });
   test('should return the created member in the response body', async () => {
-    const response = await request(app).get(`/api/Members/${mockMemberId}`).send();
+    const response = await request(app).get(`/api/members/${mockMemberId}`).send();
     expect(response.status).toBe(200);
     expect(response.error).toBeFalsy();
     expect(response.body).toHaveProperty('data');
@@ -64,15 +64,15 @@ describe('POST /api/Members', () => {
 
 describe('PUT /api/Members', () => {
   test('should return the updated member in the response body', async () => {
-    let response = await request(app).get(`/api/Members/${mockMemberId}`).send();
+    let response = await request(app).get(`/api/members/${mockMemberId}`).send();
     expect(response.status).toBe(200);
     expect(response.error).toBeFalsy();
     expect(response.body).toHaveProperty('data');
     expect(response.body.data).toMatchObject(mockMember);
-    response = await request(app).put(`/api/Members/${mockMemberId}`).send(mockMemberUpdate);
+    response = await request(app).put(`/api/members/${mockMemberId}`).send(mockMemberUpdate);
     expect(response.status).toBe(200);
     expect(response.error).toBeFalsy();
-    response = await request(app).get(`/api/Members/${mockMemberId}`).send();
+    response = await request(app).get(`/api/members/${mockMemberId}`).send();
     expect(response.status).toBe(200);
     expect(response.error).toBeFalsy();
     expect(response.body).toHaveProperty('data');
