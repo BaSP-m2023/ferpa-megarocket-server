@@ -16,6 +16,10 @@ const mockClasses = {
   slots: 2,
 };
 
+const upClasses = {
+  day: 'Friday',
+};
+
 beforeAll(async () => {
   await Class.collection.insertMany(classes);
   await Trainer.collection.insertMany(trainers);
@@ -63,5 +67,35 @@ describe('POST/api/classes', () => {
     const res = await request(app).post('/api/classes').send();
     expect(res.status).toBe(500);
     expect(res.status).toBeTruthy();
+  });
+});
+
+describe('PUT/api/classes', () => {
+  test('should update Friday of classes', async () => {
+    const response = await request(app).put('/api/classes/6462d8c5afd4e4d023690d65')
+      .send(upClasses);
+    expect(response.statusCode).toBe(200);
+    expect(response.body.data.day).toEqual('Friday');
+  });
+
+  test('should not update because the invalid ID', async () => {
+    const response = await request(app).put('/api/classes/6462d8c5afd4e4d023690d67')
+      .send(upClasses);
+    expect(response.status).toBe(404);
+    expect(response.error).toBeTruthy();
+  });
+});
+
+describe('DELETE/api/classes', () => {
+  test('should delete class by ID', async () => {
+    const response = await request(app).delete('/api/classes/6462d8c5afd4e4d023690d64').send();
+    expect(response.status).toBe(200);
+    expect(response.error).toBeFalsy();
+  });
+
+  test('should return error when try to find the ID deleted', async () => {
+    const response = await request(app).get('/api/classes/6462d8c5afd4e4d023690d64').send();
+    expect(response.status).toBe(404);
+    expect(response.error).toBeTruthy();
   });
 });
