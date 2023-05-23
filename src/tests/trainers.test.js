@@ -39,11 +39,11 @@ describe('GET/api/trainers', () => {
     const res = await request(app).get('/api/trainers/64667332ecb50c522415bea5').send();
     expect(res.status).toBe(200);
   });
-  test('Should get a 404 response on an ID', async () => {
+  test('Should return an error with a non-existent ID', async () => {
     const res = await request(app).get('/api/trainers/64667332ecb50c522415bea2').send();
     expect(res.status).toBe(404);
   });
-  test('Should get a 400 response on an ID', async () => {
+  test('Should return an error with an invalid ID format', async () => {
     const res = await request(app).get('/api/trainers/6466733').send();
     expect(res.status).toBe(400);
   });
