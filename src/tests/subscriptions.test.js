@@ -68,7 +68,6 @@ describe('POST /api/subscriptions', () => {
   });
   test('POST: should return the dni: 362355133456 from the member of the new subscription', async () => {
     let response = await request(app).post('/api/subscriptions/').send(mockSubscription2);
-    // eslint-disable-next-line no-underscore-dangle
     expect(response.status).toBe(201);
     // eslint-disable-next-line no-underscore-dangle
     subId = response.body.data._id;
