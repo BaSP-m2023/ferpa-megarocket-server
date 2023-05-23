@@ -19,7 +19,7 @@ const getTrainerById = (req, res) => {
   const { id } = req.params;
 
   if (id.length !== 24) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'Invalid id, try again',
       data: undefined,
       error: true,
@@ -28,22 +28,26 @@ const getTrainerById = (req, res) => {
   Trainer.findById(id)
     .then((trainer) => {
       if (!trainer) {
-        res.status(404).json({
+        return res.status(404).json({
           message: `Trainers with the id ${id} was not found.`,
+          data: undefined,
           error: true,
         });
-      } else {
-        res.status(200).json({
-          message: `Trainers with the id ${id} was succesfully found.`,
-          data: trainer,
-          error: false,
-        });
       }
+      return res.status(200).json({
+        message: `Trainers with the id ${id} was succesfully found.`,
+        data: trainer,
+        error: false,
+      });
     })
-    .catch((error) => res.json({
-      message: 'An error ocurred.',
-      error,
-    }));
+    .catch((error) => {
+      res.json({
+        message: 'An error ocurred.',
+        data: undefined,
+        error,
+      });
+    });
+  return false;
 };
 
 const createTrainer = (req, res) => {
