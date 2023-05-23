@@ -46,7 +46,7 @@ const createMember = (req, res) => {
 const updateMember = (req, res) => {
   const { id } = req.params;
   if (!id.match(regexObjectId)) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'Id invalid, try again!',
       data: undefined,
       error: true,
@@ -88,9 +88,11 @@ const updateMember = (req, res) => {
       })
       .catch((error) => res.status(500).json({
         message: 'An error ocurred!',
+        data: undefined,
         error,
       }));
   }
+  return false;
 };
 
 const getMemberById = (req, res) => {
@@ -117,13 +119,11 @@ const getMemberById = (req, res) => {
         error: false,
       });
     })
-    .catch((error) => {
-      res.status(500).json({
-        message: 'An error ocurred',
-        data: undefined,
-        error,
-      });
-    });
+    .catch((error) => res.status(500).json({
+      message: 'An error ocurred!',
+      data: undefined,
+      error,
+    }));
   return false;
 };
 
