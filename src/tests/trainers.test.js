@@ -27,8 +27,8 @@ describe('GET/api/trainers', () => {
     const res = await request(app).get('/api/trainer').send();
     expect(res.status).toBe(404);
   });
-  test('should return a valid JSON response', async () => {
-    const response = await request(app).get('/api/members').send();
+  test('Should return a valid JSON response', async () => {
+    const response = await request(app).get('/api/trainers').send();
     expect(response.header['content-type']).toMatch(/application\/json/);
   });
   test('Return 4 trainers', async () => {
@@ -59,7 +59,7 @@ describe('POST/api/trainers', () => {
     expect(res.status).toBe(404);
   });
   test('Should return a valid JSON response', async () => {
-    const response = await request(app).get('/api/members').send();
+    const response = await request(app).get('/api/trainers').send();
     expect(response.header['content-type']).toMatch(/application\/json/);
   });
   test('Should create a trainer and return the new succesfully', async () => {
