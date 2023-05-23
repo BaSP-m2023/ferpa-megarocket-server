@@ -4,22 +4,22 @@ import Class from '../models/Class';
 import classes from '../seeds/classes';
 import Trainer from '../models/Trainer';
 import trainers from '../seeds/trainers';
-// import Activity from '../models/Activity';
-// import activities from '../seeds/activities';
+import Activity from '../models/Activity';
+import activities from '../seeds/activities';
 
-/* const mockclasses = {
+const mockClasses = {
   _id: '6462d8c5afd4e4d023690d66',
   day: 'Monday',
   hour: 15,
   trainerId: '6465a78f192b0cfa3aaa8f92',
   activityId: '6465a78f192b0cfa3aaa8f91',
   slots: 2,
-}; */
+};
 
 beforeAll(async () => {
   await Class.collection.insertMany(classes);
   await Trainer.collection.insertMany(trainers);
-// await Activity.collection.insertMany(activities);
+  await Activity.collection.insertMany(activities);
 });
 
 describe('GET/api/classes', () => {
@@ -51,13 +51,17 @@ describe('GET/api/classes', () => {
   });
 });
 
-/* describe('POST/api/classes', async () => {
-  const response = await request(app).post('/api/classes').send(mockclasses);
-  expect(response.status).toBe(201);
-}); */
+describe('POST/api/classes', () => {
+  test('should created new class', async () => {
+    const response = await request(app).post('/api/classes/').send(mockClasses);
+    expect(response.body.message).toBe('Class created!');
+    expect(response.statusCode).toBe(201);
+    expect(response.body.error).toBeFalsy();
+  });
 
-/* test('should fail with message: "A class with ID already exist"', async () => {
-  const response = await request(app).post('/api/classes').send(mockclasses);
-  expect(response.body.message).toBe('A class with ID already exist');
-  expect(response.body.error).toBeTruthy();
-}); */
+  test('Should get error 500 when you create a class', async () => {
+    const res = await request(app).post('/api/classes').send();
+    expect(res.status).toBe(500);
+    expect(res.status).toBeTruthy();
+  });
+});

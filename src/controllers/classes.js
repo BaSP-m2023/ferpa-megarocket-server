@@ -59,7 +59,7 @@ const createClass = (req, res) => {
     activityId,
     slots,
   })
-    .then((classes) => res.status(200).json({
+    .then((classes) => res.status(201).json({
       message: 'Class created!',
       data: classes,
       error: false,

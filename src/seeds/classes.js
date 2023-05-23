@@ -6,7 +6,7 @@ export default [
     day: 'Monday',
     hour: 15,
     trainerId: new mongoose.Types.ObjectId('64667332ecb50c522415bea5'),
-    activityId: new mongoose.Types.ObjectId('646696cc4cbfe1552edfbea8'),
+    activityId: new mongoose.Types.ObjectId('64693ee0ed79af5a83aac57c'),
     slots: 2,
   },
   {
@@ -14,7 +14,7 @@ export default [
     day: 'Friday',
     hour: 10,
     trainerId: new mongoose.Types.ObjectId('64667332ecb50c522415bea3'),
-    activityId: new mongoose.Types.ObjectId('6465a78f192b0cfa3aaa8f91'),
+    activityId: new mongoose.Types.ObjectId('646936a8c657bcbd138eaf3c'),
     slots: 5,
   },
   {
@@ -22,7 +22,7 @@ export default [
     day: 'Wednesday',
     hour: 12,
     trainerId: new mongoose.Types.ObjectId('64667332ecb50c522415bea8'),
-    activityId: new mongoose.Types.ObjectId('646798af48689417f301fdad'),
+    activityId: new mongoose.Types.ObjectId('64693ee0ed79af5a83aac57c'),
     slots: 6,
   },
 ];
