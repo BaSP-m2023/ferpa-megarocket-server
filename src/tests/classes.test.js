@@ -65,7 +65,7 @@ describe('POST/api/classes', () => {
   test('Should get error 500 when you create a class', async () => {
     const res = await request(app).post('/api/classes').send();
     expect(res.status).toBe(500);
-    expect(res.status).toBeTruthy();
+    expect(res.error).toBeTruthy();
   });
 });
 
