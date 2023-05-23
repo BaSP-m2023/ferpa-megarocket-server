@@ -1,7 +1,6 @@
 const Member = require('../models/Member');
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
-
 const getAllMembers = (req, res) => {
   Member.find()
     .then((members) => res.status(200).json({
@@ -14,12 +13,10 @@ const getAllMembers = (req, res) => {
       error,
     }));
 };
-
 const createMember = (req, res) => {
   const {
     firstName, lastName, dni, phone, email, city, birthDay, postalCode, isActive, membership,
   } = req.body;
-
   Member.create({
     firstName,
     lastName,
@@ -42,7 +39,6 @@ const createMember = (req, res) => {
       error,
     }));
 };
-
 const updateMember = (req, res) => {
   const { id } = req.params;
   if (!id.match(regexObjectId)) {
@@ -55,7 +51,6 @@ const updateMember = (req, res) => {
     const {
       firstName, lastName, dni, phone, email, city, birthDay, postalCode, isActive, membership,
     } = req.body;
-
     Member.findByIdAndUpdate(
       id,
       {
@@ -94,7 +89,6 @@ const updateMember = (req, res) => {
   }
   return false;
 };
-
 const getMemberById = (req, res) => {
   const { id } = req.params;
   if (!id.match(regexObjectId)) {
@@ -126,7 +120,6 @@ const getMemberById = (req, res) => {
     }));
   return false;
 };
-
 const deleteMember = (req, res) => {
   const { id } = req.params;
   if (!id.match(regexObjectId)) {
@@ -160,7 +153,6 @@ const deleteMember = (req, res) => {
     });
   return false;
 };
-
 module.exports = {
   getAllMembers,
   createMember,
