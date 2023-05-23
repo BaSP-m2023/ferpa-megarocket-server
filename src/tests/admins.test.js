@@ -19,28 +19,44 @@ beforeAll(async () => {
 });
 
 describe('POST /api/admins', () => {
-  test('POST: Should return a status 201 when an new admin is created', async () => {
+  test('POST: Should return a status 201', async () => {
     const response = await request(app)
       .post('/api/admins')
       .send(mockAdmin);
     expect(response.statusCode).toBe(201);
   });
-  test('POST: Admin should have a valid password', async () => {
+  test('POST: Should return a status 400', async () => {
     const response = await request(app)
       .post('/api/admins')
-      .send(mockAdmin);
-    const admin = response.body.data;
-    expect(admin.password).toMatch(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/);
+      .send('hello');
+    expect(response.statusCode).toBe(400);
   });
   test('POST: A new admin should be added to the database', async () => {
     let response = await request(app)
       .post('/api/admins')
       .send(mockAdmin);
+    expect(response.statusCode).toBe(201);
     // eslint-disable-next-line no-underscore-dangle
     const newAdminId = response.body.data._id;
+    const newAdminEmail = response.body.data.email;
     response = await request(app)
       .get(`/api/admins/${newAdminId}`);
     expect(response.statusCode).toBe(200);
+    expect(response.body.data.email).toBe(newAdminEmail);
+  });
+  test('POST: The length of the data should increase by one', async () => {
+    let response = await request(app)
+      .get('/api/admins');
+    expect(response.statusCode).toBe(200);
+    const dataLengthBeforePost = response.body.data.length;
+    response = await request(app)
+      .post('/api/admins/')
+      .send(mockAdmin);
+    expect(response.statusCode).toBe(201);
+    response = await request(app)
+      .get('/api/admins/');
+    const dataLengthAfterPost = response.body.data.length;
+    expect(dataLengthBeforePost + 1).toBe(dataLengthAfterPost);
   });
 });
 
