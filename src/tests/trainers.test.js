@@ -8,12 +8,12 @@ const mockTrainerId = '64667332ecb50c522415bea5';
 const mockTrainer = {
   firstName: 'Galo',
   lastName: 'Durante',
-  dni: '37966681',
-  phone: '11457345911',
-  email: 'lolero@gmail.com',
-  password: 'askda2314K',
+  dni: '37966687',
+  phone: '11457345909',
+  email: 'araña@gmail.com',
+  password: 'askda231K',
   city: 'pepitojuarez',
-  salary: 2355635,
+  salary: 2355634,
   isActive: true,
 };
 
@@ -24,11 +24,11 @@ beforeAll(async () => {
 describe('PUT /api/trainers', () => {
   test('check if the data change correctly', async () => {
     let response = await request(app).get(`/api/trainers/${mockTrainerId}`).send();
-    const seedGet = response.body.data;
+    const seedGetDni = response.body.data.dni;
     response = await request(app).put(`/api/trainers/${mockTrainerId}`).send(mockTrainer);
     expect(response.status).toBe(200);
     response = await request(app).get(`/api/trainers/${mockTrainerId}`).send();
-    expect(seedGet !== response.body.data).toBeTruthy();
+    expect(response.body.data.dni !== seedGetDni).toBeTruthy();
   });
   test('should return status 200', async () => {
     const response = await request(app).put(`/api/trainers/${mockTrainerId}`).send(mockTrainer);
