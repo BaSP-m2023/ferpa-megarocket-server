@@ -39,13 +39,11 @@ describe('GET/api/admins', () => {
 });
 
 describe('PUT/api/admins/:id', () => {
-  test('should update an admin by id', async () => {
+  test('you must update an admin', async () => {
     const updAdmin = { firstName: 'Juan', lastName: 'Admin', dni: '123456789' };
-    const res = await request(app).put('/api/admins/646550c10425c5c72ff19102').send(updAdmin);
-    expect(res.status).toBe(200);
-    expect(res.body.error).toBeFalsy();
-  });
-  test('should show the updated admin', async () => {
+    const response = await request(app).put('/api/admins/646550c10425c5c72ff19102').send(updAdmin);
+    expect(response.status).toBe(200);
+    expect(response.body.error).toBeFalsy();
     const res = await request(app).get('/api/admins/646550c10425c5c72ff19102').send();
     // eslint-disable-next-line no-underscore-dangle
     expect(res.body.data._id).toEqual('646550c10425c5c72ff19102');
