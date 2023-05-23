@@ -90,14 +90,11 @@ describe('DELETE /api/super-admins', () => {
   test('check if the database is decreased by 1', async () => {
     let response = await request(app).get('/api/super-admins').send();
     const seedLength = response.body.data.length;
-
     response = await request(app).delete(`/api/super-admins/${superAdminId}`);
     expect(response.status).toBe(200);
     expect(response.error).toBeFalsy();
-
     response = await request(app).get('/api/super-admins').send();
-    const seedPostL = response.body.data.length;
-
-    expect(seedLength - 1).toBe(seedPostL);
+    const seedDeleteL = response.body.data.length;
+    expect(seedLength - 1).toBe(seedDeleteL);
   });
 });
