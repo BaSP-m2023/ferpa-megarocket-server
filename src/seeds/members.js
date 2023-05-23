@@ -11,7 +11,7 @@ export default [
     city: 'Concordia',
     birthDay: '1997-05-03T03:00:00.000Z',
     postalCode: '2334',
-    isActive: 'false',
+    isActive: false,
     membership: 'Classic',
   },
   {
@@ -24,7 +24,7 @@ export default [
     city: 'Concordia',
     birthDay: '1995-05-03T03:00:00.000Z',
     postalCode: '2334',
-    isActive: 'true',
+    isActive: true,
     membership: 'Classic',
   },
   {
@@ -37,7 +37,7 @@ export default [
     city: 'Rosario',
     birthDay: '1999-05-03T03:00:00.000Z',
     postalCode: '1334',
-    isActive: 'true',
+    isActive: true,
     membership: 'Black',
   },
 ];
