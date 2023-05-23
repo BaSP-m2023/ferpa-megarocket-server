@@ -76,4 +76,30 @@ describe('GET /api/members/', () => {
     expect(response.status).toBe(200);
     expect(response.body.data.length).toBe(4);
   });
+  test('should return the created member and return 200', async () => {
+    const response = await request(app).get(`/api/Members/${mockMemberId}`).send();
+    expect(response.status).toBe(200);
+    expect(response.error).toBeFalsy();
+    expect(response.body).toHaveProperty('data');
+    expect(response.body.data).toMatchObject(mockMember);
+  });
+  test('should return a member with a valid JSON response', async () => {
+    const response = await request(app).get(`/api/members/${mockMemberId}`).send();
+    expect(response.header['content-type']).toMatch(/application\/json/);
+  });
+  test('should not find member and return status 404', async () => {
+    const response = await request(app).get('/api/members/6462439ab74486265babed00').send();
+    expect(response.status).toBe(404);
+    expect(response.error).toBeTruthy();
+  });
+  test('should not search for members and return status 400', async () => {
+    const response = await request(app).get('/api/members/000').send();
+    expect(response.status).toBe(400);
+    expect(response.error).toBeTruthy();
+  });
+  test('should return status 404', async () => {
+    const response = await request(app).get(`/api/members/invalid/${mockMemberId}`).send();
+    expect(response.status).toBe(404);
+    expect(response.error).toBeTruthy();
+  });
 });
