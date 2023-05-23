@@ -43,14 +43,13 @@ describe('GET/api/classes', () => {
     expect(response.body.data.length).toBeGreaterThan(1);
   });
 
-  test('should return the class Id', async () => {
+  test('should return status 200 when i put existing ID', async () => {
     const response = await request(app).get('/api/classes/6462d8c5afd4e4d023690d66').send();
     expect(response.status).toBe(200);
   });
 
   test('should return status 404 if class does not exist', async () => {
-    const nonExistentId = '6462d8c5afd4e4d023690d6';
-    const response = await request(app).get(`/api/classes/${nonExistentId}`).send();
+    const response = await request(app).get('/api/classes/6462d8c5afd4e4d023690d6').send();
     expect(response.status).toBe(404);
   });
 });
