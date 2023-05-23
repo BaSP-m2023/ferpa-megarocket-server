@@ -3,7 +3,7 @@ const Class = require('../models/Class');
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
 const getAllClasses = (req, res) => {
-  Class.find()
+  Class.find().populate('trainerId activityId')
     .then((classes) => res.status(200).json({
       message: 'Class list',
       data: classes,
@@ -24,7 +24,7 @@ const getClassById = (req, res) => {
       error: true,
     });
   }
-  Class.findById(id)
+  Class.findById(id).populate('trainerId activityId')
     .then((classes) => {
       if (!classes) {
         return res.status(404).json({
@@ -37,13 +37,13 @@ const getClassById = (req, res) => {
         message: `Class found! It was ${id}`,
         data: classes,
         error: false,
-      })
-        .catch((error) => res.json({
-          message: 'Error',
-          data: undefined,
-          error,
-        }));
-    });
+      });
+    })
+    .catch((error) => res.json({
+      message: 'Error',
+      data: undefined,
+      error,
+    }));
   return false;
 };
 
