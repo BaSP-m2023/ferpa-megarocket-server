@@ -48,4 +48,10 @@ describe('POST /api/Members', () => {
     expect(response.body).toHaveProperty('data');
     expect(response.body.data).toMatchObject(mockMember);
   });
+  test('members length should be 4', async () => {
+    const response = await request(app).get('/api/members').send();
+    expect(response.status).toBe(200);
+    expect(response.error).toBeFalsy();
+    expect(response.body.data.length).toBe(4);
+  });
 });
