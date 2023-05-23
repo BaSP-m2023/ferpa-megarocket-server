@@ -19,7 +19,7 @@ beforeAll(async () => {
 });
 
 describe('POST /api/admins', () => {
-  test('POST: Should return a status 201', async () => {
+  test('POST: Should return a status 201 when an new admin is created', async () => {
     const response = await request(app)
       .post('/api/admins')
       .send(mockAdmin);
@@ -32,14 +32,13 @@ describe('POST /api/admins', () => {
     const admin = response.body.data;
     expect(admin.password).toMatch(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/);
   });
-  test('POST: A new admin should be add to the database', async () => {
+  test('POST: A new admin should be added to the database', async () => {
     let response = await request(app)
       .post('/api/admins')
       .send(mockAdmin);
     // eslint-disable-next-line no-underscore-dangle
     const newAdminId = response.body.data._id;
     response = await request(app)
-      // eslint-disable-next-line no-underscore-dangle
       .get(`/api/admins/${newAdminId}`);
     expect(response.statusCode).toBe(200);
   });
