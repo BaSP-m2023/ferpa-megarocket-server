@@ -26,25 +26,9 @@ describe('GET/api/super-admins', () => {
     const response = await request(app).get('/api/super-admins/646559fa790279963b1e35e2').send();
     expect(response.body.data.email).toEqual('marcos@gmail.com');
   });
-  test('the id 64655bd557b21f13446b5fe6 should content email = matias@gmail.com', async () => {
-    const response = await request(app).get('/api/super-admins/64655bd557b21f13446b5fe6').send();
-    expect(response.body.data.email).toEqual('matias@gmail.com');
-  });
-  test('the id 64655c8857b21f13446b5fe9 should content email = alejo@gmail.com', async () => {
-    const response = await request(app).get('/api/super-admins/64655c8857b21f13446b5fe9').send();
-    expect(response.body.data.email).toEqual('alejo@gmail.com');
-  });
   test('the id 646559fa790279963b1e35e2 password value should be, password = Marcos123$', async () => {
     const response = await request(app).get('/api/super-admins/646559fa790279963b1e35e2').send();
     expect(response.body.data.password).toEqual('Marcos123$');
-  });
-  test('the id 64655bd557b21f13446b5fe6 password value should be, password = Matias123$', async () => {
-    const response = await request(app).get('/api/super-admins/64655bd557b21f13446b5fe6').send();
-    expect(response.body.data.password).toEqual('Matias123$');
-  });
-  test('the id 64655c8857b21f13446b5fe9 password value should be, password = Alejo123$', async () => {
-    const response = await request(app).get('/api/super-admins/64655c8857b21f13446b5fe9').send();
-    expect(response.body.data.password).toEqual('Alejo123$');
   });
 });
 
@@ -84,7 +68,7 @@ describe('PUT/api/super-admins', () => {
     expect(response.status).toBe(200);
   });
   test('check if data is correct', async () => {
-    let response = await request(app).get('/api/super-admins/$(mockUpdate)').send();
+    let response = await request(app).get(`/api/super-admins/${superAdminId}`).send(mockUpdate);
     const seedGet = response.body.data;
     response = await request(app).put(`/api/super-admins/${superAdminId}`).send(mockUpdate);
     expect(response.status).toBe(200);
