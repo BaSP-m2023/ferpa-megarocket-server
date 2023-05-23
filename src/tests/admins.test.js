@@ -45,6 +45,13 @@ describe('PUT/api/admins/:id', () => {
     expect(res.status).toBe(200);
     expect(res.body.error).toBeFalsy();
   });
+  test('should show the updated admin', async () => {
+    const res = await request(app).get('/api/admins/646550c10425c5c72ff19102').send();
+    // eslint-disable-next-line no-underscore-dangle
+    expect(res.body.data._id).toEqual('646550c10425c5c72ff19102');
+    expect(res.body.data.firstName).toEqual('Juan');
+    expect(res.status).toBe(200);
+  });
   test('should not update an admin for invalid by id', async () => {
     const updAdmin = { firstName: 'Juan', lastName: 'Admin', dni: '123456789' };
     const res = await request(app).put('/api/admins/646550c10425c5c7').send(updAdmin);
@@ -56,15 +63,5 @@ describe('PUT/api/admins/:id', () => {
     const res = await request(app).put('/api/admins/646550c10425c5c72ff19103').send(updAdmin);
     expect(res.status).toBe(404);
     expect(res.body.error).toBeTruthy();
-  });
-});
-
-describe('GET/api/admins/:id', () => {
-  test('should show the updated admin', async () => {
-    const res = await request(app).get('/api/admins/646550c10425c5c72ff19102').send();
-    // eslint-disable-next-line no-underscore-dangle
-    expect(res.body.data._id).toEqual('646550c10425c5c72ff19102');
-    expect(res.body.data.firstName).toEqual('Juan');
-    expect(res.status).toBe(200);
   });
 });
