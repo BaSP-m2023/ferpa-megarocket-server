@@ -32,7 +32,7 @@ const memberSchema = new Schema({
     require: true,
   },
   postalCode: {
-    type: String,
+    type: Number,
     require: true,
   },
   isActive: {
