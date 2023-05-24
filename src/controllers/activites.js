@@ -84,10 +84,10 @@ const updateActivity = (req, res) => {
             error: true,
           });
         }
-        return res.status(400).json({
+        return res.status(200).json({
           message: 'The activity was succesfully updated',
           data: response,
-          error: true,
+          error: false,
         });
       })
       .catch((error) => res.status(400).json(error));
