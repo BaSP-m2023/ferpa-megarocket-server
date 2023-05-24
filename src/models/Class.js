@@ -6,24 +6,26 @@ const ClassSchema = new Schema({
   day: {
     type: String,
     enum: ['Monday', 'Wednesday', 'Friday'],
-    require: true,
+    required: true,
   },
   hour: {
     type: Number,
     timestamps: true,
-    require: true,
+    required: true,
   },
   trainerId: {
-    type: String,
-    require: true,
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Trainer',
   },
   activityId: {
-    type: String,
-    require: true,
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Activity',
   },
   slots: {
     type: Number,
-    require: true,
+    required: true,
   },
 });
 
