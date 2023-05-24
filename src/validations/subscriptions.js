@@ -1,11 +1,12 @@
 const Joi = require('joi');
 
 const dateRegex = /\d{4}-\d{2}-\d{2}/;
+const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
 const validateSubCreation = (req, res, next) => {
   const subValidation = Joi.object({
-    classId: Joi.string().required(),
-    memberId: Joi.string().required(),
+    classId: Joi.string().regex(regexObjectId).required(),
+    memberId: Joi.string().regex(regexObjectId).required(),
     date: Joi.string().regex(dateRegex).required(),
   });
 
@@ -21,8 +22,8 @@ const validateSubCreation = (req, res, next) => {
 
 const validateSubUpdate = (req, res, next) => {
   const subValidation = Joi.object({
-    classId: Joi.string(),
-    memberId: Joi.string(),
+    classId: Joi.string().regex(regexObjectId),
+    memberId: Joi.string().regex(regexObjectId),
     date: Joi.string().regex(dateRegex),
   });
 

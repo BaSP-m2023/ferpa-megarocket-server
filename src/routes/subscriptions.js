@@ -5,7 +5,8 @@ const validations = require('../validations/subscriptions');
 const router = express.Router();
 
 router
-  .get('/', subController.getAllSub)
+  .get('/all', subController.getAllSub)
+  .get('/', subController.getAllSubThisWeek)
   .get('/:id', subController.getSubById)
   .post('/', validations.validateSubCreation, subController.createSub)
   .put('/:id', validations.validateSubUpdate, subController.updateSub)
