@@ -2,11 +2,11 @@ const Joi = require('joi');
 
 const validateClassCreation = (res, req, next) => {
   const validateCreation = Joi.object({
-    day: Joi.string().valid('Monday', 'Wednesday', 'Friday').required(),
+    day: Joi.string().valid('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday').required(),
     hour: Joi.number().min(0).max(23).required(),
-    trainerId: Joi.string().min(4).max(15).required(),
-    activityId: Joi.string().min(4).max(15).required(),
-    slots: Joi.number().required(),
+    trainerId: Joi.string().max(24).required(),
+    activityId: Joi.string().max(24).required(),
+    slots: Joi.number().min(1).required(),
   });
 
   const validation = validateCreation.validate(req.body);
@@ -21,11 +21,11 @@ const validateClassCreation = (res, req, next) => {
 
 const validateClassUpdate = (req, res, next) => {
   const classValidation = Joi.object({
-    day: Joi.string().valid('Monday', 'Wednesday', 'Friday'),
-    hour: Joi.number().min(1).max(20),
-    trainerId: Joi.string().min(5).max(15),
-    activityId: Joi.string().min(1).max(10),
-    slots: Joi.string().min(1).max(40),
+    day: Joi.string().valid('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
+    hour: Joi.number().min(0).max(23),
+    trainerId: Joi.string().max(24),
+    activityId: Joi.string().max(24),
+    slots: Joi.number().min(1).max(30),
   });
 
   const validation = classValidation.validate(req.body);
