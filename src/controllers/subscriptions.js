@@ -5,7 +5,7 @@ const regexObjectId = /^[0-9a-fA-F]{24}$/;
 const getAllSub = (req, res) => {
   Subscription.find().populate({
     path: 'classId',
-    populate: { path: 'activityId' },
+    populate: [{ path: 'activityId' }, { path: 'trainerId' }],
   }).populate('memberId')
     .then((subscriptions) => res.status(200).json({
       message: 'Complete subscriptions list',
