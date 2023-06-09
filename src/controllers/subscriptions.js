@@ -50,7 +50,10 @@ const getSubById = (req, res) => {
       error: true,
     });
   }
-  Subscription.findById(id).populate('classId memberId')
+  Subscription.findById(id).populate({
+    path: 'classId',
+    populate: [{ path: 'activityId' }, { path: 'trainerId' }],
+  }).populate('memberId')
     .then((result) => {
       if (!result) {
         res.status(404).json({
