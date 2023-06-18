@@ -15,7 +15,17 @@ const getAllMembers = (req, res) => {
 };
 const createMember = (req, res) => {
   const {
-    firstName, lastName, dni, phone, email, city, birthDay, postalCode, isActive, membership,
+    firstName,
+    lastName,
+    dni,
+    phone,
+    email,
+    city,
+    birthDay,
+    postalCode,
+    isActive,
+    membership,
+    isMembershipActive,
   } = req.body;
   Member.create({
     firstName,
@@ -28,6 +38,7 @@ const createMember = (req, res) => {
     postalCode,
     isActive,
     membership,
+    isMembershipActive,
   })
     .then((result) => res.status(201).json({
       message: 'Member was succesfully created.',
@@ -49,7 +60,17 @@ const updateMember = (req, res) => {
     });
   } {
     const {
-      firstName, lastName, dni, phone, email, city, birthDay, postalCode, isActive, membership,
+      firstName,
+      lastName,
+      dni,
+      phone,
+      email,
+      city,
+      birthDay,
+      postalCode,
+      isActive,
+      membership,
+      isMembershipActive,
     } = req.body;
     Member.findByIdAndUpdate(
       id,
@@ -64,6 +85,7 @@ const updateMember = (req, res) => {
         postalCode,
         isActive,
         membership,
+        isMembershipActive,
       },
       { new: true },
     )

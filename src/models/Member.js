@@ -44,6 +44,10 @@ const memberSchema = new Schema({
     require: true,
     enum: ['Classic', 'Only Classes', 'Black'],
   },
+  isMembershipActive: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model('Member', memberSchema);
