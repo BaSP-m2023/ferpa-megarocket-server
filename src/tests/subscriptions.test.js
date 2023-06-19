@@ -52,7 +52,7 @@ describe('GET /api/subscriptions', () => {
   });
   test('GET BY ID: should return the name Juan from the selected subscription', async () => {
     const response = await request(app).get('/api/subscriptions/646936a8c657bcbd138eaf3c').send();
-    expect(response.body.data.memberId.dni).toBe('362355133456');
+    expect(response.body.data.memberId.dni).toBe('40642928');
   });
 });
 
@@ -66,13 +66,13 @@ describe('POST /api/subscriptions', () => {
     const seedPostLength = response.body.data.length;
     expect(seedLength + 1).toBe(seedPostLength);
   });
-  test('POST: should return the dni: 362355133456 from the member of the new subscription', async () => {
+  test('POST: should return the dni: 40642928 from the member of the new subscription', async () => {
     let response = await request(app).post('/api/subscriptions/').send(mockSubscription2);
     expect(response.status).toBe(201);
     // eslint-disable-next-line no-underscore-dangle
     subId = response.body.data._id;
     response = await request(app).get(`/api/subscriptions/${subId}`).send();
-    expect(response.body.data.memberId.dni).toBe('362355133456');
+    expect(response.body.data.memberId.dni).toBe('40642928');
   });
 });
 
@@ -94,7 +94,7 @@ describe('PUT /api/subscriptions', () => {
     const seedLength = response.body.data.length;
     response = await request(app).get('/api/subscriptions/646936a8c657bcbd138eaf3c').send(mockSubscription2);
     expect(response.status).toBe(200);
-    expect(response.body.data.memberId.dni).toBe('362355133456');
+    expect(response.body.data.memberId.dni).toBe('40642928');
     response = await request(app).get('/api/subscriptions/all').send();
     const seedPutLength = response.body.data.length;
     expect(seedLength).toBe(seedPutLength);

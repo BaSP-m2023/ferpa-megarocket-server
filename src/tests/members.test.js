@@ -8,14 +8,15 @@ let mockMemberId;
 const mockMember = {
   firstName: 'Pru',
   lastName: 'Eba',
-  dni: '362355523456',
-  phone: '3625565',
+  dni: '40642928',
+  phone: '3413463934',
   email: 'mockMail@il.com',
   city: 'Rosario',
   birthDay: '1999-05-03T03:00:00.000Z',
   postalCode: '1334',
   isActive: true,
   membership: 'Black',
+  isMembershipActive: true,
 };
 
 const mockMemberUpdate = {
@@ -135,6 +136,7 @@ describe('PUT /api/Members', () => {
       birthDay: mockMember.birthDay,
       isActive: mockMember.isActive,
       membership: mockMemberUpdate.membership,
+      isMembershipActive: mockMember.isMembershipActive,
     });
   });
   test('should not find member and return status 404', async () => {
