@@ -11,6 +11,10 @@ const activitySchema = new Schema({
     type: String,
     require: true,
   },
+  image: {
+    type: String,
+    require: false,
+  },
   isActive: {
     type: Boolean,
     require: true,

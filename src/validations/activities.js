@@ -1,9 +1,27 @@
 const Joi = require('joi');
 
+const letterRegex = /^[a-zA-Z]{3}[a-zA-Z\s]*$/;
+
 const createValidation = (req, res, next) => {
   const activityToValidate = Joi.object({
-    name: Joi.string().min(3).max(30).required(),
-    description: Joi.string().min(5).max(250).required(),
+    name:
+    Joi.string()
+      .regex(letterRegex)
+      .min(3)
+      .max(30)
+      .required()
+      .messages({
+        'string.pattern.base': 'Activity name must contain only letters',
+      }),
+    description:
+    Joi.string()
+      .regex(letterRegex)
+      .min(5)
+      .max(250)
+      .required()
+      .messages({
+        'string.pattern.base': 'Activity description must contain only letters',
+      }),
     isActive: Joi.boolean().required(),
   });
   const valid = activityToValidate.validate(req.body);
@@ -19,8 +37,22 @@ const createValidation = (req, res, next) => {
 };
 const updateValidation = (req, res, next) => {
   const activityToValidate = Joi.object({
-    name: Joi.string().min(3).max(30),
-    description: Joi.string().min(5).max(250),
+    name:
+    Joi.string()
+      .regex(letterRegex)
+      .min(3)
+      .max(30)
+      .messages({
+        'string.pattern.base': 'Activity name must contain only letters',
+      }),
+    description:
+    Joi.string()
+      .regex(letterRegex)
+      .min(5)
+      .max(250)
+      .messages({
+        'string.pattern.base': 'Activity description must contain only letters',
+      }),
     isActive: Joi.boolean(),
   });
   const validation = activityToValidate.validate(req.body);
