@@ -52,7 +52,7 @@ const createSuperAdmin = (req, res) => {
     password,
   })
     .then((result) => res.status(201).json({
-      message: 'Super admin created succesfully',
+      message: 'Super admin has been created succesfully',
       data: result,
       error: false,
     }))
@@ -88,7 +88,7 @@ const updateSuperAdmin = (req, res) => {
         });
       }
       return res.status(200).json({
-        message: `Super admin with id: ${id} was succesfully updated`,
+        message: 'Super admin has been succesfully updated',
         data: result,
         error: false,
       });
@@ -116,7 +116,7 @@ const deleteSuperAdmin = (req, res) => {
         });
       }
       return res.status(200).json({
-        message: `Super admin with id: ${id} was succesfully deleted`,
+        message: 'Super admin has been succesfully deleted',
       });
     })
     .catch((error) => res.status(500).json({

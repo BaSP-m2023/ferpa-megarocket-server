@@ -54,7 +54,7 @@ const createActivity = (req, res) => {
     isActive,
   })
     .then((response) => res.status(201).json({
-      message: 'Activity created succesfully.',
+      message: 'Activity has been succesfully created.',
       data: response,
       error: false,
     }))
@@ -85,7 +85,7 @@ const updateActivity = (req, res) => {
           });
         }
         return res.status(200).json({
-          message: 'The activity was succesfully updated',
+          message: 'The activity has been succesfully updated',
           data: response,
           error: false,
         });
@@ -111,7 +111,7 @@ const deleteActivity = (req, res) => {
           });
         }
         return res.status(200).json({
-          message: 'The activity was succesfully deleted',
+          message: 'The activity has been succesfully deleted',
         });
       })
       .catch((error) => res.status(400).json({
