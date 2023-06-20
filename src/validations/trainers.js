@@ -1,17 +1,21 @@
 const Joi = require('joi');
 
-const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
 const validateTrainerCreation = (req, res, next) => {
   const trainerValidation = Joi.object({
-    firstName: Joi.string().min(3).max(30).required(),
-    lastName: Joi.string().min(3).max(30).required(),
-    dni: Joi.string().min(8).max(10).required(),
-    phone: Joi.string().min(8).max(12).required(),
-    email: Joi.string().email().required(),
-    city: Joi.string().min(3).max(30).required(),
-    password: Joi.string().regex(passRegex).required(),
-    salary: Joi.number().required(),
+    firstName: Joi.string().min(3).max(15).pattern(/^[a-zA-Z-]+$/)
+      .required(),
+    lastName: Joi.string().min(3).max(15).pattern(/^[a-zA-Z-]+$/)
+      .required(),
+    dni: Joi.number()
+      .min(1000000)
+      .max(99999999).required(),
+    phone: Joi.number()
+      .min(1000000000)
+      .max(9999999999).required(),
+    email: Joi.string().pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/).required(),
+    city: Joi.string().min(2).max(30).required(),
+    password: Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/).required(),
+    salary: Joi.number().min(10000).required(),
   });
   const validation = trainerValidation.validate(req.body);
   if (!validation.error) return next();
@@ -24,15 +28,18 @@ const validateTrainerCreation = (req, res, next) => {
 
 const validateTrainerUpdate = (req, res, next) => {
   const trainerValidation = Joi.object({
-    firstName: Joi.string().min(3).max(30),
-    lastName: Joi.string().min(3).max(30),
-    dni: Joi.string().min(8).max(10),
-    phone: Joi.string().min(8).max(12),
-    email: Joi.string().email(),
-    city: Joi.string().min(3).max(30),
-    password: Joi.string().regex(passRegex),
-    salary: Joi.number(),
-    isActive: Joi.boolean(),
+    firstName: Joi.string().min(3).max(15).pattern(/^[a-zA-Z-]+$/),
+    lastName: Joi.string().min(3).max(15).pattern(/^[a-zA-Z-]+$/),
+    dni: Joi.number()
+      .min(1000000)
+      .max(99999999),
+    phone: Joi.number()
+      .min(1000000000)
+      .max(9999999999),
+    email: Joi.string().pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/),
+    city: Joi.string().min(2).max(30),
+    password: Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/),
+    salary: Joi.number().min(10000),
   });
   const validation = trainerValidation.validate(req.body);
   if (!validation.error) return next();

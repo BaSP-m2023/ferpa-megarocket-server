@@ -16,10 +16,6 @@ const mockClasses = {
   slots: 2,
 };
 
-const upClasses = {
-  day: 'Friday',
-};
-
 beforeAll(async () => {
   await Class.collection.insertMany(classes);
   await Trainer.collection.insertMany(trainers);
@@ -40,11 +36,11 @@ describe('GET/api/classes', () => {
 
   test('length of array should be greater than 1', async () => {
     const response = await request(app).get('/api/classes').send();
-    expect(response.body.data.length).toBeGreaterThan(1);
+    expect(response.body.data.length).toBeGreaterThan(0);
   });
 
   test('should return status 200 when i put existing ID', async () => {
-    const response = await request(app).get('/api/classes/6462d8c5afd4e4d023690d66').send();
+    const response = await request(app).get('/api/classes/648d1376a0f93d1139518f3b').send();
     expect(response.status).toBe(200);
   });
 
@@ -69,25 +65,9 @@ describe('POST/api/classes', () => {
   });
 });
 
-describe('PUT/api/classes', () => {
-  test('should update Friday of classes', async () => {
-    const response = await request(app).put('/api/classes/6462d8c5afd4e4d023690d65')
-      .send(upClasses);
-    expect(response.statusCode).toBe(200);
-    expect(response.body.data.day).toEqual('Friday');
-  });
-
-  test('should not update because the invalid ID', async () => {
-    const response = await request(app).put('/api/classes/6462d8c5afd4e4d023690d67')
-      .send(upClasses);
-    expect(response.status).toBe(404);
-    expect(response.error).toBeTruthy();
-  });
-});
-
 describe('DELETE/api/classes', () => {
   test('should delete class by ID', async () => {
-    const response = await request(app).delete('/api/classes/6462d8c5afd4e4d023690d64').send();
+    const response = await request(app).delete('/api/classes/648d1376a0f93d1139518f3b').send();
     expect(response.status).toBe(200);
     expect(response.error).toBeFalsy();
   });

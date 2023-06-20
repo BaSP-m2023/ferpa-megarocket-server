@@ -1,13 +1,16 @@
 const Joi = require('joi');
 
-const dateRegex = /\d{4}-\d{2}-\d{2}/;
-const regexObjectId = /^[0-9a-fA-F]{24}$/;
+const now = new Date().toISOString().split('T')[0];
 
 const validateSubCreation = (req, res, next) => {
   const subValidation = Joi.object({
-    classId: Joi.string().regex(regexObjectId).required(),
-    memberId: Joi.string().regex(regexObjectId).required(),
-    date: Joi.string().regex(dateRegex).required(),
+    memberId: Joi.string()
+      .pattern(/^[0-9a-fA-F]{24}$/).required(),
+    classId: Joi.string()
+      .pattern(/^[0-9a-fA-F]{24}$/).required(),
+    date: Joi.date().min(now).required().message({
+      'date.min': 'You cannot subscribe to classes that have already occurred.',
+    }),
   });
 
   const validation = subValidation.validate(req.body);
@@ -22,9 +25,13 @@ const validateSubCreation = (req, res, next) => {
 
 const validateSubUpdate = (req, res, next) => {
   const subValidation = Joi.object({
-    classId: Joi.string().regex(regexObjectId),
-    memberId: Joi.string().regex(regexObjectId),
-    date: Joi.string().regex(dateRegex),
+    memberId: Joi.string()
+      .pattern(/^[0-9a-fA-F]{24}$/),
+    classId: Joi.string()
+      .pattern(/^[0-9a-fA-F]{24}$/),
+    date: Joi.date().min(now).message({
+      'date.min': 'You cannot subscribe to classes that have already occurred.',
+    }),
   });
 
   const validation = subValidation.validate(req.body);

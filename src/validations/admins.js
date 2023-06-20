@@ -1,16 +1,14 @@
 const Joi = require('joi');
 
-const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-
 const validateAdminUpdate = (req, res, next) => {
   const adminValidation = Joi.object({
-    firstName: Joi.string().min(3).max(15),
-    lastName: Joi.string().min(3).max(15),
-    dni: Joi.string().length(9),
-    phone: Joi.string().length(10),
-    email: Joi.string().email(),
+    firstName: Joi.string().min(3).max(15).pattern(/^[a-zA-Z-]+$/),
+    lastName: Joi.string().min(3).max(15).pattern(/^[a-zA-Z-]+$/),
+    dni: Joi.number().min(1000000).max(99999999),
+    phone: Joi.number().min(1000000000).max(9999999999),
+    email: Joi.string().pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/),
     city: Joi.string(),
-    password: Joi.string().regex(passwordRegex),
+    password: Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/),
   });
   const validation = adminValidation.validate(req.body);
   if (!validation.error) return next();
@@ -23,13 +21,15 @@ const validateAdminUpdate = (req, res, next) => {
 
 const validateAdminCreation = (req, res, next) => {
   const adminValidation = Joi.object({
-    firstName: Joi.string().min(3).max(15).required(),
-    lastName: Joi.string().min(3).max(15).required(),
-    dni: Joi.string().min(8).max(10).required(),
-    phone: Joi.string().min(8).max(12).required(),
-    email: Joi.string().email().required(),
-    city: Joi.string().min(3).required(),
-    password: Joi.string().regex(passwordRegex).required(),
+    firstName: Joi.string().min(3).max(15).pattern(/^[a-zA-Z-]+$/)
+      .required(),
+    lastName: Joi.string().min(3).max(15).pattern(/^[a-zA-Z-]+$/)
+      .required(),
+    dni: Joi.number().min(1000000).max(99999999),
+    phone: Joi.number().min(1000000000).max(9999999999).required(),
+    email: Joi.string().pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/).required(),
+    city: Joi.string().required(),
+    password: Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/).required(),
   });
 
   const validation = adminValidation.validate(req.body);
