@@ -15,7 +15,7 @@ const createValidation = (req, res, next) => {
       }),
     description:
     Joi.string()
-      .regex(letterRegex)
+      .pattern(/^[a-zA-Z\s]+$/)
       .min(5)
       .max(250)
       .required()
