@@ -6,12 +6,12 @@ import activitiesSeed from '../seeds/activities';
 let mockId;
 const mockActivity = {
   name: 'Muay thai',
-  description: 'This is an martial art ....',
+  description: 'aaaaa',
   isActive: true,
 };
 const mockActivityPut = {
   name: 'Kick boxing',
-  description: 'Kickboxing is a group of foot combat sports...',
+  description: 'Kickboxing is a group of foot combat sports',
   isActive: true,
 };
 
