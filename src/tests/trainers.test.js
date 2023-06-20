@@ -6,11 +6,11 @@ import Trainer from '../models/Trainer';
 const mockTrainer = {
   firstName: 'Julian',
   lastName: 'Alvarez',
-  dni: '40809097',
-  phone: '1145768909',
+  dni: '12345679',
+  phone: '1234567890',
   email: 'laaraña@gmail.com',
   city: 'manchester',
-  password: 'guardiolaelkpo3',
+  password: 'Guardiolaelkpo3',
   salary: 40000000,
 };
 
@@ -33,9 +33,9 @@ describe('GET/api/trainers', () => {
     const response = await request(app).get('/api/trainers').send();
     expect(response.header['content-type']).toMatch(/application\/json/);
   });
-  test('Return 4 trainers', async () => {
+  test('Return 1 trainers', async () => {
     const res = await request(app).get('/api/trainers').send();
-    expect(res.body.data.length).toBe(4);
+    expect(res.body.data.length).toBe(1);
   });
   test('Succesfull 200 response with an ID', async () => {
     const res = await request(app).get('/api/trainers/64667332ecb50c522415bea5').send();

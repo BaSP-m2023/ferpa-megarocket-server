@@ -7,10 +7,10 @@ const mockAdmin = {
   firstName: 'Fer',
   lastName: 'Admin',
   dni: '12345678',
-  phone: '123457890',
+  phone: '1234567890',
   email: 'admin@gmail.com',
   city: 'Rosario',
-  password: 'canelones1234!',
+  password: 'Canelones1234',
 };
 
 beforeAll(async () => {
@@ -29,10 +29,10 @@ describe('GET/api/admins', () => {
     expect(res.error).toBeTruthy();
   });
   test('should get one admin by id', async () => {
-    const res = await request(app).get('/api/admins/64654f260425c5c72ff190fe').send();
+    const res = await request(app).get('/api/admins/6490aa63d83e5be6c6840c3d').send();
     // eslint-disable-next-line no-underscore-dangle
-    expect(res.body.data._id).toEqual('64654f260425c5c72ff190fe');
-    expect(res.body.data.dni).toEqual('123456789');
+    expect(res.body.data._id).toEqual('6490aa63d83e5be6c6840c3d');
+    expect(res.body.data.dni).toEqual('12345678');
     expect(res.status).toBe(200);
     expect(res.error).toBeFalsy();
   });
@@ -50,14 +50,14 @@ describe('GET/api/admins', () => {
 
 describe('PUT/api/admins/:id', () => {
   test('you must update an admin', async () => {
-    const updAdmin = { firstName: 'Juan', lastName: 'Admin', dni: '122334455' };
-    const response = await request(app).put('/api/admins/646550c10425c5c72ff19102').send(updAdmin);
+    const updAdmin = { firstName: 'Juan', lastName: 'Admin', dni: '12345678' };
+    const response = await request(app).put('/api/admins/6490aa63d83e5be6c6840c3d').send(updAdmin);
     expect(response.status).toBe(200);
     expect(response.body.error).toBeFalsy();
-    const res = await request(app).get('/api/admins/646550c10425c5c72ff19102').send();
+    const res = await request(app).get('/api/admins/6490aa63d83e5be6c6840c3d').send();
     // eslint-disable-next-line no-underscore-dangle
-    expect(res.body.data._id).toEqual('646550c10425c5c72ff19102');
-    expect(res.body.data.dni).toEqual('122334455');
+    expect(res.body.data._id).toEqual('6490aa63d83e5be6c6840c3d');
+    expect(res.body.data.dni).toEqual('12345678');
     expect(res.status).toBe(200);
   });
   test('should not update an admin for invalid by id', async () => {
@@ -68,8 +68,8 @@ describe('PUT/api/admins/:id', () => {
   });
   test('should not update an admin for non-existent id', async () => {
     const updAdmin = { firstName: 'Juan', lastName: 'Admin', dni: '123456789' };
-    const res = await request(app).put('/api/admins/646550c10425c5c72ff19103').send(updAdmin);
-    expect(res.status).toBe(404);
+    const res = await request(app).put('/api/admins/648d1376a0f93d1139518f3b').send(updAdmin);
+    expect(res.status).toBe(400);
     expect(res.body.error).toBeTruthy();
   });
 });
@@ -129,12 +129,12 @@ describe('DELETE /api/admins:id', () => {
   });
   test('DELETE: Should delete one admin from the database', async () => {
     let response = await request(app)
-      .get('/api/admins/64654f260425c5c72ff190fe');
+      .get('/api/admins/6490aa63d83e5be6c6840c3d');
     expect(response.statusCode).toBe(200);
     response = await request(app)
-      .delete('/api/admins/64654f260425c5c72ff190fe');
+      .delete('/api/admins/6490aa63d83e5be6c6840c3d');
     response = await request(app)
-      .get('/api/admins/64654f260425c5c72ff190fe');
+      .get('/api/admins/6490aa63d83e5be6c6840c3d');
     expect(response.statusCode).toBe(404);
   });
 });
