@@ -60,7 +60,7 @@ const createClass = (req, res) => {
     slots,
   })
     .then((classes) => res.status(201).json({
-      message: 'Class created!',
+      message: 'Class has been succesfully created!',
       data: classes,
       error: false,
     }))
@@ -107,7 +107,7 @@ const updateClass = (req, res) => {
         });
       } else {
         res.status(200).json({
-          message: `Class with id: ${id} was found!`,
+          message: 'Class has been succesfully updated!',
           data: result,
           error: false,
         });
@@ -134,7 +134,7 @@ const deleteClass = (req, res) => {
         });
       }
       return res.status(200).json({
-        message: `Class with id: ${id} was deleted`,
+        message: 'Class has been succesfully removed',
         data: result,
         error: false,
       });

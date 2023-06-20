@@ -87,7 +87,7 @@ const updateAdmin = (req, res) => {
         });
       }
       return res.status(200).json({
-        message: `Admin with id: ${id} was updated.`,
+        message: 'Admin has been succesfully updated.',
         data: result,
         error: false,
       });
@@ -150,7 +150,7 @@ const deleteAdmin = (req, res) => {
         });
       }
       return res.status(200).json({
-        message: `Admin with id: ${id} was removed.`,
+        message: 'Admin has been succesfully removed.',
         data: admin,
         error: false,
       });

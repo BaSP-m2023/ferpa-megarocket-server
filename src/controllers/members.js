@@ -98,7 +98,7 @@ const updateMember = (req, res) => {
           });
         }
         return res.status(200).json({
-          message: `Member with id: ${id} was succesfully updated`,
+          message: 'Member has been succesfully updated',
           data: result,
           error: false,
         });
@@ -161,7 +161,7 @@ const deleteMember = (req, res) => {
         });
       }
       return res.status(200).json({
-        message: `Member with id: ${id} was removed.`,
+        message: 'Member has been succesfully removed.',
         data: member,
         error: false,
       });

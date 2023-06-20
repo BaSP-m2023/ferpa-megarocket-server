@@ -66,7 +66,7 @@ const createTrainer = (req, res) => {
     salary,
   })
     .then((trainer) => res.status(201).json({
-      message: 'Trainer was succesfully created.',
+      message: 'Trainer has been succesfully created.',
       data: trainer,
       error: false,
     }))
@@ -95,7 +95,7 @@ const deleteTrainer = (req, res) => {
           });
         }
         return res.status(200).json({
-          message: `Trainer with id: ${id} was succesfully deleted.`,
+          message: 'Trainer has been succesfully deleted.',
           error: false,
         });
       })
@@ -143,7 +143,7 @@ const updateTrainer = (req, res) => {
           });
         }
         return res.status(200).json({
-          message: `Trainer with id: ${id} was succesfully updated`,
+          message: 'Trainer has been succesfully updated',
           data: result,
           error: false,
         });

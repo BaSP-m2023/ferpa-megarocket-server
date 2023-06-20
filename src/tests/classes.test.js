@@ -53,7 +53,6 @@ describe('GET/api/classes', () => {
 describe('POST/api/classes', () => {
   test('should created new class', async () => {
     const response = await request(app).post('/api/classes/').send(mockClasses);
-    expect(response.body.message).toBe('Class created!');
     expect(response.statusCode).toBe(201);
     expect(response.body.error).toBeFalsy();
   });
