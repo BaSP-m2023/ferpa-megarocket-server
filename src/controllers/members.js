@@ -25,7 +25,6 @@ const createMember = (req, res) => {
     postalCode,
     isActive,
     membership,
-    isMembershipActive,
   } = req.body;
   Member.create({
     firstName,
@@ -38,7 +37,6 @@ const createMember = (req, res) => {
     postalCode,
     isActive,
     membership,
-    isMembershipActive,
   })
     .then((result) => res.status(201).json({
       message: 'Member was succesfully created.',
@@ -70,7 +68,6 @@ const updateMember = (req, res) => {
       postalCode,
       isActive,
       membership,
-      isMembershipActive,
     } = req.body;
     Member.findByIdAndUpdate(
       id,
@@ -85,7 +82,6 @@ const updateMember = (req, res) => {
         postalCode,
         isActive,
         membership,
-        isMembershipActive,
       },
       { new: true },
     )

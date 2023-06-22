@@ -16,7 +16,6 @@ const mockMember = {
   postalCode: '1334',
   isActive: true,
   membership: 'Black',
-  isMembershipActive: true,
 };
 
 const mockMemberUpdate = {
@@ -136,7 +135,6 @@ describe('PUT /api/Members', () => {
       birthDay: mockMember.birthDay,
       isActive: mockMember.isActive,
       membership: mockMemberUpdate.membership,
-      isMembershipActive: mockMember.isMembershipActive,
     });
   });
   test('should not find member and return status 404', async () => {
