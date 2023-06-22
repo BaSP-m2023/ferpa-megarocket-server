@@ -70,8 +70,6 @@ const validateMemberCreation = (req, res, next) => {
     Joi.boolean().required(),
     membership:
     Joi.string().valid('Classic', 'Only Classes', 'Black').required(),
-    isMembershipActive:
-    Joi.boolean().required(),
   });
 
   const validation = memberValidation.validate(req.body);
@@ -145,8 +143,6 @@ const validateMemberUpdate = (req, res, next) => {
     Joi.boolean(),
     membership:
     Joi.string().valid('Classic', 'Only Classes', 'Black'),
-    isMembershipActive:
-    Joi.boolean(),
   });
 
   const validation = memberValidation.validate(req.body);

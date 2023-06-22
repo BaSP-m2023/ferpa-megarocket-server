@@ -13,7 +13,6 @@ export default [
     postalCode: '2334',
     isActive: false,
     membership: 'Classic',
-    isMembershipActive: true,
   },
   {
     _id: new mongoose.Types.ObjectId('646243a5b74486265babed72'),
@@ -27,7 +26,6 @@ export default [
     postalCode: '2334',
     isActive: true,
     membership: 'Classic',
-    isMembershipActive: true,
   },
   {
     _id: new mongoose.Types.ObjectId('64624537b74486265babed78'),
@@ -41,6 +39,5 @@ export default [
     postalCode: '1334',
     isActive: true,
     membership: 'Black',
-    isMembershipActive: true,
   },
 ];
