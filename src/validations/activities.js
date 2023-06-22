@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const letterRegex = /^[a-zA-Z]{3}[a-zA-Z\s]*$/;
+const letterRegex = /^[a-zA-Z0-9.,\s]+$/;
 
 const createValidation = (req, res, next) => {
   const activityToValidate = Joi.object({
@@ -15,7 +15,7 @@ const createValidation = (req, res, next) => {
       }),
     description:
     Joi.string()
-      .pattern(/^[a-zA-Z\s]+$/)
+      .regex(letterRegex)
       .min(5)
       .max(250)
       .required()

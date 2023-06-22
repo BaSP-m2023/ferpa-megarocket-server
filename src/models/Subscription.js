@@ -7,16 +7,16 @@ const subSchema = new Schema(
     classId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Class',
-      require: true,
+      required: true,
     },
     memberId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Member',
-      require: true,
+      required: true,
     },
     date: {
       type: Date,
-      require: true,
+      required: true,
     },
   },
 );

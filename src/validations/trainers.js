@@ -15,7 +15,7 @@ const validateTrainerCreation = (req, res, next) => {
     email: Joi.string().pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/).required(),
     city: Joi.string().min(2).max(30).required(),
     password: Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/).required(),
-    salary: Joi.number().min(10000).required(),
+    salary: Joi.number().min(500).required(),
   });
   const validation = trainerValidation.validate(req.body);
   if (!validation.error) return next();
