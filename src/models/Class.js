@@ -9,7 +9,7 @@ const ClassSchema = new Schema({
     required: true,
   },
   hour: {
-    type: Number,
+    type: String,
     timestamps: true,
     required: true,
   },
