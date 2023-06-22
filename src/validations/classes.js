@@ -32,7 +32,7 @@ const validateClassUpdate = (req, res, next) => {
     }),
     trainerId: Joi.string()
       .pattern(/^[0-9a-fA-F]{24}$/),
-    activityId: Joi.Joi.string()
+    activityId: Joi.string()
       .pattern(/^[0-9a-fA-F]{24}$/),
     slots: Joi.number().min(1).max(25).integer()
     ,
