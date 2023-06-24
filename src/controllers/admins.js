@@ -108,7 +108,6 @@ const createAdmin = async (req, res) => {
   const {
     firstName, lastName, dni, phone, email, city, password,
   } = req.body;
-
   const existingAdmin = await Admin.findOne({ $or: [{ dni }, { email }] });
   if (existingAdmin) {
     return res.status(400).json({
