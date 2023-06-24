@@ -1,3 +1,5 @@
+import firebaseApp from '../helper/firebase';
+
 const Member = require('../models/Member');
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
@@ -13,7 +15,7 @@ const getAllMembers = (req, res) => {
       error,
     }));
 };
-const createMember = (req, res) => {
+const createMember = async (req, res) => {
   const {
     firstName,
     lastName,
@@ -26,7 +28,22 @@ const createMember = (req, res) => {
     isActive,
     membership,
   } = req.body;
-  Member.create({
+  const existingMember = await Member.findOne({ $or: [{ dni }, { email }] });
+  if (existingMember) {
+    return res.status(400).json({
+      message: 'Member already exists',
+      data: req.body,
+      error: true,
+    });
+  }
+  const newFirebaseMember = await firebaseApp.auth().createMember({
+    email: req.body.email,
+    password: req.body.password,
+  });
+  const firebaseUid = newFirebaseMember.uid;
+  await firebaseApp.auth().setCustomUserClaims(newFirebaseMember.uid, { role: 'MEMBER' });
+  return Member.create({
+    firebaseUid,
     firstName,
     lastName,
     dni,
@@ -38,15 +55,19 @@ const createMember = (req, res) => {
     isActive,
     membership,
   })
-    .then((result) => res.status(201).json({
-      message: 'Member was succesfully created.',
-      data: result,
-      error: false,
-    }))
-    .catch((error) => res.status(400).json({
-      message: 'An error ocurred!',
-      error,
-    }));
+    .then((result) => {
+      res.status(201).json({
+        message: 'Member was succesfully created.',
+        data: result,
+        error: false,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        message: 'An error ocurred!',
+        error,
+      });
+    });
 };
 const updateMember = (req, res) => {
   const { id } = req.params;
@@ -171,7 +192,7 @@ const deleteMember = (req, res) => {
     });
   return false;
 };
-module.exports = {
+export default {
   getAllMembers,
   createMember,
   updateMember,

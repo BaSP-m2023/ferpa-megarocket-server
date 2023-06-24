@@ -3,7 +3,6 @@ import * as admin from 'firebase-admin';
 require('dotenv').config();
 
 const privateKey = process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n');
-
 const firebaseApp = admin.initializeApp({
   credential: admin.credential.cert({
     type: process.env.FIREBASE_TYPE,
@@ -19,5 +18,4 @@ const firebaseApp = admin.initializeApp({
     universe_domain: process.env.FIREBASE_UNIVERSE_DOMAIN,
   }),
 });
-
 export default firebaseApp;

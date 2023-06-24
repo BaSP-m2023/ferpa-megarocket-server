@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const adminSchema = new Schema({
+  firebaseUid: {
+    type: String,
+    required: true,
+  },
   firstName: {
     type: String,
     require: true,
@@ -24,10 +28,6 @@ const adminSchema = new Schema({
     require: true,
   },
   city: {
-    type: String,
-    require: true,
-  },
-  password: {
     type: String,
     require: true,
   },

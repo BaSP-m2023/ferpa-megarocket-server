@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const superAdminSchema = new Schema({
-  email: {
+  firebaseUid: {
     type: String,
-    require: true,
+    required: true,
   },
-  password: {
+  email: {
     type: String,
     require: true,
   },
