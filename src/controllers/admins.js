@@ -1,3 +1,5 @@
+import firebaseApp from '../helper/firebase';
+
 const Admin = require('../models/Admin');
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
@@ -102,12 +104,27 @@ const updateAdmin = (req, res) => {
   return false;
 };
 
-const createAdmin = (req, res) => {
+const createAdmin = async (req, res) => {
   const {
     firstName, lastName, dni, phone, email, city, password,
   } = req.body;
 
-  Admin.create({
+  const existingAdmin = await Admin.findOne({ $or: [{ dni }, { email }] });
+  if (existingAdmin) {
+    return res.status(400).json({
+      message: 'Admin already exists',
+      data: req.body,
+      error: true,
+    });
+  }
+  const newFirebaseAdmin = await firebaseApp.auth().createAdmin({
+    email: req.body.email,
+    password: req.body.password,
+  });
+  const firebaseUid = newFirebaseAdmin.uid;
+  await firebaseApp.auth().setCustomUserClaims(newFirebaseAdmin.uid, { role: 'ADMIN' });
+  return Admin.create({
+    firebaseUid,
     firstName,
     lastName,
     dni,
@@ -116,10 +133,10 @@ const createAdmin = (req, res) => {
     city,
     password,
   })
-    .then((admin) => {
+    .then((postAdmin) => {
       res.status(201).json({
         message: 'Admin created.',
-        data: admin,
+        data: postAdmin,
         error: false,
       });
     })
@@ -165,7 +182,7 @@ const deleteAdmin = (req, res) => {
   return false;
 };
 
-module.exports = {
+export default {
   getAllAdmin,
   getAdminById,
   updateAdmin,
