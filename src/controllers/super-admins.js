@@ -1,3 +1,5 @@
+import firebaseApp from '../helper/firebase';
+
 const SuperAdmin = require('../models/SuperAdmin');
 
 const getAllsuperAdmins = (req, res) => {
@@ -43,21 +45,35 @@ const getsuperAdminById = (req, res) => {
   return false;
 };
 
-const createSuperAdmin = (req, res) => {
-  const { id, email, password } = req.body;
+const createSuperAdmin = async (req, res) => {
+  const { email, password } = req.body;
 
-  SuperAdmin.create({
-    id,
+  const existingSuperAdmin = await SuperAdmin.findOne({ email });
+  if (existingSuperAdmin) {
+    return res.status(400).json({
+      message: 'Super Admin already exists',
+      data: req.body,
+      error: true,
+    });
+  }
+  const newFirebaseSuperAdmin = await firebaseApp.auth().createSuperAdmin({
+    email: req.body.email,
+    password: req.body.password,
+  });
+  const firebaseUid = newFirebaseSuperAdmin.uid;
+  await firebaseApp.auth().setCustomUserClaims(newFirebaseSuperAdmin.uid, { role: 'SUPER-ADMIN' });
+  return SuperAdmin.create({
+    firebaseUid,
     email,
     password,
   })
-    .then((result) => res.status(201).json({
+    .then((postSuperAdmin) => res.status(201).json({
       message: 'Super admin has been created succesfully',
-      data: result,
+      data: postSuperAdmin,
       error: false,
     }))
     .catch((error) => res.status(500).json({
-      message: 'An error was detected',
+      message: 'Server responded with an error',
       error,
     }));
 };
@@ -126,7 +142,7 @@ const deleteSuperAdmin = (req, res) => {
   return false;
 };
 
-module.exports = {
+export default {
   getAllsuperAdmins,
   getsuperAdminById,
   createSuperAdmin,
