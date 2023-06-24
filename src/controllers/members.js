@@ -1,4 +1,4 @@
-import firebaseApp from '../helper/firebase';
+const firebaseApp = require('../helper/firebase');
 
 const Member = require('../models/Member');
 
@@ -192,7 +192,7 @@ const deleteMember = (req, res) => {
     });
   return false;
 };
-export default {
+module.exports = {
   getAllMembers,
   createMember,
   updateMember,

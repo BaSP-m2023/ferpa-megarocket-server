@@ -1,4 +1,4 @@
-import firebaseApp from '../helper/firebase';
+const firebaseApp = require('../helper/firebase');
 
 const SuperAdmin = require('../models/SuperAdmin');
 

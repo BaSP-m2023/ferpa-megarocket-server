@@ -1,4 +1,7 @@
 const express = require('express');
+const auth = require('./auth');
+
+const { default: verifyToken } = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
@@ -17,5 +20,6 @@ router.use('/members', members);
 router.use('/trainers', trainers);
 router.use('/super-admins', superAdmins);
 router.use('/subscriptions', subscriptions);
+router.use('/auth', verifyToken, auth);
 
-module.exports = router;
+export default router;

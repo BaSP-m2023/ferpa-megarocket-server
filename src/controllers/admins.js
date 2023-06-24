@@ -1,4 +1,4 @@
-import firebaseApp from '../helper/firebase';
+const firebaseApp = require('../helper/firebase');
 
 const Admin = require('../models/Admin');
 
@@ -181,7 +181,7 @@ const deleteAdmin = (req, res) => {
   return false;
 };
 
-export default {
+module.exports = {
   getAllAdmin,
   getAdminById,
   updateAdmin,
