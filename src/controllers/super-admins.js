@@ -46,7 +46,7 @@ const getsuperAdminById = (req, res) => {
 };
 
 const createSuperAdmin = async (req, res) => {
-  const { email } = req.body;
+  const { email, password } = req.body;
 
   const existingSuperAdmin = await SuperAdmin.findOne({ email });
   if (existingSuperAdmin) {
@@ -56,9 +56,8 @@ const createSuperAdmin = async (req, res) => {
       error: true,
     });
   }
-  const newFirebaseSuperAdmin = await firebaseApp.auth().createSuperAdmin({
-    email: req.body.email,
-    password: req.body.password,
+  const newFirebaseSuperAdmin = await firebaseApp.auth().createUser({
+    email, password,
   });
   const firebaseUid = newFirebaseSuperAdmin.uid;
   await firebaseApp.auth().setCustomUserClaims(newFirebaseSuperAdmin.uid, { role: 'SUPER-ADMIN' });

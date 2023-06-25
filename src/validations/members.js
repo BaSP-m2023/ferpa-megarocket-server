@@ -70,6 +70,7 @@ const validateMemberCreation = (req, res, next) => {
     Joi.boolean().required(),
     membership:
     Joi.string().valid('Classic', 'Only Classes', 'Black').required(),
+    password: Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/),
   });
 
   const validation = memberValidation.validate(req.body);
@@ -143,6 +144,7 @@ const validateMemberUpdate = (req, res, next) => {
     Joi.boolean(),
     membership:
     Joi.string().valid('Classic', 'Only Classes', 'Black'),
+    password: Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}$/),
   });
 
   const validation = memberValidation.validate(req.body);

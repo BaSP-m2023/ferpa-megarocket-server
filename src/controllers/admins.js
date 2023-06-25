@@ -106,7 +106,7 @@ const updateAdmin = (req, res) => {
 
 const createAdmin = async (req, res) => {
   const {
-    firstName, lastName, dni, phone, email, city,
+    firstName, lastName, dni, phone, email, city, password,
   } = req.body;
   const existingAdmin = await Admin.findOne({ $or: [{ dni }, { email }] });
   if (existingAdmin) {
@@ -116,9 +116,8 @@ const createAdmin = async (req, res) => {
       error: true,
     });
   }
-  const newFirebaseAdmin = await firebaseApp.auth().createAdmin({
-    email: req.body.email,
-    password: req.body.password,
+  const newFirebaseAdmin = await firebaseApp.auth().createUser({
+    email, password,
   });
   const firebaseUid = newFirebaseAdmin.uid;
   await firebaseApp.auth().setCustomUserClaims(newFirebaseAdmin.uid, { role: 'ADMIN' });
