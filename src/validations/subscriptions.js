@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const dateRegex = /\d{4}-\d{2}-\d{2}/;
 
@@ -40,7 +40,7 @@ const validateSubUpdate = (req, res, next) => {
   });
 };
 
-module.exports = {
+export default {
   validateSubCreation,
   validateSubUpdate,
 };

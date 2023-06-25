@@ -1,6 +1,7 @@
-const express = require('express');
-const subController = require('../controllers/subscriptions');
-const validations = require('../validations/subscriptions');
+import express from 'express';
+
+import subController from '../controllers/subscriptions';
+import validations from '../validations/subscriptions';
 
 const router = express.Router();
 
@@ -12,4 +13,4 @@ router
   .put('/:id', validations.validateSubUpdate, subController.updateSub)
   .delete('/:id', subController.deleteSub);
 
-module.exports = router;
+export default router;

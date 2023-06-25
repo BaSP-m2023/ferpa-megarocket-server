@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const passRegex = /^(?=.*\d)(?=.*[A-Z]).{8,}$/;
 
@@ -33,7 +33,7 @@ const validateSuperUpdate = (req, res, next) => {
   });
 };
 
-module.exports = {
+export default {
   validateSuperCreation,
   validateSuperUpdate,
 };

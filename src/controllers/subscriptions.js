@@ -1,4 +1,4 @@
-const Subscription = require('../models/Subscription');
+import Subscription from '../models/Subscription';
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
@@ -187,7 +187,7 @@ const deleteSub = (req, res) => {
     }));
 };
 
-module.exports = {
+export default {
   getAllSub,
   getAllSubThisWeek,
   getSubById,

@@ -1,6 +1,6 @@
-const firebaseApp = require('../helper/firebase');
+import firebaseApp from '../helper/firebase';
 
-const Member = require('../models/Member');
+import Member from '../models/Member';
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 const getAllMembers = (req, res) => {
@@ -192,7 +192,7 @@ const deleteMember = (req, res) => {
     });
   return false;
 };
-module.exports = {
+export default {
   getAllMembers,
   createMember,
   updateMember,

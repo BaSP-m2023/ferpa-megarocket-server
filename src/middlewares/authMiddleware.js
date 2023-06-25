@@ -1,9 +1,9 @@
-const firebaseApp = require('../helper/firebase');
+import firebaseApp from '../helper/firebase';
 
 const verifyToken = async (req, res, next) => {
   const { token } = req.headers;
   if (!token) {
-    return res.status(401).json({
+    return res.status(400).json({
       message: 'A token is required',
       data: undefined,
       error: true,
@@ -22,4 +22,4 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-module.exports = verifyToken;
+export default verifyToken;

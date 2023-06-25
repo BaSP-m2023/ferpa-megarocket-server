@@ -1,17 +1,16 @@
-const express = require('express');
-const auth = require('./auth');
+import express from 'express';
+import auth from './auth';
+import verifyToken from '../middlewares/authMiddleware';
 
-const { default: verifyToken } = require('../middlewares/authMiddleware');
+import activities from './activities';
+import admins from './admins';
+import trainers from './trainers';
+import members from './members';
+import subscriptions from './subscriptions';
+import classes from './classes';
+import superAdmins from './super-admins';
 
 const router = express.Router();
-
-const activities = require('./activities');
-const admins = require('./admins');
-const trainers = require('./trainers');
-const members = require('./members');
-const subscriptions = require('./subscriptions');
-const classes = require('./classes');
-const superAdmins = require('./super-admins');
 
 router.use('/activities', activities);
 router.use('/admins', admins);

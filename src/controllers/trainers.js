@@ -1,4 +1,4 @@
-const Trainer = require('../models/Trainer');
+import Trainer from '../models/Trainer';
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
@@ -155,7 +155,7 @@ const updateTrainer = (req, res) => {
   }
 };
 
-module.exports = {
+export default {
   getAllTrainers,
   createTrainer,
   getTrainerById,

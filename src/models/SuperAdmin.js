@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
@@ -13,4 +13,4 @@ const superAdminSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('SuperAdmin', superAdminSchema);
+export default mongoose.model('SuperAdmin', superAdminSchema);

@@ -1,6 +1,6 @@
-const firebaseApp = require('../helper/firebase');
+import firebaseApp from '../helper/firebase';
 
-const SuperAdmin = require('../models/SuperAdmin');
+import SuperAdmin from '../models/SuperAdmin';
 
 const getAllsuperAdmins = (req, res) => {
   SuperAdmin.find()
@@ -141,7 +141,7 @@ const deleteSuperAdmin = (req, res) => {
   return false;
 };
 
-module.exports = {
+export default {
   getAllsuperAdmins,
   getsuperAdminById,
   createSuperAdmin,

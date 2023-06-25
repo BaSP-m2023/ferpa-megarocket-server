@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const letterRegex = /^[a-zA-Z0-9.,\s]+$/;
 
@@ -67,7 +67,7 @@ const updateValidation = (req, res, next) => {
   });
 };
 
-module.exports = {
+export default {
   createValidation,
   updateValidation,
 };

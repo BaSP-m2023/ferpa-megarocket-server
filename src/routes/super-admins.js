@@ -1,6 +1,7 @@
-const express = require('express');
-const superAdminsController = require('../controllers/super-admins');
-const validation = require('../validations/super-admins');
+import express from 'express';
+
+import superAdminsController from '../controllers/super-admins';
+import validation from '../validations/super-admins';
 
 const router = express.Router();
 
@@ -10,5 +11,4 @@ router
   .post('/', validation.validateSuperCreation, superAdminsController.createSuperAdmin)
   .delete('/:id', superAdminsController.deleteSuperAdmin)
   .put('/:id', validation.validateSuperUpdate, superAdminsController.updateSuperAdmin);
-
-module.exports = router;
+export default router;

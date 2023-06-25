@@ -1,6 +1,6 @@
-const firebaseApp = require('../helper/firebase');
+import firebaseApp from '../helper/firebase';
 
-const Admin = require('../models/Admin');
+import Admin from '../models/Admin';
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
@@ -180,7 +180,7 @@ const deleteAdmin = (req, res) => {
   return false;
 };
 
-module.exports = {
+export default {
   getAllAdmin,
   getAdminById,
   updateAdmin,
