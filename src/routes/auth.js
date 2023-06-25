@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { default: getAuth } = require('../controllers/auth');
+const getAuth = require('../controllers/auth');
 
 const router = express.Router();
 

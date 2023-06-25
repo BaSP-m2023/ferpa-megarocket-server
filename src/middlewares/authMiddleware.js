@@ -3,7 +3,7 @@ const firebaseApp = require('../helper/firebase');
 const verifyToken = async (req, res, next) => {
   const { token } = req.headers;
   if (!token) {
-    return res.status(400).json({
+    return res.status(401).json({
       message: 'A token is required',
       data: undefined,
       error: true,
@@ -22,4 +22,4 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-module.export = verifyToken;
+module.exports = verifyToken;

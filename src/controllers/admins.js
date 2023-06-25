@@ -106,7 +106,7 @@ const updateAdmin = (req, res) => {
 
 const createAdmin = async (req, res) => {
   const {
-    firstName, lastName, dni, phone, email, city, password,
+    firstName, lastName, dni, phone, email, city,
   } = req.body;
   const existingAdmin = await Admin.findOne({ $or: [{ dni }, { email }] });
   if (existingAdmin) {
@@ -130,7 +130,6 @@ const createAdmin = async (req, res) => {
     phone,
     email,
     city,
-    password,
   })
     .then((postAdmin) => {
       res.status(201).json({

@@ -46,7 +46,7 @@ const getsuperAdminById = (req, res) => {
 };
 
 const createSuperAdmin = async (req, res) => {
-  const { email, password } = req.body;
+  const { email } = req.body;
 
   const existingSuperAdmin = await SuperAdmin.findOne({ email });
   if (existingSuperAdmin) {
@@ -65,7 +65,6 @@ const createSuperAdmin = async (req, res) => {
   return SuperAdmin.create({
     firebaseUid,
     email,
-    password,
   })
     .then((postSuperAdmin) => res.status(201).json({
       message: 'Super admin has been created succesfully',
@@ -142,7 +141,7 @@ const deleteSuperAdmin = (req, res) => {
   return false;
 };
 
-export default {
+module.exports = {
   getAllsuperAdmins,
   getsuperAdminById,
   createSuperAdmin,

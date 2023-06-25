@@ -1,6 +1,6 @@
-import Member from '../models/Member';
-import Admin from '../models/Admin';
-import SuperAdmins from '../models/SuperAdmin';
+const Member = require('../models/Member');
+const Admin = require('../models/Admin');
+const SuperAdmins = require('../models/SuperAdmin');
 
 // eslint-disable-next-line import/prefer-default-export
 const getAuth = async (req, res) => {
@@ -45,5 +45,4 @@ const getAuth = async (req, res) => {
     });
   }
 };
-
-export default getAuth;
+module.exports = getAuth;
