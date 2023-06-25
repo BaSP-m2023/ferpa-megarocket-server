@@ -5,7 +5,7 @@ import app from './app';
 
 dotenv.config();
 
-const { PORT } = process.env.PORT;
+const { PORT } = process.env;
 
 mongoose.connect(process.env.DB_URL, { maxPoolSize: process.env.MONGO_POOLSIZE || 1 })
   .then(() => console.log('🟢 DB Connected!'))
