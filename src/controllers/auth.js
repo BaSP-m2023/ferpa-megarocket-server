@@ -1,8 +1,7 @@
-const Member = require('../models/Member');
-const Admin = require('../models/Admin');
-const SuperAdmins = require('../models/SuperAdmin');
+import Member from '../models/Member';
+import Admin from '../models/Admin';
+import SuperAdmins from '../models/SuperAdmin';
 
-// eslint-disable-next-line import/prefer-default-export
 const getAuth = async (req, res) => {
   try {
     const member = await Member.findOne({ firebaseUid: req.headers.firebaseUid });
@@ -45,4 +44,4 @@ const getAuth = async (req, res) => {
     });
   }
 };
-module.exports = getAuth;
+export default getAuth;
