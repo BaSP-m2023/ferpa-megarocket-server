@@ -1,4 +1,6 @@
 import express from 'express';
+import auth from './auth';
+import verifyToken from '../middlewares/authMiddleware';
 
 import activities from './activities';
 import admins from './admins';
@@ -10,12 +12,13 @@ import superAdmins from './super-admins';
 
 const router = express.Router();
 
-router.use('/activities', activities);
-router.use('/admins', admins);
-router.use('/classes', classes);
-router.use('/members', members);
-router.use('/trainers', trainers);
-router.use('/super-admins', superAdmins);
-router.use('/subscriptions', subscriptions);
+router.use('/activities', verifyToken, activities);
+router.use('/admins', verifyToken, admins);
+router.use('/classes', verifyToken, classes);
+router.use('/members', verifyToken, members);
+router.use('/trainers', verifyToken, trainers);
+router.use('/super-admins', verifyToken, superAdmins);
+router.use('/subscriptions', verifyToken, subscriptions);
+router.use('/auth', verifyToken, auth);
 
 export default router;

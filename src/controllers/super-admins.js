@@ -1,6 +1,6 @@
 import firebaseApp from '../helper/firebase';
 
-const SuperAdmin = require('../models/SuperAdmin');
+import SuperAdmin from '../models/SuperAdmin';
 
 const getAllsuperAdmins = (req, res) => {
   SuperAdmin.find()
@@ -56,16 +56,14 @@ const createSuperAdmin = async (req, res) => {
       error: true,
     });
   }
-  const newFirebaseSuperAdmin = await firebaseApp.auth().createSuperAdmin({
-    email: req.body.email,
-    password: req.body.password,
+  const newFirebaseSuperAdmin = await firebaseApp.auth().createUser({
+    email, password,
   });
   const firebaseUid = newFirebaseSuperAdmin.uid;
   await firebaseApp.auth().setCustomUserClaims(newFirebaseSuperAdmin.uid, { role: 'SUPER-ADMIN' });
   return SuperAdmin.create({
     firebaseUid,
     email,
-    password,
   })
     .then((postSuperAdmin) => res.status(201).json({
       message: 'Super admin has been created succesfully',

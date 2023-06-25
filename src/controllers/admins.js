@@ -1,6 +1,6 @@
 import firebaseApp from '../helper/firebase';
 
-const Admin = require('../models/Admin');
+import Admin from '../models/Admin';
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
@@ -116,9 +116,8 @@ const createAdmin = async (req, res) => {
       error: true,
     });
   }
-  const newFirebaseAdmin = await firebaseApp.auth().createAdmin({
-    email: req.body.email,
-    password: req.body.password,
+  const newFirebaseAdmin = await firebaseApp.auth().createUser({
+    email, password,
   });
   const firebaseUid = newFirebaseAdmin.uid;
   await firebaseApp.auth().setCustomUserClaims(newFirebaseAdmin.uid, { role: 'ADMIN' });
@@ -130,7 +129,6 @@ const createAdmin = async (req, res) => {
     phone,
     email,
     city,
-    password,
   })
     .then((postAdmin) => {
       res.status(201).json({

@@ -1,6 +1,6 @@
 import firebaseApp from '../helper/firebase';
 
-const Member = require('../models/Member');
+import Member from '../models/Member';
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 const getAllMembers = (req, res) => {
@@ -27,6 +27,7 @@ const createMember = async (req, res) => {
     postalCode,
     isActive,
     membership,
+    password,
   } = req.body;
   const existingMember = await Member.findOne({ $or: [{ dni }, { email }] });
   if (existingMember) {
@@ -36,9 +37,8 @@ const createMember = async (req, res) => {
       error: true,
     });
   }
-  const newFirebaseMember = await firebaseApp.auth().createMember({
-    email: req.body.email,
-    password: req.body.password,
+  const newFirebaseMember = await firebaseApp.auth().createUser({
+    email, password,
   });
   const firebaseUid = newFirebaseMember.uid;
   await firebaseApp.auth().setCustomUserClaims(newFirebaseMember.uid, { role: 'MEMBER' });
