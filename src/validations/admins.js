@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const validateAdminUpdate = (req, res, next) => {
   const adminValidation = Joi.object({
@@ -42,7 +42,7 @@ const validateAdminCreation = (req, res, next) => {
   });
 };
 
-module.exports = {
+export default {
   validateAdminUpdate,
   validateAdminCreation,
 };

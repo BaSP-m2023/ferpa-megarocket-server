@@ -1,6 +1,6 @@
-const moongose = require('mongoose');
+import mongoose from 'mongoose';
 
-const { Schema } = moongose;
+const { Schema } = mongoose;
 
 const activitySchema = new Schema({
   name: {
@@ -17,4 +17,4 @@ const activitySchema = new Schema({
   },
 });
 
-module.exports = moongose.model('Activity', activitySchema);
+export default mongoose.model('Activity', activitySchema);

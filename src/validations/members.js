@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const letterRegex = /^[A-Za-z]+$/;
 const numberRegex = /^[0-9]+$/;
@@ -157,7 +157,7 @@ const validateMemberUpdate = (req, res, next) => {
   });
 };
 
-module.exports = {
+export default {
   validateMemberCreation,
   validateMemberUpdate,
 };

@@ -1,4 +1,4 @@
-const Activity = require('../models/Activity');
+import Activity from '../models/Activity';
 
 const getActivities = (req, res) => {
   Activity.find()
@@ -127,7 +127,7 @@ const deleteActivity = (req, res) => {
   }
 };
 
-module.exports = {
+export default {
   getActivities,
   getActivitiesById,
   createActivity,

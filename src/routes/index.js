@@ -1,14 +1,14 @@
-const express = require('express');
+import express from 'express';
+
+import activities from './activities';
+import admins from './admins';
+import trainers from './trainers';
+import members from './members';
+import subscriptions from './subscriptions';
+import classes from './classes';
+import superAdmins from './super-admins';
 
 const router = express.Router();
-
-const activities = require('./activities');
-const admins = require('./admins');
-const trainers = require('./trainers');
-const members = require('./members');
-const subscriptions = require('./subscriptions');
-const classes = require('./classes');
-const superAdmins = require('./super-admins');
 
 router.use('/activities', activities);
 router.use('/admins', admins);
@@ -18,4 +18,4 @@ router.use('/trainers', trainers);
 router.use('/super-admins', superAdmins);
 router.use('/subscriptions', subscriptions);
 
-module.exports = router;
+export default router;

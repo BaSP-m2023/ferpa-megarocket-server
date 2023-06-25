@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const validateTrainerCreation = (req, res, next) => {
   const trainerValidation = Joi.object({
@@ -50,7 +50,7 @@ const validateTrainerUpdate = (req, res, next) => {
   });
 };
 
-module.exports = {
+export default {
   validateTrainerCreation,
   validateTrainerUpdate,
 };

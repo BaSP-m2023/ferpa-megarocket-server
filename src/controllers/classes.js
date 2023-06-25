@@ -1,4 +1,4 @@
-const Class = require('../models/Class');
+import Class from '../models/Class';
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
@@ -145,7 +145,7 @@ const deleteClass = (req, res) => {
     }));
 };
 
-module.exports = {
+export default {
   getAllClasses,
   getClassById,
   createClass,
