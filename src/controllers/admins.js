@@ -55,8 +55,9 @@ const getAdminById = (req, res) => {
   return false;
 };
 
-const updateAdmin = (req, res) => {
+const updateAdmin = async (req, res) => {
   const { id } = req.params;
+  const { firebaseUid } = await Admin.findById(id);
   if (!id.match(regexObjectId)) {
     return res.status(400).json({
       message: `Id: ${id} invalid, try a valid id`,
@@ -67,20 +68,24 @@ const updateAdmin = (req, res) => {
   const {
     firstName, lastName, dni, phone, email, city, password,
   } = req.body;
-  Admin.findByIdAndUpdate(
-    id,
-    {
-      firstName,
-      lastName,
-      dni,
-      phone,
-      email,
-      city,
-      password,
-    },
-    { new: true },
-  )
-    .then((result) => {
+  try {
+    const repeatedUser = await firebaseApp.auth().getUserByEmail(email);
+    const repeatedUid = repeatedUser?.uid;
+    if (!repeatedUid || repeatedUid === firebaseUid) {
+      const result = await Admin.findByIdAndUpdate(
+        id,
+        {
+          firstName,
+          lastName,
+          dni,
+          phone,
+          email,
+          city,
+          password,
+        },
+        { new: true },
+      );
+      await firebaseApp.auth().updateUser(firebaseUid, { email, password });
       if (!result) {
         return res.status(404).json({
           message: `Admin with id: ${id} was not found`,
@@ -93,14 +98,18 @@ const updateAdmin = (req, res) => {
         data: result,
         error: false,
       });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: 'An error ocurred',
-        data: undefined,
-        error,
-      });
+    } return res.status(400).json({
+      message: 'There is already an user with that email.',
+      data: undefined,
+      error: true,
     });
+  } catch (error) {
+    res.status(500).json({
+      message: 'An error ocurred',
+      data: undefined,
+      error,
+    });
+  }
   return false;
 };
 
@@ -116,37 +125,46 @@ const createAdmin = async (req, res) => {
       error: true,
     });
   }
-  const newFirebaseAdmin = await firebaseApp.auth().createUser({
-    email, password,
-  });
-  const firebaseUid = newFirebaseAdmin.uid;
-  await firebaseApp.auth().setCustomUserClaims(newFirebaseAdmin.uid, { role: 'ADMIN' });
-  return Admin.create({
-    firebaseUid,
-    firstName,
-    lastName,
-    dni,
-    phone,
-    email,
-    city,
-  })
-    .then((postAdmin) => {
-      res.status(201).json({
+  try {
+    const repeatedUser = await firebaseApp.auth().getUserByEmail(email);
+    if (!repeatedUser) {
+      const newFirebaseAdmin = await firebaseApp.auth().createUser({
+        email, password,
+      });
+      const firebaseUid = newFirebaseAdmin.uid;
+      await firebaseApp.auth().setCustomUserClaims(newFirebaseAdmin.uid, { role: 'ADMIN' });
+      const postAdmin = await Admin.create({
+        firebaseUid,
+        firstName,
+        lastName,
+        dni,
+        phone,
+        email,
+        city,
+      });
+
+      return res.status(201).json({
         message: 'Admin created.',
         data: postAdmin,
         error: false,
       });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: 'Error',
-        error,
-      });
+    }
+    return res.status(400).json({
+      message: 'There is already an user with that email.',
+      data: undefined,
+      error: true,
     });
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Error',
+      error,
+    });
+  }
 };
 
-const deleteAdmin = (req, res) => {
+const deleteAdmin = async (req, res) => {
   const { id } = req.params;
+  const { firebaseUid } = await Admin.findById(id);
   if (!id.match(regexObjectId)) {
     return res.status(400).json({
       message: 'Please put a valid ID',
@@ -154,28 +172,28 @@ const deleteAdmin = (req, res) => {
       error: true,
     });
   }
-  Admin.findByIdAndDelete(id)
-    .then((admin) => {
-      if (!admin) {
-        return res.status(404).json({
-          message: `Admin with id: ${id} was not found.`,
-          data: undefined,
-          error: true,
-        });
-      }
-      return res.status(200).json({
-        message: 'Admin has been succesfully removed.',
-        data: admin,
-        error: false,
-      });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: 'An error ocurred',
+  try {
+    await firebaseApp.auth().deleteUser(firebaseUid);
+    const admin = await Admin.findByIdAndDelete(id);
+    if (!admin) {
+      return res.status(404).json({
+        message: `Admin with id: ${id} was not found.`,
         data: undefined,
-        error,
+        error: true,
       });
+    }
+    return res.status(200).json({
+      message: 'Admin has been succesfully removed.',
+      data: admin,
+      error: false,
     });
+  } catch (error) {
+    res.status(500).json({
+      message: 'An error ocurred',
+      data: undefined,
+      error,
+    });
+  }
   return false;
 };
 
