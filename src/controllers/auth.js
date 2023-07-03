@@ -3,8 +3,9 @@ import Admin from '../models/Admin';
 import SuperAdmins from '../models/SuperAdmin';
 
 const getAuth = async (req, res) => {
+  const { firebaseUid } = req.headers;
   try {
-    const member = await Member.findOne({ firebaseUid: req.headers.firebaseUid });
+    const member = await Member.findOne({ firebaseUid });
     if (member) {
       return res.status(201).json({
         message: 'Member found',
@@ -13,7 +14,7 @@ const getAuth = async (req, res) => {
       });
     }
 
-    const admin = await Admin.findOne({ firebaseUid: req.headers.firebaseUid });
+    const admin = await Admin.findOne({ firebaseUid });
     if (admin) {
       return res.status(201).json({
         message: 'Admin found',
@@ -22,7 +23,7 @@ const getAuth = async (req, res) => {
       });
     }
 
-    const superAdmin = await SuperAdmins.findOne({ firebaseUid: req.headers.firebaseUid });
+    const superAdmin = await SuperAdmins.findOne({ firebaseUid });
     if (superAdmin) {
       return res.status(201).json({
         message: 'Super Admin found',
