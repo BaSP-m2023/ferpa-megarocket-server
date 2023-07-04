@@ -39,6 +39,11 @@ const trainerSchema = new Schema({
     type: Boolean,
     default: true,
   },
+  activityId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Activity',
+  },
 });
 
 export default mongoose.model('Trainer', trainerSchema);
