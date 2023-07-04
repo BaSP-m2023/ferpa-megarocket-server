@@ -57,7 +57,6 @@ const getAdminById = (req, res) => {
 
 const updateAdmin = async (req, res) => {
   const { id } = req.params;
-  const { firebaseUid } = await Admin.findById(id);
   if (!id.match(regexObjectId)) {
     return res.status(400).json({
       message: `Id: ${id} invalid, try a valid id`,
@@ -69,39 +68,32 @@ const updateAdmin = async (req, res) => {
     firstName, lastName, dni, phone, email, city, password,
   } = req.body;
   try {
-    const repeatedUser = await firebaseApp.auth().getUserByEmail(email);
-    const repeatedUid = repeatedUser?.uid;
-    if (!repeatedUid || repeatedUid === firebaseUid) {
-      const result = await Admin.findByIdAndUpdate(
-        id,
-        {
-          firstName,
-          lastName,
-          dni,
-          phone,
-          email,
-          city,
-          password,
-        },
-        { new: true },
-      );
-      await firebaseApp.auth().updateUser(firebaseUid, { email, password });
-      if (!result) {
-        return res.status(404).json({
-          message: `Admin with id: ${id} was not found`,
-          data: undefined,
-          error: true,
-        });
-      }
-      return res.status(200).json({
-        message: 'Admin has been succesfully updated.',
-        data: result,
-        error: false,
+    const { firebaseUid } = await Admin.findById(id);
+    const result = await Admin.findByIdAndUpdate(
+      id,
+      {
+        firstName,
+        lastName,
+        dni,
+        phone,
+        email,
+        city,
+        password,
+      },
+      { new: true },
+    );
+    await firebaseApp.auth().updateUser(firebaseUid, { email, password });
+    if (!result) {
+      return res.status(404).json({
+        message: `Admin with id: ${id} was not found`,
+        data: undefined,
+        error: true,
       });
-    } return res.status(400).json({
-      message: 'There is already an user with that email.',
-      data: undefined,
-      error: true,
+    }
+    return res.status(200).json({
+      message: 'Admin has been succesfully updated.',
+      data: result,
+      error: false,
     });
   } catch (error) {
     res.status(500).json({
@@ -117,42 +109,34 @@ const createAdmin = async (req, res) => {
   const {
     firstName, lastName, dni, phone, email, city, password,
   } = req.body;
-  const existingAdmin = await Admin.findOne({ $or: [{ dni }, { email }] });
-  if (existingAdmin) {
-    return res.status(400).json({
-      message: 'Admin already exists',
-      data: req.body,
-      error: true,
-    });
-  }
   try {
-    const repeatedUser = await firebaseApp.auth().getUserByEmail(email);
-    if (!repeatedUser) {
-      const newFirebaseAdmin = await firebaseApp.auth().createUser({
-        email, password,
-      });
-      const firebaseUid = newFirebaseAdmin.uid;
-      await firebaseApp.auth().setCustomUserClaims(newFirebaseAdmin.uid, { role: 'ADMIN' });
-      const postAdmin = await Admin.create({
-        firebaseUid,
-        firstName,
-        lastName,
-        dni,
-        phone,
-        email,
-        city,
-      });
-
-      return res.status(201).json({
-        message: 'Admin created.',
-        data: postAdmin,
-        error: false,
+    const existingAdmin = await Admin.findOne({ $or: [{ dni }, { email }] });
+    if (existingAdmin) {
+      return res.status(400).json({
+        message: 'Admin already exists',
+        data: req.body,
+        error: true,
       });
     }
-    return res.status(400).json({
-      message: 'There is already an user with that email.',
-      data: undefined,
-      error: true,
+    const newFirebaseAdmin = await firebaseApp.auth().createUser({
+      email, password,
+    });
+    const firebaseUid = newFirebaseAdmin.uid;
+    await firebaseApp.auth().setCustomUserClaims(newFirebaseAdmin.uid, { role: 'ADMIN' });
+    const postAdmin = await Admin.create({
+      firebaseUid,
+      firstName,
+      lastName,
+      dni,
+      phone,
+      email,
+      city,
+    });
+
+    return res.status(201).json({
+      message: 'Admin created.',
+      data: postAdmin,
+      error: false,
     });
   } catch (error) {
     return res.status(500).json({
