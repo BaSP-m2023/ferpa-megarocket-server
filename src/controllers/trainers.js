@@ -55,44 +55,35 @@ const createTrainer = async (req, res) => {
   const {
     firstName, lastName, dni, phone, email, city, password, salary,
   } = req.body;
-
-  const existingTrainer = await Trainer.findOne({ $or: [{ dni }, { email }] });
-  if (existingTrainer) {
-    return res.status(400).json({
-      message: 'Trainer already exists',
-      data: undefined,
-      error: true,
-    });
-  }
   try {
-    const repeatedUser = await firebaseApp.auth().getUserByEmail(email);
-    if (!repeatedUser) {
-      const newFirebaseTrainer = await firebaseApp.auth().createUser({
-        email, password,
-      });
-      const firebaseUid = newFirebaseTrainer.uid;
-      await firebaseApp.auth().setCustomUserClaims(newFirebaseTrainer.uid, { role: 'TRAINER' });
-      const trainer = await Trainer.create({
-        firebaseUid,
-        firstName,
-        lastName,
-        dni,
-        phone,
-        email,
-        city,
-        password,
-        salary,
-      });
-      return res.status(201).json({
-        message: 'Trainer has been succesfully created.',
-        data: trainer,
-        error: false,
+    const existingTrainer = await Trainer.findOne({ $or: [{ dni }, { email }] });
+    if (existingTrainer) {
+      return res.status(400).json({
+        message: 'Trainer already exists',
+        data: undefined,
+        error: true,
       });
     }
-    return res.status(400).json({
-      message: 'There is already an user with that email.',
-      data: undefined,
-      error: true,
+    const newFirebaseTrainer = await firebaseApp.auth().createUser({
+      email, password,
+    });
+    const firebaseUid = newFirebaseTrainer.uid;
+    await firebaseApp.auth().setCustomUserClaims(newFirebaseTrainer.uid, { role: 'TRAINER' });
+    const trainer = await Trainer.create({
+      firebaseUid,
+      firstName,
+      lastName,
+      dni,
+      phone,
+      email,
+      city,
+      password,
+      salary,
+    });
+    return res.status(201).json({
+      message: 'Trainer has been succesfully created.',
+      data: trainer,
+      error: false,
     });
   } catch (error) {
     return res.status(400).json({
@@ -104,7 +95,6 @@ const createTrainer = async (req, res) => {
 
 const deleteTrainer = async (req, res) => {
   const { id } = req.params;
-  const { firebaseUid } = await Trainer.findById(id);
   if (!id.match(regexObjectId)) {
     return res.status(400).json({
       message: 'Id invalid, try again!',
@@ -113,6 +103,7 @@ const deleteTrainer = async (req, res) => {
     });
   }
   try {
+    const { firebaseUid } = await Trainer.findById(id);
     await firebaseApp.auth().deleteUser(firebaseUid);
     const result = await Trainer.findByIdAndDelete(id);
     if (!result) {
@@ -136,7 +127,6 @@ const deleteTrainer = async (req, res) => {
 
 const updateTrainer = async (req, res) => {
   const { id } = req.params;
-  const { firebaseUid } = await Trainer.findById(id);
   if (!id.match(regexObjectId)) {
     res.status(400).json({
       message: 'Id invalid, try again!',
@@ -148,43 +138,35 @@ const updateTrainer = async (req, res) => {
     firstName, lastName, dni, phone, email, city, password, salary, isActive,
   } = req.body;
   try {
-    const repeatedUser = await firebaseApp.auth().getUserByEmail(email);
-    const repeatedUid = repeatedUser?.uid;
-    if (!repeatedUid || repeatedUid === firebaseUid) {
-      await firebaseApp.auth().updateUser(firebaseUid, { email, password });
-      const result = await Trainer.findByIdAndUpdate(
-        id,
-        {
-          firstName,
-          lastName,
-          dni,
-          phone,
-          email,
-          city,
-          password,
-          salary,
-          isActive,
-        },
-        { new: true },
-      );
+    const { firebaseUid } = await Trainer.findById(id);
+    await firebaseApp.auth().updateUser(firebaseUid, { email, password });
+    const result = await Trainer.findByIdAndUpdate(
+      id,
+      {
+        firstName,
+        lastName,
+        dni,
+        phone,
+        email,
+        city,
+        password,
+        salary,
+        isActive,
+      },
+      { new: true },
+    );
 
-      if (!result) {
-        return res.status(404).json({
-          message: `Trainer with id ${id} was not found`,
-          data: undefined,
-          error: true,
-        });
-      }
-      return res.status(200).json({
-        message: 'Trainer has been succesfully updated',
-        data: result,
-        error: false,
+    if (!result) {
+      return res.status(404).json({
+        message: `Trainer with id ${id} was not found`,
+        data: undefined,
+        error: true,
       });
     }
-    return res.status(400).json({
-      message: 'There is already an user with that email.',
-      data: undefined,
-      error: true,
+    return res.status(200).json({
+      message: 'Trainer has been succesfully updated',
+      data: result,
+      error: false,
     });
   } catch (error) {
     return res.status(500).json({
