@@ -4,7 +4,7 @@ import firebaseApp from '../helper/firebase';
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
 const getAllTrainers = (req, res) => {
-  Trainer.find().populate('activityId')
+  Trainer.find().populate({ path: 'activities' })
     .then((trainers) => res.status(200).json({
       message: 'Trainers list.',
       data: trainers,
@@ -26,7 +26,7 @@ const getTrainerById = (req, res) => {
       error: true,
     });
   }
-  Trainer.findById(id).populate('activityId')
+  Trainer.findById(id).populate('activities')
     .then((trainer) => {
       if (!trainer) {
         return res.status(404).json({
