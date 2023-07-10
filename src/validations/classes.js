@@ -10,7 +10,9 @@ const validateClassCreation = (res, req, next) => {
       .pattern(/^[0-9a-fA-F]{24}$/).required(),
     activityId: Joi.string()
       .pattern(/^[0-9a-fA-F]{24}$/).required(),
-    slots: Joi.number().min(1).max(25).integer()
+    subscribers: Joi.array().items(
+      Joi.string().pattern(/^[0-9a-fA-F]{24}$/),
+    ).max(20)
       .required(),
   });
 
@@ -34,8 +36,9 @@ const validateClassUpdate = (req, res, next) => {
       .pattern(/^[0-9a-fA-F]{24}$/),
     activityId: Joi.string()
       .pattern(/^[0-9a-fA-F]{24}$/),
-    slots: Joi.number().min(1).max(25).integer()
-    ,
+    subscribers: Joi.array().items(
+      Joi.string().pattern(/^[0-9a-fA-F]{24}$/),
+    ).max(20),
   });
 
   const validation = classValidation.validate(req.body);

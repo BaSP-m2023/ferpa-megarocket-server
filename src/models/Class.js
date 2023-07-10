@@ -23,9 +23,10 @@ const ClassSchema = new Schema({
     required: true,
     ref: 'Activity',
   },
-  slots: {
-    type: Number,
+  subscribers: {
+    type: [mongoose.Schema.Types.ObjectId],
     required: true,
+    ref: 'Member',
   },
 });
 
