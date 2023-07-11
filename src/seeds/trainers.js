@@ -12,6 +12,6 @@ export default [
     city: 'pepitojuarez',
     salary: 2355634,
     isActive: true,
-    activityId: new mongoose.Types.ObjectId('646696cc4cbfe1552edfbea8'),
+    activities: new mongoose.Types.ObjectId('646696cc4cbfe1552edfbea8'),
   },
 ];
