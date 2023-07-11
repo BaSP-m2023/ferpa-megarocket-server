@@ -2,20 +2,23 @@ import Class from '../models/Class';
 
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
-const getAllClasses = (req, res) => {
-  Class.find().populate('trainerId activityId')
-    .then((classes) => res.status(200).json({
+const getAllClasses = async (req, res) => {
+  try {
+    const result = await Class.find().populate('trainerId activityId subscribers');
+    return res.status(200).json({
       message: 'Class list',
-      data: classes,
+      data: result,
       error: false,
-    }))
-    .catch((error) => res.status(500).json({
+    });
+  } catch (error) {
+    return res.status(500).json({
       message: 'Error',
       error,
-    }));
+    });
+  }
 };
 
-const getClassById = (req, res) => {
+const getClassById = async (req, res) => {
   const { id } = req.params;
   if (!id.match(regexObjectId)) {
     return res.status(404).json({
@@ -24,57 +27,68 @@ const getClassById = (req, res) => {
       error: true,
     });
   }
-  Class.findById(id).populate('trainerId activityId')
-    .then((classes) => {
-      if (!classes) {
-        return res.status(404).json({
-          message: `Class with the ${id} don't found`,
-          data: undefined,
-          error: true,
-        });
-      }
-      return res.status(200).json({
-        message: `Class found! It was ${id}`,
-        data: classes,
-        error: false,
+  try {
+    const result = await Class.findById(id).populate('trainerId activityId');
+    if (!result) {
+      return res.status(404).json({
+        message: `Class with the ${id} don't found`,
+        data: undefined,
+        error: true,
       });
-    })
-    .catch((error) => res.json({
+    }
+    return res.status(200).json({
+      message: `Class found! It was ${id}`,
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.json({
       message: 'Error',
       data: undefined,
       error,
-    }));
-  return false;
+    });
+  }
 };
 
-const createClass = (req, res) => {
+const createClass = async (req, res) => {
   const {
-    day, hour, trainerId, activityId, slots,
+    day, hour, trainerId, activityId, subscribers,
   } = req.body;
 
-  Class.create({
-    day,
-    hour,
-    trainerId,
-    activityId,
-    slots,
-  })
-    .then((classes) => res.status(201).json({
+  try {
+    const existingClass = await Class.findOne({ $and: [{ day }, { hour }] });
+    if (existingClass) {
+      return res.status(400).json({
+        message: 'There is already a class at that time',
+        data: undefined,
+        error: true,
+      });
+    }
+    const result = await Class.create({
+      day,
+      hour,
+      trainerId,
+      activityId,
+      subscribers,
+    });
+    return res.status(201).json({
       message: 'Class has been succesfully created!',
-      data: classes,
+      data: result,
       error: false,
-    }))
-    .catch((error) => res.status(500).json({
+    });
+  } catch (error) {
+    return res.status(500).json({
       message: "Error, don't created",
       data: undefined,
       error,
-    }));
+    });
+  }
 };
 
-const updateClass = (req, res) => {
+const updateClass = async (req, res) => {
   const { id } = req.params;
   if (id.length !== 24) {
-    res.status(404).json({
+    return res.status(404).json({
       message: 'ID invalid, please correct',
       data: undefined,
       error: true,
@@ -85,64 +99,77 @@ const updateClass = (req, res) => {
     hour,
     trainerId,
     activityId,
-    slots,
+    subscribers,
   } = req.body;
-  Class.findByIdAndUpdate(
-    id,
-    {
-      day,
-      hour,
-      trainerId,
-      activityId,
-      slots,
-    },
-    { new: true },
-  )
-    .then((result) => {
-      if (!result) {
-        res.status(404).json({
-          message: `Class with id: ${id} was not found`,
-          data: undefined,
-          error: true,
-        });
-      } else {
-        res.status(200).json({
-          message: 'Class has been succesfully updated!',
-          data: result,
-          error: false,
-        });
-      }
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: 'An error ocurred!',
-        error,
-      });
+  try {
+    const existingClass = await Class.findOne({
+      $and: [
+        { _id: { $ne: id } },
+        { hour },
+        { day },
+      ],
     });
-};
-
-const deleteClass = (req, res) => {
-  const { id } = req.params;
-
-  Class.findByIdAndDelete(id)
-    .then((result) => {
-      if (!result) {
-        return res.status(404).json({
-          message: `Class with id: ${id} was not found`,
-          data: undefined,
-          error: true,
-        });
-      }
-      return res.status(200).json({
-        message: 'Class has been succesfully removed',
-        data: result,
-        error: false,
+    if (existingClass) {
+      return res.status(400).json({
+        message: 'There is already a class at that time',
+        data: undefined,
+        error: true,
       });
-    })
-    .catch((error) => res.status(500).json({
+    }
+    const result = await Class.findByIdAndUpdate(
+      id,
+      {
+        day,
+        hour,
+        trainerId,
+        activityId,
+        subscribers,
+      },
+      { new: true },
+    );
+    if (!result) {
+      return res.status(404).json({
+        message: `Class with id: ${id} was not found`,
+        data: undefined,
+        error: true,
+      });
+    }
+    return res.status(200).json({
+      message: 'Class has been succesfully updated!',
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(500).json({
       message: 'An error ocurred!',
       error,
-    }));
+    });
+  }
+};
+
+const deleteClass = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await Class.findByIdAndDelete(id);
+
+    if (!result) {
+      return res.status(404).json({
+        message: `Class with id: ${id} was not found`,
+        data: undefined,
+        error: true,
+      });
+    }
+    return res.status(200).json({
+      message: 'Class has been succesfully removed',
+      data: result,
+      error: false,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: 'An error ocurred!',
+      error,
+    });
+  }
 };
 
 export default {

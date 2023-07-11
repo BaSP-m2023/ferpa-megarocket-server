@@ -7,6 +7,6 @@ export default [
     hour: '15:00',
     trainerId: new mongoose.Types.ObjectId('6465a78f192b0cfa3aaa8f92'),
     activityId: new mongoose.Types.ObjectId('646696cc4cbfe1552edfbea8'),
-    slots: 10,
+    subscribers: [],
   },
 ];
