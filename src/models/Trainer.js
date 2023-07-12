@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const trainerSchema = new Schema({
+  firebaseUid: {
+    type: String,
+    required: true,
+  },
   firstName: {
     type: String,
     require: true,
@@ -38,6 +42,11 @@ const trainerSchema = new Schema({
   isActive: {
     type: Boolean,
     default: true,
+  },
+  activities: {
+    type: [mongoose.Schema.Types.ObjectId],
+    required: true,
+    ref: 'Activity',
   },
 });
 

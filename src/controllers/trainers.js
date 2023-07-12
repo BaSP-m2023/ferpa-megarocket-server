@@ -4,7 +4,7 @@ import firebaseApp from '../helper/firebase';
 const regexObjectId = /^[0-9a-fA-F]{24}$/;
 
 const getAllTrainers = (req, res) => {
-  Trainer.find()
+  Trainer.find().populate({ path: 'activities' })
     .then((trainers) => res.status(200).json({
       message: 'Trainers list.',
       data: trainers,
@@ -26,7 +26,7 @@ const getTrainerById = (req, res) => {
       error: true,
     });
   }
-  Trainer.findById(id)
+  Trainer.find().populate({ path: 'activities' })
     .then((trainer) => {
       if (!trainer) {
         return res.status(404).json({
@@ -53,7 +53,7 @@ const getTrainerById = (req, res) => {
 
 const createTrainer = async (req, res) => {
   const {
-    firstName, lastName, dni, phone, email, city, password, salary,
+    firstName, lastName, dni, phone, email, city, password, salary, activities,
   } = req.body;
   try {
     const existingTrainer = await Trainer.findOne({ $or: [{ dni }, { email }] });
@@ -79,6 +79,7 @@ const createTrainer = async (req, res) => {
       city,
       password,
       salary,
+      activities,
     });
     return res.status(201).json({
       message: 'Trainer has been succesfully created.',
@@ -135,7 +136,7 @@ const updateTrainer = async (req, res) => {
     });
   }
   const {
-    firstName, lastName, dni, phone, email, city, password, salary, isActive,
+    firstName, lastName, dni, phone, email, city, password, salary, isActive, activities,
   } = req.body;
   try {
     const { firebaseUid } = await Trainer.findById(id);
@@ -152,6 +153,7 @@ const updateTrainer = async (req, res) => {
         password,
         salary,
         isActive,
+        activities,
       },
       { new: true },
     );
