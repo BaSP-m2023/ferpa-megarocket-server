@@ -34,7 +34,7 @@ const getAuth = async (req, res) => {
     }
 
     const trainer = await Trainer.findOne({ firebaseUid });
-    if (superAdmin) {
+    if (trainer) {
       return res.status(201).json({
         message: 'Trainer found',
         data: trainer,
