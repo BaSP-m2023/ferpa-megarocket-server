@@ -99,7 +99,7 @@ const createSub = (req, res) => {
           date,
         })
           .then((newSub) => res.status(201).json({
-            message: 'Subscription has been succesfully created',
+            message: 'Subscribed Successfully!',
             data: newSub,
             error: false,
           }))
@@ -175,7 +175,7 @@ const deleteSub = (req, res) => {
         });
       }
       res.status(200).json({
-        message: 'Subscription has been succesfully deleted',
+        message: 'Unsuscribed Successfully!',
         data: result,
         error: false,
       });
