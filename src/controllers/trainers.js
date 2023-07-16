@@ -77,7 +77,6 @@ const createTrainer = async (req, res) => {
       phone,
       email,
       city,
-      password,
       salary,
       activities,
     });
@@ -150,7 +149,6 @@ const updateTrainer = async (req, res) => {
         phone,
         email,
         city,
-        password,
         salary,
         isActive,
         activities,
