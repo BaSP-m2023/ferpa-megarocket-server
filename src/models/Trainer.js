@@ -16,11 +16,11 @@ const trainerSchema = new Schema({
     require: true,
   },
   dni: {
-    type: Number,
+    type: String,
     require: true,
   },
   phone: {
-    type: Number,
+    type: String,
     require: true,
   },
   email: {
@@ -28,10 +28,6 @@ const trainerSchema = new Schema({
     require: true,
   },
   city: {
-    type: String,
-    require: true,
-  },
-  password: {
     type: String,
     require: true,
   },
